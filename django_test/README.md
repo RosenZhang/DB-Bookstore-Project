@@ -2,7 +2,7 @@
 1. create a python venv by yourself (I use python2.7.13)
 2. pip install Django, mysqlclient
 3. in the setting.py under mytestsite
-  
+```  Python
   DATABASES = {
       'default': {
           'ENGINE': 'django.db.backends.mysql',
@@ -11,5 +11,5 @@
           'PASSWORD': '123456',
       }
   }
-
+```
 change USER and PASSWORD to your own DB settings
