@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<!--a search bar on top-->
+
+
+<div>
+
+<!--a placeholder image or popular books-->
+<!--when something is searched, show booktitle, author, copies etc in a list-->
+<ul>
+{% for book in books %}
+  <li>
+  	<div>{{book}}</div>
+  </li>
+ {% endfor %}
+</ul>
+
+<!--when some book is clicked, show a page with the information of the book, with feedback, recommendation-->
+</div>
+
+
+
+{% endblock %}
