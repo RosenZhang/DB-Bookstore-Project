@@ -1,13 +1,17 @@
-create database bookstore;
-use bookstore;
+use DBproject;
 
-#TODO: user table schema needed!
+create table users as 
+select id
+from auth_user;
+
+alter table users add foreign key (id) references auth_user (id);
 
 create table books (
 title VARCHAR(256) NOT NULL,
 piclink VARCHAR(2083),
 format CHAR(9), 
 pages INT,
+subject varchar(100),
 language VARCHAR(32),
 authors VARCHAR(256),
 publisher VARCHAR(64),
@@ -18,65 +22,77 @@ CHECK (format = 'paperback' OR format='hardcover'),
 available_copy Int
 );
 
+drop table feedback;
+
+create table feedback(
+Fid INT AUTO_INCREMENT NOT NULL,#auto generated
+rank int not null,
+Fdate DATETIME(2),
+Fcomment text,
+Feedback_giver int(11),
+bid CHAR(14),
+primary key (Fid),
+foreign key (Feedback_giver) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key (Feedback_giver) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 #Problem: userid needed as primary key
 CREATE TABLE usefulness_rating(
-Fid INT AUTO_INCREMENT,#auto generated
+Fid INT,
 score int,
-Feedback_toFeedback VARCHAR(256), 
-userid VARCHAR(256),
+userid int(11) NOT NULL,
 primary key (Fid, userid),
-FOREIGN KEY (Feedback_toFeedback, userid) REFERENCES users(login_name, Upassword) ON DELETE CASCADE ON UPDATE CASCADE
+foreign key (Fid) references feedback(Fid) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key (userid) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 create table orders (
-Odate date not null,
-copies INT not null,
-Login_name VARCHAR(256) ,
-bname VARCHAR(256),
-primary key (Odate, Login_name, bname),
-foreign key (Login_name) references users(login_name) ON DELETE CASCADE ON UPDATE CASCADE,
-foreign key (bname) references books(bname)
+Odate DATETIME(2) not null,
+copynum INT not null,
+userid int(11) ,
+bid CHAR(14),
+primary key (Odate, userid, bid),
+foreign key (userid) references auth_user (id) ON DELETE CASCADE ON UPDATE CASCADE,
+foreign key (bid) references books (ISBN13)
 );
 
-create table feedback(
-Fid INT AUTO_INCREMENT,#auto generated
-rank int not null,
-Fdate date not null,
-Fcomment  VARCHAR(256),
-Feedback_giver VARCHAR(256),
-bname  VARCHAR(256),
-#specific timing
-primary key (Fid),
-foreign key (Feedback_giver) references users(login_name) ON DELETE CASCADE ON UPDATE CASCADE,
-foreign key (bname) references books(bname)
-);
 
 #when new record is added to “record transaction”, books table should also be updated
 create table record_transaction(
 Tid int NOT NULL AUTO_INCREMENT,
-Tdate date,
+Tdate DATETIME(2),
 copynum Int,
-bname VARCHAR(256),
+bid CHAR(14),
 primary key (Tid),
-foreign key (bname) references books(bname)
+foreign key (bid) references books(ISBN13)
 );
 
-#update the number of copies in table book
+#update the number of copies in table book when there is new transaction
 create trigger after_transac_update
-	after update on record_transaction
+	after insert on record_transaction
 	for each row
 	update book
 	set available_copy = available_copy + record_transaction.copynum
 	where book.title = record_transaction.bname;
 
-
-#bookrecommendation for user who bought A
-#select
-
-#bookrecommendation for user who want to buy a book
-
-#storage auto reminding function
-#search function(for website)
+#update the number of copies in table book when there is new orders from customers
+DELIMITER //
+create trigger before_insert_orders
+	before insert on orders
+	for each row 
+	begin
+		if (new.copynum > (select available_copy from book where new.bname = book.title)) then
+			SIGNAL SQLSTATE '45000'
+				set message_text = 'Not Available'
+		END if;
+		END // DELIMITER ;
+	
+create trigger after_orders
+	after insert on orders
+	for each row
+	update book
+	set available_copy = available_copy - orders.copynum
+	where orders.bname = book.title;
 
 
 
