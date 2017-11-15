@@ -1,4 +1,4 @@
-{% extends "base_generic.html" %}
+{% extends "base.html" %}
 
 {% block content %}
 <!--a search bar on top-->
@@ -8,15 +8,33 @@
 
 <!--a placeholder image or popular books-->
 <!--when something is searched, show booktitle, author, copies etc in a list-->
-<ul>
+<div class="list-group">
 {% for book in books %}
-  <li>
-  	<div>{{book}}</div>
-  </li>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ book }}</h5>
+    <!--   <small>3 days ago</small> -->
+    </div>
+    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <!-- <small>Donec id elit non mi porta.</small> -->
+  </a>
+
  {% endfor %}
-</ul>
+</div>
 
 <!--when some book is clicked, show a page with the information of the book, with feedback, recommendation-->
+<!-- <div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<img src="https://www.littlebrown.co.uk/assets/img/newsletter_placeholder.jpg" alt="Book cover">
+				</td>
+				<td></td>
+			</td>
+		</tbody>
+	</table>
+</div> -->
 </div>
 
 
