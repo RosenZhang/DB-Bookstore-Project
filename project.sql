@@ -1,11 +1,5 @@
 use DBproject;
 
-create table users as 
-select id
-from auth_user;
-
-alter table users add foreign key (id) references auth_user (id);
-
 create table books (
 title VARCHAR(256) NOT NULL,
 piclink VARCHAR(2083),
@@ -21,8 +15,6 @@ ISBN13 CHAR(14) PRIMARY KEY,
 CHECK (format = 'paperback' OR format='hardcover'),
 available_copy Int
 );
-
-drop table feedback;
 
 create table feedback(
 Fid INT AUTO_INCREMENT NOT NULL,#auto generated
