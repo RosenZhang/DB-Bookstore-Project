@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+<img src={{book.piclink}}>
+</div>
+<div>{{ book.title }}
+</div>
+<div>{{ book.format }}</div>
+<div>{{ book.authors }}</div>
+
+<p>{{ book.pages }}</p>
+<p>{{ book.language }}</p>
+<p>{{ book.publisher }}</p>
+<p>{{ book.year }}</p>
+<p>{{ book.ISBN10 }}</p>
+<p> {{ book.ISBN13 }}</p>
+
+
+
+
+{% endblock %}

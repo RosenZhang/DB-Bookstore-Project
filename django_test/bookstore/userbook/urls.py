@@ -1,8 +1,9 @@
 from django.conf.urls import url
 
-from .views import userbook_view
+from .views import usermainpage_view, book_view
 
 urlpatterns = [
-	url(r'^$', userbook_view),
- 
+	url(r'^$', usermainpage_view),
+	url(r'^/(?P<book_name>\w*)/$',book_view),
+
 ]
