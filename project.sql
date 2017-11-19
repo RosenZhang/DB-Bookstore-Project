@@ -69,13 +69,13 @@ create trigger after_transac_update
 
 #update the number of copies in table book when there is new orders from customers
 DELIMITER //
-create trigger before_insert_orders
-	before insert on orders
+create trigger after
+	after insert on orders
 	for each row 
 	begin
-		if (new.copynum > (select available_copy from book where new.bname = book.title)) then
+		if (new.copynum > (select available_copy from book where new.bid = book.ISBN13)) then
 			SIGNAL SQLSTATE '45000'
-				set message_text = 'Not Available'
+				set message_text = 'Not Available';
 		END if;
 		END // DELIMITER ;
 	
