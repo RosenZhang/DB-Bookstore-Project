@@ -10,10 +10,46 @@
 
   <p>The library has the following record counts:</p>
   <ul>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <p><strong>Books:</strong> {{ num_books }}</p>
+    <p><strong>Copies:</strong> {{ num_instances }}</p>
+    <p><strong>Copies available:</strong> {{ num_instances_available }}</p>
+    <p><strong>Authors:</strong> {{ num_authors }}</p>
   </ul>
+
+<script>
+var searchItems = ["Harry Potter", "Computer Science", "Database", "Networks", "Sleeping beauty", "Darth Vader"];
+
+$( document ).ready( function( )
+{
+    function ToggleSearch( event )
+    {
+        event.preventDefault( ); //prevent submission of form
+
+
+        $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear
+    }
+
+    $( "#SearchButton" ).click( function( event )
+    {
+        ToggleSearch( event );
+    } );
+
+
+    $( "#SearchBar" ).keyup( function( ) {  //when the key is release
+
+        $( "#SearchItems" ).empty( );
+
+        for ( var i = 0; i < searchItems.length; i++ )
+        {
+            var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
+            if ( searchItems[i].toLowerCase( ).includes( searchInput )
+               && searchInput.length > 0 )
+            {
+                $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
+            }
+        }
+    } );
+} );
+</script>
 
 {% endblock %}
