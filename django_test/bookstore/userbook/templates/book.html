@@ -11,7 +11,13 @@
 <h1>{{ book.title }}</h1>
 <p>by {{ book.authors }}</p>
         <h4>{{ book.format }}</h4>
-			<div> {{ book.ISBN13 }}</div>
+			<p> ISBN13:{{ book.ISBN13 }}</p>
+			<p> ISBN10:{{ book.ISBN10 }}</p>
+			<p>	Pages:{{ book.pages }}</p>
+			<p>Language:{{ book.language }}</p>
+			<p>Publisher: {{ book.publisher }}</p>
+			<p>Year:{{ book.year }}</p>
+
 			
 			<br>
 					<form action="" method="post">
@@ -25,11 +31,7 @@
 
 
 
-<p>{{ book.pages }}</p>
-<p>{{ book.language }}</p>
-<p>{{ book.publisher }}</p>
-<p>{{ book.year }}</p>
-<p>{{ book.ISBN10 }}</p>
+
 
 
 <!-- comments with rating list based on rating,rate and then it will update the database-->
