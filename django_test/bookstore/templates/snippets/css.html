@@ -2,7 +2,7 @@
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 <style type="text/css">
-<<<<<<< HEAD
+
 .title{
     background-image:url("http://ak1.picdn.net/shutterstock/videos/6983851/thumb/1.jpg");
     background-repeat: no-repeat;
@@ -15,9 +15,7 @@
     color:whitesmoke;
 }
 
-.checked {
-    color: orange;
-}
+
 #bookcover{
   height:30em;
   width:20em;
@@ -25,9 +23,46 @@
 
 #SearchItemsContainer
 {
-    display: none;
+    display: block;
 
 }
+
+.rating {
+    overflow: hidden;
+    display: inline-block;
+}
+
+.rating-input {
+    float: right;
+    width: 16px;
+    height: 16px;
+    padding: 0;
+    margin: 0 0 0 -16px;
+    opacity: 0;
+}
+
+.rating:hover .rating-star:hover,
+.rating:hover .rating-star:hover ~ .rating-star,
+.rating-input:checked ~ .rating-star {
+    background-position: 0 0;
+}
+
+.rating-star,
+.rating:hover .rating-star {
+    position: relative;
+    float: right;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url('/samples/star-rating/star.png') 0 -16px;
+}
+
+
+
+
+
+
+
 
 #logo{
     display: block;

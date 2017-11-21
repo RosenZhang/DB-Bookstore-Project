@@ -41,7 +41,6 @@
 </nav>
   <div class="container-fluid" id="SearchItemsContainer">
             <div class="row">
-                <p>hiii</p>
                 <div class="col-xs-12" id="SearchItems">
                 </div>
             </div>
@@ -54,7 +53,41 @@
       
     </div>
 
+<script>
+var searchItems = ["Harry Potter", "Computer Science", "Database", "Networks", "Sleeping beauty", "Darth Vader"];
 
+$( document ).ready( function( )
+{
+    function ToggleSearch( event )
+    {
+        event.preventDefault( ); //prevent submission of form
+
+
+        $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear
+    }
+
+    $( "#SearchButton" ).click( function( event )
+    {
+        ToggleSearch( event );
+    } );
+
+
+    $( "#SearchBar" ).keyup( function( ) {  //when the key is release
+
+        $( "#SearchItems" ).empty( );
+
+        for ( var i = 0; i < searchItems.length; i++ )
+        {
+            var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
+            if ( searchItems[i].toLowerCase( ).includes( searchInput )
+               && searchInput.length > 0 )
+            {
+                $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
+            }
+        }
+    } );
+} );
+</script>
 
 </body>
 </html>
