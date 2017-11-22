@@ -5,157 +5,9 @@
   {% block title %}<title>Bookstore</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+{% include 'snippets/css.html' %}
+{% include 'snippets/js.html' %}
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-
-
-<style type="text/css">
-#logo{
-    display: block;
-    margin: auto;
-    padding: 20px;
-
-}
-
-
-.container p{
-    color: darkslategray;
-}
-.container h2, .container h3, h4{
-    color: darkseagreen;
-}
-
-
-ul {
-
-    list-style-type: none;
-    /*margin-left: 5%;*/
-    margin: auto;
-    /*margin-right: 10%;*/
-    overflow: hidden;
-    /*position: fixed;*/
-    top:100px;
-    /*width:100%;*/
-
-
-}
-
-li {
-    float:left;
-
-}
-
-li a {
-    position: relative;
-    display: block;
-    color: gray;
-    text-transform: capitalize;
-    text-align: center;
-    padding-top: 14px;
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-bottom: 5px;
-    text-decoration: none;
-
-}
-
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-    color: cadetblue;
-}
-
-#title{
-    background-image:url("http://ak1.picdn.net/shutterstock/videos/6983851/thumb/1.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    background-position: top-;
-    
-    text-align: left;
-
-    padding: 60px;
-}
-#title h2{
-    color:whitesmoke;
-}
-
-
-
-/*#columns{*/
-    /*-webkit-column-count: 2; !* Chrome, Safari, Opera *!*/
-    /*-moz-column-count: 2; !* Firefox *!*/
-    /*column-count: 2;*/
-    /*-webkit-column-gap: 40px;*/
-    /*-moz-column-gap: 40px;*/
-    /*column-gap: 40px;*/
-/*}*/
-
-
-
-
-
-
-input:focus {
-    outline: none;
-    outline: 2px solid seagreen;
-    box-shadow: 0 0 2px seagreen;
-}
-
-
-
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-.popup {
-  margin: 15em auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 5px;
-  width: 50%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  transition: all 200ms;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  
-  max-height: 30%;
-  overflow: auto;
-</style>
 
 </head>
 
@@ -168,8 +20,8 @@ input:focus {
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="form-inline my-2 my-lg-0 ml-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      <input class="form-control mr-sm-2" type="search" id="SearchBar" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="SearchButton">Search</button>
     </form>
   </div>
     <ul class="navbar-nav mr-auto">
@@ -178,19 +30,21 @@ input:focus {
       </li>
         {% if user.is_authenticated %}
          <li class="nav-item">
-         <a class="nav-link" href="{% url 'logout'%}?next={{request.path}}">Logout</a></li>   
+         <a class="nav-link" href="{% url 'logout'%}?next=/catalog/">Logout</a></li>   
        {% else %}
-         <li class="nav-item"><a class="nav-link"href="{% url 'login'%}?next={{request.path}}">Login</a></li>   
+         <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next=/catalog/">Login</a></li>   
        {% endif %} 
       </ul>
 
     </ul>
 
 </nav>
-<div id="title">
-    <h2>Bookstore</h2>
-    <br>
-</div>
+  <div class="container-fluid" id="SearchItemsContainer">
+            <div class="row">
+                <div class="col-xs-12" id="SearchItems">
+                </div>
+            </div>
+  </div>
 
 
   <div class="container-fluid">
@@ -199,7 +53,42 @@ input:focus {
       
     </div>
 
-  </div>
+<script>
+var searchItems = ["Harry Potter", "Computer Science", "Database", "Networks", "Sleeping beauty", "Darth Vader"];
+
+$( document ).ready( function( )
+{
+    function ToggleSearch( event )
+    {
+        event.preventDefault( ); //prevent submission of form
+
+
+        $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear
+    }
+
+    $( "#SearchButton" ).click( function( event )
+    {
+        ToggleSearch( event );
+    } );
+
+
+    $( "#SearchBar" ).keyup( function( ) {  //when the key is release
+
+        $( "#SearchItems" ).empty( );
+
+        for ( var i = 0; i < searchItems.length; i++ )
+        {
+            var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
+            if ( searchItems[i].toLowerCase( ).includes( searchInput )
+               && searchInput.length > 0 )
+            {
+                $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
+            }
+        }
+    } );
+} );
+</script>
+
 </body>
 </html>
 

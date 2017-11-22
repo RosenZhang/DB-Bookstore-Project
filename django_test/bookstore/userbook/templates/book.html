@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row jumbotron">
+
+<img src={{ book.piclink }} id='bookcover' class="img-rounded">
+
+
+<div class="col-xs-12 col-md-6">
+<h1>{{ book.title }}</h1>
+<p>by {{ book.authors }}</p>
+
+        <h5>{{ book.format }}</h5>
+        <hr>
+			<p> ISBN13:{{ book.ISBN13 }}</p>
+			<p> ISBN10:{{ book.ISBN10 }}</p>
+			<p>	Pages:{{ book.pages }}</p>
+			<p>Language:{{ book.language }}</p>
+			<p>Publisher: {{ book.publisher }}</p>
+			<p>Year:{{ book.year }}</p>
+	
+			<br>
+					<form action="" method="post">
+		<button type="button" class="btn btn-outline-warning btn-lg" id="orderbook" >Order</button>
+</form>
+</div>
+</div>
+
+
+
+
+<!-- comments with rating list based on rating,rate and then it will update the database-->
+<h2>Feedback</h2>
+<div>
+{% for feedback in feedbacks %}
+<div>{{feedback.Feedback_giver}}</div>
+<div>{{feedback.Fcomment}}</div>
+<div>rate the comment</div>
+<span class="rating">
+    <input type="radio" class="rating-input"
+           id="rating-input-1-5" name="rating-input-1">
+    <label for="rating-input-1-5" class="rating-star" ></label>
+    <input type="radio" class="rating-input"
+           id="rating-input-1-4" name="rating-input-1">
+    <label for="rating-input-1-4" class="rating-star"></label>
+    <input type="radio" class="rating-input"
+           id="rating-input-1-3" name="rating-input-1">
+    <label for="rating-input-1-3" class="rating-star"></label>
+    <input type="radio" class="rating-input"
+           id="rating-input-1-2" name="rating-input-1">
+    <label for="rating-input-1-2" class="rating-star"></label>
+    <input type="radio" class="rating-input"
+           id="rating-input-1-1" name="rating-input-1">
+    <label for="rating-input-1-1" class="rating-star"></label>
+</span>
+{% endfor %}
+</div>
+
+
+<!-- recommendation, highest buy based on the -->
+<hr>
+<h2>Recommendations</h2>
+<div class="card-group">
+	{% for recommendation in recommendations %}
+  <div class="card col-xs-6 col-md-3">
+    <img class="card-img-top" src={{ recommendation.piclink }}>
+    <div class="card-body">
+      <p class="card-text">{{recommendation.title}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+
+{% endblock %}
