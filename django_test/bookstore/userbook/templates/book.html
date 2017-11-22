@@ -31,18 +31,16 @@
 
 
 <!-- comments with rating list based on rating,rate and then it will update the database-->
-
+<h2>Feedback</h2>
 <div>
 {% for feedback in feedbacks %}
 <div>{{feedback.Feedback_giver}}</div>
 <div>{{feedback.Fcomment}}</div>
-<div>Rate</div>
-{% endfor %}
-</div>
+<div>rate the comment</div>
 <span class="rating">
     <input type="radio" class="rating-input"
            id="rating-input-1-5" name="rating-input-1">
-    <label for="rating-input-1-5" class="rating-star"></label>
+    <label for="rating-input-1-5" class="rating-star" ></label>
     <input type="radio" class="rating-input"
            id="rating-input-1-4" name="rating-input-1">
     <label for="rating-input-1-4" class="rating-star"></label>
@@ -56,8 +54,24 @@
            id="rating-input-1-1" name="rating-input-1">
     <label for="rating-input-1-1" class="rating-star"></label>
 </span>
-<p>bye</p>
+{% endfor %}
+</div>
+
+
 <!-- recommendation, highest buy based on the -->
+<hr>
+<h2>Recommendations</h2>
+<div class="card-group">
+	{% for recommendation in recommendations %}
+  <div class="card col-xs-6 col-md-3">
+    <img class="card-img-top" src={{ recommendation.piclink }}>
+    <div class="card-body">
+      <p class="card-text">{{recommendation.title}}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
 
 
 
