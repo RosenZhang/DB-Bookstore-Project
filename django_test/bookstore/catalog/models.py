@@ -23,10 +23,6 @@ class Genre(models.Model):
         """
         return self.name
 
-class GenreManager(models.Manager):
-    def get_queryset(self):
-        return super(GenreManager, self).get_queryset().filter(author='Roald Dahl')
-
 class Book(models.Model):
     """
     Model representing a book (but not a specific copy of a book).
@@ -53,6 +49,7 @@ class Book(models.Model):
         Returns the url to access a particular book instance.
         """
         return reverse('book-detail', args=[str(self.id)])
+
 class BookInstance(models.Model):
     """
     Model representing a specific copy of a book (i.e. that can be borrowed from the library).
@@ -122,3 +119,22 @@ class MyModelName(models.Model):
         String for representing the MyModelName object (in Admin site etc.)
         """
         return self.field_name
+'''
+# Create a new record using the model's constructor.
+a_record = MyModelName(my_field_name="Instance #1")
+# Save the object into the database.
+a_record.save()
+# Access model field values using Python attributes.
+print(a_record.id) #should return 1 for the first record.
+print(a_record.my_field_name) # should print 'Instance #1'
+# Change record by modifying the fields, then calling save().
+a_record.my_field_name="New Instance Name"
+a_record.save()
+all_books = Book.objects.all()
+# filter() method allows us to filter the returned QuerySet to
+# match a specified text or numeric field against a particular criteria
+wild_books = Book.objects.filter(title__contains='wild')
+number_wild_books = Book.objects.filter(title__contains='wild').count()
+books_containing_genre = Book.objects.filter(genre__name__icontains='fiction')
+# Will match on: Fiction, Science fiction, non-fiction etc.
+'''
