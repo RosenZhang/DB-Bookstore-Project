@@ -25,7 +25,7 @@ Feedback_giver int(11),
 bid CHAR(14),
 primary key (Fid),
 foreign key (Feedback_giver) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE,
-foreign key (Feedback_giver) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE
+foreign key (bid) references books(ISBN13) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 #Problem: userid needed as primary key
