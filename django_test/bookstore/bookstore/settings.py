@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
-    'storemanager.apps.StoremanagerConfig',
 ]
 
 MIDDLEWARE = [

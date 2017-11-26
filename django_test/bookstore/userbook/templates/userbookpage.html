@@ -12,8 +12,8 @@
 <!--a placeholder image or popular books-->
 <!--when something is searched, show booktitle, author, copies etc in a list-->
 <div class="list-group">
-{% for book in book_list %}
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+{% for book in books %}
+  <a href="{{}}" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">{{ book }}</h5>
     <!--   <small>3 days ago</small> -->
@@ -38,6 +38,7 @@
 		</tbody>
 	</table>
 </div> -->
+
 
 
 
