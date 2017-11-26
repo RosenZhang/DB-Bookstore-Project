@@ -2,8 +2,7 @@
 from django.shortcuts import render
 
 
-from .utils import get_book_list
-from utils.util import my_custom_sql_dict, get_book_info,get_feedback_info
+from utils.util import get_book_list, get_book_info,get_feedback_info
 
 
 

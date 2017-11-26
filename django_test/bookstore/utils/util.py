@@ -43,6 +43,13 @@ def json_to_dict(input_json):
     return json.loads(input_json)
 ########################
 
+def get_book_list():
+    cursor = connection.cursor()
+    cursor.execute('SELECT title FROM DBproject.books')
+    titles = [row[0] for row in cursor.fetchall()]
+    #db.close()
+    return titles
+
 def get_book_info(input_ISBN13):
     book_info =  my_custom_sql_dict("select * from books where ISBN13 = '%s'" %(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
