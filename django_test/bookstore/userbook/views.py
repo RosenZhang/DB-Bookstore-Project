@@ -1,9 +1,14 @@
+
 from django.shortcuts import render
+
+from .utils import get_book_list
+
 
 # Create your views here.
 def usermainpage_view(request):
+	book_list=get_book_list()
 	template='userbookpage.html'
-	context={'books':['book1','book2']}
+	context={'book_list':book_list,'books':['book1','book2']}
 	return render(request,template,context)
 
 def book_view(request,ISBN13=None):
