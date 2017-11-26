@@ -93,8 +93,8 @@ create trigger after_orders
 	after insert on orders
 	for each row
 	update books
-	set books.available_copy = books.available_copy - orders.copynum
-	where orders.bid = books.ISBN13;
+	set books.available_copy = books.available_copy - new.copynum
+	where new.bid = books.ISBN13;
 
 
 
