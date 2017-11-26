@@ -1,4 +1,4 @@
-use DBproject;
+use dbproject;
 
 create table books (
 title VARCHAR(256) NOT NULL,
@@ -85,6 +85,14 @@ create trigger after_orders
 	update book
 	set available_copy = available_copy - orders.copynum
 	where orders.bname = book.title;
+
+delimiter //
+create trigger after_insert_newbook
+	after insert on books
+	for each row
+	begin 
+		insert into record_transaction (Tdate,copynum, bid) values (now(),new.available_copy, new.ISBN13);
+	end // delimiter ;
 
 
 
