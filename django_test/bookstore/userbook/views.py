@@ -8,7 +8,8 @@ from .utils import get_book_list
 def usermainpage_view(request):
 	book_list=get_book_list()
 	template='userbookpage.html'
-	context={'book_list':book_list,'books':['book1','book2']}
+	books=[{'title':'book1','ISBN13':'1028374','authors':"author1"},{'title':'book2','ISBN13':'1028375','authors':"author2"}]
+	context={'book_list':book_list,'books':books}
 	return render(request,template,context)
 
 def book_view(request,ISBN13=None):
