@@ -6,7 +6,6 @@ from utils.util import my_custom_sql_dict, get_book_info,get_feedback_info
 # Create your views here.
 def usermainpage_view(request):
 	template='userbookpage.html'
-	my_custom_sql_dict()
 	context={'books':['book1','book2']}
 	return render(request,template,context)
 
