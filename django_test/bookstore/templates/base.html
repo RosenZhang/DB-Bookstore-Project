@@ -12,11 +12,52 @@
 </head>
 
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bookstore</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="search" id="SearchBar" class="form-control" placeholder="Search" aria-label="Search">
+        </div>
+        <button type="submit" id="SearchButton" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav">
+            <li>
+        <a href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+        {% if user.is_authenticated %}
+         <li >
+         <a href="{% url 'logout'%}?next=/catalog/">Logout</a></li>   
+       {% else %}
+         <li ><a  href="{% url 'login'%}?next=/catalog/">Login</a></li>   
+       {% endif %} 
+      </ul>
+
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Bookstore</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <form class="form-inline my-2 my-lg-0 ml-0">
@@ -38,7 +79,7 @@
 
     </ul>
 
-</nav>
+</nav> -->
   <div class="container-fluid" id="SearchItemsContainer">
             <div class="row">
                 <div class="col-xs-12" id="SearchItems">
@@ -53,8 +94,11 @@
       
     </div>
 
+
 <script>
-var searchItems = ["Harry Potter", "Computer Science", "Database", "Networks", "Sleeping beauty", "Darth Vader"];
+//TODO:select something then it will update the 'input', submit then it will show the records
+var searchItems ={{book_list |safe }};
+
 
 $( document ).ready( function( )
 {
@@ -88,7 +132,6 @@ $( document ).ready( function( )
     } );
 } );
 </script>
-
 </body>
 </html>
 

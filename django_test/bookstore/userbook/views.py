@@ -1,12 +1,18 @@
+
 from django.shortcuts import render
 
+
+from .utils import get_book_list
 from utils.util import my_custom_sql_dict, get_book_info,get_feedback_info
+
 
 
 # Create your views here.
 def usermainpage_view(request):
+	book_list=get_book_list()
 	template='userbookpage.html'
-	context={'books':['book1','book2']}
+	books=[{'title':'book1','ISBN13':'1028374','authors':"author1"},{'title':'book2','ISBN13':'1028375','authors':"author2"}]
+	context={'book_list':book_list,'books':books}
 	return render(request,template,context)
 
 def book_view(request,ISBN13=None):
@@ -19,3 +25,4 @@ def book_view(request,ISBN13=None):
 	# 'recommendations':[{'title':'a girl','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'},{'title':'two girls','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'}]
 	# }
 	return render(request, template, context)
+
