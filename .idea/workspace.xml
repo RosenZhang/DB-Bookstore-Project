@@ -4,12 +4,6 @@
     <list default="true" id="e537c4bc-2d7d-42ae-b968-b0aab07af656" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" afterPath="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py" afterPath="$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/templates/base.html" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/templates/snippets/css.html" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/snippets/css.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/utils.py" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/utils.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/views.py" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/views.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -24,27 +18,9 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-288">
-              <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-              <folding>
-                <marker date="1511687187000" expanded="true" signature="886:1265" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="1282:1770" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="1819:2355" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="1825:2352" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2029:2345" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2065:2334" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2408:2483" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2498:2661" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2515:2659" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2665:2766" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2796:3190" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2802:2899" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="2907:2994" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="3002:3090" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="3098:3187" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="3194:3270" ph="..." />
-                <marker date="1511687187000" expanded="true" signature="3384:3485" ph="..." />
-              </folding>
+            <state relative-caret-position="89">
+              <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -95,20 +71,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+            <state relative-caret-position="236">
+              <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
               <folding>
                 <element signature="e#644#676#0" expanded="true" />
-                <marker date="1511687187000" expanded="true" signature="1004:1351" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
@@ -178,10 +153,10 @@
         <option value="$PROJECT_DIR$/django_test/bookstore/userbook/utils.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/userbook/views.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html" />
-        <option value="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/urls.py" />
-        <option value="$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/templates/base.html" />
+        <option value="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" />
+        <option value="$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py" />
       </list>
     </option>
   </component>
@@ -313,54 +288,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="storemanager" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookstore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookstore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalog" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -527,8 +454,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1037" height="728" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29026037" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29026037" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39908952" sideWeight="0.5078278" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -567,13 +495,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstoremysqlsetup.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="25" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/project.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -905,48 +826,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-288">
-          <caret line="42" column="33" lean-forward="false" selection-start-line="42" selection-start-column="33" selection-end-line="42" selection-end-column="33" />
-          <folding>
-            <marker date="1511687187000" expanded="true" signature="886:1265" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="1282:1770" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="1819:2355" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="1825:2352" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2029:2345" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2065:2334" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2408:2483" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2498:2661" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2515:2659" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2665:2766" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2796:3190" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2802:2899" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="2907:2994" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="3002:3090" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="3098:3187" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="3194:3270" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="3384:3485" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding>
-            <element signature="e#644#676#0" expanded="true" />
-            <marker date="1511687187000" expanded="true" signature="1004:1351" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -968,6 +852,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="139">
           <caret line="57" column="38" lean-forward="false" selection-start-line="57" selection-start-column="38" selection-end-line="57" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="43" column="17" lean-forward="false" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+          <folding>
+            <element signature="e#644#676#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
