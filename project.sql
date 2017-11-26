@@ -1,5 +1,11 @@
 use dbproject;
 
+drop table if exists record_transaction;
+drop table if exists orders;
+drop table if exists usefulness_rating;
+drop table if exists feedback;
+drop table if exists books;
+
 create table books (
 title VARCHAR(256) NOT NULL,
 piclink VARCHAR(2083),
@@ -15,6 +21,7 @@ ISBN13 CHAR(14) PRIMARY KEY,
 CHECK (format = 'paperback' OR format='hardcover'),
 available_copy Int
 );
+
 
 create table feedback(
 Fid INT AUTO_INCREMENT NOT NULL,#auto generated
@@ -60,39 +67,43 @@ foreign key (bid) references books(ISBN13)
 );
 
 #update the number of copies in table book when there is new transaction
+drop trigger if exists after_transac_update;
 create trigger after_transac_update
 	after insert on record_transaction
 	for each row
-	update book
-	set available_copy = available_copy + record_transaction.copynum
-	where book.title = record_transaction.bname;
+	update books
+	set available_copy = available_copy + new.copynum
+	where books.ISBN13 = new.bid;
 
 #update the number of copies in table book when there is new orders from customers
+drop trigger if exists not_enought_copy;
 DELIMITER //
-create trigger after
+create trigger not_enought_copy
 	after insert on orders
 	for each row 
 	begin
-		if (new.copynum > (select available_copy from book where new.bid = book.ISBN13)) then
+		if (new.copynum > (select available_copy from books where new.bid = books.ISBN13)) then
 			SIGNAL SQLSTATE '45000'
 				set message_text = 'Not Available';
 		END if;
 		END // DELIMITER ;
-	
+
+drop trigger if exists after_orders;	
 create trigger after_orders
 	after insert on orders
 	for each row
-	update book
+	update books
 	set available_copy = available_copy - orders.copynum
-	where orders.bname = book.title;
+	where orders.bname = books.title;
 
-delimiter //
-create trigger after_insert_newbook
-	after insert on books
-	for each row
-	begin 
-		insert into record_transaction (Tdate,copynum, bid) values (now(),new.available_copy, new.ISBN13);
-	end // delimiter ;
+-- drop trigger if exists after_insert_newbook;
+-- delimiter //
+-- create trigger after_insert_newbook
+-- 	after insert on books
+-- 	for each row
+-- 	begin 
+-- 		insert into record_transaction (Tdate,copynum, bid) values (now(),new.available_copy, new.ISBN13);
+-- 	end // delimiter ;
 
 
 
