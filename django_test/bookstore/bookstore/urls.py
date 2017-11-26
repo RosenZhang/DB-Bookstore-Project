@@ -20,6 +20,7 @@ from django.conf.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.views.generic import RedirectView
+from signuppage import views as signup_view
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,10 +30,11 @@ urlpatterns = [
     # url(r'^signup/$', catalog_views.signup, name='signup'),
     # for sign up
     url(r'^books/',include('userbook.urls')),
+
     url(r'^storemanager/', include('storemanager.urls')),
 
-]
-    
+    url(r'^signup/$', signup_view.signup, name='signup'),
 
+]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
