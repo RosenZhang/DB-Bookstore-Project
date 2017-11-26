@@ -29,8 +29,6 @@ urlpatterns = [
     # url(r'^signup/$', catalog_views.signup, name='signup'),
     # for sign up
     url(r'^books/',include('userbook.urls')),
-    url(r'^singup/',include('userbook.urls')),
-
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
