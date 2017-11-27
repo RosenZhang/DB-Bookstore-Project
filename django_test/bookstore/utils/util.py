@@ -2,7 +2,7 @@ import json
 
 from django.db import connection
 
-import fetched_class
+from . import fetched_class
 
 
 ######################## basic mysql command
@@ -47,7 +47,7 @@ def get_book_info(input_ISBN13):
     book_info =  my_custom_sql_dict("select * from books where ISBN13 = '%s'" %(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
     fetched_class.register_class(book_info_save_to_class)
-    print "\n\n =============dictionary info================", book_info_save_to_class._book_info()
+    print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
 

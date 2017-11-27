@@ -18,9 +18,11 @@
 			<p> Publisher: {{ book.publisher }}</p>
 			<p> Year:{{ book.year }}</p>
 			<br>
-					<form action="" method="post">
-		<button type="button" class="btn btn-warning btn-lg" id="orderbook" >Order</button>
-</form>
+	<form>
+	<input type="number" id="num_of_books">
+		<button type="button" class="btn btn-warning btn-lg" id="order_book" >Order</button>
+	</form>				
+	
 </div>
 </div>
 
@@ -69,6 +71,8 @@
   {% endfor %}
 </div>
 <script type="text/javascript">
+
+
 // Starrr plugin (https://github.com/dobtco/starrr)
 var __slice = [].slice;
 
@@ -173,17 +177,52 @@ var __slice = [].slice;
 $(function() {
   return $(".starrr").starrr();
 });
+var book_title= "{{ book.title }}";
+var ISBN13="{{ book.ISBN13 }}";
+$( document ).ready(function() {
+	    $("#order_book").click(function(){
+	    	//check if input is empty
+	    	if (!$('#num_of_books').val()){
+	    		alert('Enter a number');
+	    		return;
+	    	}
 
-// $( document ).ready(function() {
+	    	
+
+        $.ajax({
+        	type:'POST',
+        	beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+        	
+        	data:{
+        		copynum:$('#num_of_books').val()
+        		// bid: ISBN13
+
+        	},
+        	   success: function(response, textStatus, jqXHR) {
+     alert("You have ordered "+$('#num_of_books').val()+" of "+book_title+"!");
+   },
+   error: function(jqXHR, textStatus, errorThrown){
+     alert(textStatus, errorThrown);
+  }
+
+
+    
+        })
+       
+    }); 
+
+
       
-//   $('#hearts').on('starrr:change', function(e, value){
-//     $('#count').html(value);
-//   });
+  // $('#hearts').on('starrr:change', function(e, value){
+  //   $('#count').html(value);
+  // });
   
-//   $('#hearts-existing').on('starrr:change', function(e, value){
-//     $('#count-existing').html(value);
-//   });
-// });
+  // $('#hearts-existing').on('starrr:change', function(e, value){
+  //   $('#count-existing').html(value);
+  // });
+});
 </script>
 
 
