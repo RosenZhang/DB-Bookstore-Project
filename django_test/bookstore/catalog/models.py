@@ -6,6 +6,7 @@ import uuid # Required for unique book instances
 from django.contrib.auth.models import User  # for authentication
 from datetime import date
 
+
 @property
 def is_overdue(self):
     if self.due_back and date.today() > self.due_back:
