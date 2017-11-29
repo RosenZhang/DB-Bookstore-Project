@@ -1,0 +1,7 @@
+CREATE DATABASE DBproject CHARACTER SET UTF8;
+
+CREATE USER DBprojectUser@localhost IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON DBproject.* TO DBprojectUser@localhost;
+
+FLUSH PRIVILEGES;

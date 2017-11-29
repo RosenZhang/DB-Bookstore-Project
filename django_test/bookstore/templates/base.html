@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  {% block title %}<title>Bookstore</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+{% include 'snippets/css.html' %}
+{% include 'snippets/js.html' %}
+
+
+</head>
+
+<body>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Bookstore</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left">
+        <div class="form-group">
+          <input type="search" id="SearchBar" class="form-control" placeholder="Search" aria-label="Search">
+        </div>
+        <button type="submit" id="SearchButton" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav">
+            <li>
+        <a href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+        {% if user.is_authenticated %}
+         <li >
+         <a href="{% url 'logout'%}?next=/catalog/">Logout</a></li>   
+       {% else %}
+         <li ><a  href="{% url 'login'%}?next=/catalog/">Login</a></li>   
+       {% endif %} 
+      </ul>
+
+
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+
+
+
+
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Bookstore</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <form class="form-inline my-2 my-lg-0 ml-0">
+      <input class="form-control mr-sm-2" type="search" id="SearchBar" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="SearchButton">Search</button>
+    </form>
+  </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+        {% if user.is_authenticated %}
+         <li class="nav-item">
+         <a class="nav-link" href="{% url 'logout'%}?next=/catalog/">Logout</a></li>   
+       {% else %}
+         <li class="nav-item"><a class="nav-link" href="{% url 'login'%}?next=/catalog/">Login</a></li>   
+       {% endif %} 
+      </ul>
+
+    </ul>
+
+</nav> -->
+  <div class="container-fluid" id="SearchItemsContainer">
+            <div class="row">
+                <div class="col-xs-12" id="SearchItems">
+                </div>
+            </div>
+  </div>
+
+
+  <div class="container-fluid">
+     
+      {% block content %}{% endblock %}
+      
+    </div>
+
+
+<script>
+//TODO:select something then it will update the 'input', submit then it will show the records
+var searchItems ={{book_list |safe }};
+
+
+$( document ).ready( function( )
+{
+    function ToggleSearch( event )
+    {
+        event.preventDefault( ); //prevent submission of form
+
+
+        $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear
+    }
+
+    $( "#SearchButton" ).click( function( event )
+    {
+        ToggleSearch( event );
+    } );
+
+
+    $( "#SearchBar" ).keyup( function( ) {  //when the key is release
+
+        $( "#SearchItems" ).empty( );
+
+        for ( var i = 0; i < searchItems.length; i++ )
+        {
+            var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
+            if ( searchItems[i].toLowerCase( ).includes( searchInput )
+               && searchInput.length > 0 )
+            {
+                $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
+            }
+        }
+    } );
+} );
+</script>
+</body>
+</html>
+
+

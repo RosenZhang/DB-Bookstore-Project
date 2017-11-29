@@ -1,0 +1,310 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="row jumbotron">
+
+<img src={{ book.piclink }} id='bookcover' class="img-rounded col-xs-12 col-md-4">
+
+
+<div class="col-xs-12 col-md-8 bookinfo">
+<h2>{{ book.title }}</h2>
+<p>by {{ book.authors }}</p>
+        <h5>{{ book.format }}</h5>
+			<p> ISBN13:{{ book.ISBN13 }}</p>
+			<p> ISBN10:{{ book.ISBN10 }}</p>
+			<p> Pages:{{ book.pages }}</p>
+			<p> Language:{{ book.language }}</p>
+			<p> Publisher: {{ book.publisher }}</p>
+			<p> Year:{{ book.year }}</p>
+			<br>
+	<form>
+	<input type="number" id="num_of_books">
+		<button type="button" class="btn btn-warning btn-lg" id="order_book" >Order</button>
+	</form>				
+	
+</div>
+</div>
+
+
+
+
+<!-- comments with rating list based on rating,rate and then it will update the database-->
+
+
+
+<h2>Feedback</h2>
+<div>
+{% for feedback in feedbacks %}
+
+<h5>{{feedback.Feedback_giver}}</h5>
+<p>{{feedback.Fcomment}}</p>
+<small>{{feedback.Fdate}}</small>
+
+<p>How useful is the feedback?</p>
+  <select class='rating' id="{{feedback.Fid}}"> 
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </select>
+
+<!-- <h5>{{feedback.Fid}}</h5> -->
+<!--     <div class="lead">
+        <div  class="hearts starrr"></div>
+	</div> 
+<div class="container">
+</div> -->
+{% endfor %}
+</div>
+
+
+
+
+
+<!-- recommendation, highest buy based on the -->
+<hr>
+<h2>Recommendations</h2>
+<div class="card-group">
+	{% for recommendation in recommendations %}
+	
+  <div class="col-sm-4 col-md-3">
+    <div class="thumbnail">
+      <img src="{{ recommendation.piclink }}" >
+      <div class="caption">
+        <p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>
+        
+  
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+</div>
+{% load static %}
+<script src="{% static 'jquery.barrating.js' %}"></script>
+<script type="text/javascript">
+//pass the Fid to jquery
+$(function() {
+
+   });
+
+
+// // Starrr plugin (https://github.com/dobtco/starrr)
+// var __slice = [].slice;
+
+// (function($, window) {
+//   var Starrr;
+
+//   Starrr = (function() {
+//     Starrr.prototype.defaults = {
+//       rating: void 0,
+//       numStars: 5,
+//       change: function(e, value) {}
+//     };
+
+//     function Starrr($el, options) {
+//       var i, _, _ref,
+//         _this = this;
+
+//       this.options = $.extend({}, this.defaults, options);
+//       this.$el = $el;
+//       _ref = this.defaults;
+//       for (i in _ref) {
+//         _ = _ref[i];
+//         if (this.$el.data(i) != null) {
+//           this.options[i] = this.$el.data(i);
+//         }
+//       }
+//       this.createStars();
+//       this.syncRating();
+//       this.$el.on('mouseover.starrr', 'span', function(e) {
+//         return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
+//       });
+//       this.$el.on('mouseout.starrr', function() {
+//         return _this.syncRating();
+//       });
+//       this.$el.on('click.starrr', 'span', function(e) {
+//         return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
+//       });
+//       this.$el.on('starrr:change', this.options.change);
+//     }
+
+//     Starrr.prototype.createStars = function() {
+//       var _i, _ref, _results;
+
+//       _results = [];
+//       for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
+//         _results.push(this.$el.append("<span class='glyphicon glyphicon-star-empty'></span>"));
+//       }
+//       return _results;
+//     };
+
+//     Starrr.prototype.setRating = function(rating) {
+//       if (this.options.rating === rating) {
+//         rating = void 0;
+//       }
+//       this.options.rating = rating;
+//       this.syncRating();
+//       return this.$el.trigger('starrr:change', rating);
+//     };
+
+//     Starrr.prototype.syncRating = function(rating) {
+//       var i, _i, _j, _ref;
+
+//       rating || (rating = this.options.rating);
+//       if (rating) {
+//         for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
+//           this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
+//         }
+//       }
+//       if (rating && rating < 5) {
+//         for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
+//           this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+//         }
+//       }
+//       if (!rating) {
+//         return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
+//       }
+//     };
+
+//     return Starrr;
+
+//   })();
+//   return $.fn.extend({
+//     starrr: function() {
+//       var args, option;
+
+//       option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
+//       return this.each(function() {
+//         var data;
+
+//         data = $(this).data('star-rating');
+//         if (!data) {
+//           $(this).data('star-rating', (data = new Starrr($(this), option)));
+//         }
+//         if (typeof option === 'string') {
+//           return data[option].apply(data, args);
+//         }
+//       });
+//     }
+//   });
+// })(window.jQuery, window);
+
+// $(function() {
+//   return $(".starrr").starrr();
+// });
+var book_title= "{{ book.title }}";
+var ISBN13="{{ book.ISBN13 }}";
+$( document ).ready(function() {
+	    $("#order_book").click(function(){
+	    	//check if input is empty
+	    	if (!$('#num_of_books').val()){
+	    		alert('Enter a number');
+	    		return;
+	    	}
+
+	    	
+
+        $.ajax({
+        	type:'POST',
+        	beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+        	
+        	data:{
+        		copynum:$('#num_of_books').val()
+        		// bid: ISBN13
+
+        	},
+        	   success: function(response, textStatus, jqXHR) {
+     alert("You have ordered "+$('#num_of_books').val()+" of "+book_title+"!");
+   },
+   error: function(jqXHR, textStatus, errorThrown){
+     alert(textStatus, errorThrown);
+  }
+
+
+    
+        })
+       
+    }); 
+	    $(".rating").change(function(event) {
+	    	//disable change if it is selected
+    var Fid=(event.target.id);//string
+    var value=event.target.value;//string
+    if (typeof(value)=='string'){
+    	var valuenum=parseInt(value);
+    }
+    if (typeof(Fid)=='string'){
+    	var Fidnum=parseInt(Fid);
+    }
+
+    $.ajax({
+        	type:'POST',
+        	headers: { 'X-UPDATE': 'UPDATE_DATA' },
+        	beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+        	
+        	data:{
+        		score: valuenum,
+        		Fid: Fidnum
+        	},
+        	   success: function(response, textStatus, jqXHR) {
+     alert("Yay");
+   },
+   error: function(jqXHR, textStatus, errorThrown){
+     alert(textStatus, errorThrown);
+  }
+        })
+
+
+  });
+
+
+      $('.rating').barrating('show', {
+  theme: 'fontawesome-stars'
+  // ,
+//   onSelect: function(value, text, event) {
+
+// //value and text are all string representation of the rating e.g. '4',
+
+//     if (typeof(event) != 'undefined') {
+
+//     	// var Fid = $(this).attr("id");
+ 
+//       // rating was selected by a user
+      
+
+//     } else {
+
+  
+
+
+//       // rating was selected programmatically
+//       // by calling `set` method
+//     }
+//   }
+});
+
+
+
+
+      
+  // $('#hearts').on('starrr:change', function(e, value){
+  //   $('#count').html(value);
+  // });
+  
+  // $('#hearts-existing').on('starrr:change', function(e, value){
+  //   $('#count-existing').html(value);
+  // });
+});
+</script>
+
+
+
+
+{% endblock %}
