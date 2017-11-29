@@ -62,7 +62,7 @@ group by usefulness_rating.Fid
 order by avg(score) desc
 limit 3;
 
-#10 Book recommendation
+#10 Book recommendation: including the user his own ordering history
 
 select title, count(orders.copynum) AS sales from orders,books
 where orders.bid = books.ISBN13
