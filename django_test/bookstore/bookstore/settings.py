@@ -42,8 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'signuppage',
     'catalog',
-    'storemanager'
-    'signuppage',
+    'storemanager',
+
 ]
 
 MIDDLEWARE = [

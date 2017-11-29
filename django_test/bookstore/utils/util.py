@@ -2,7 +2,7 @@ import json
 
 from django.db import connection
 
-import fetched_class
+from . import fetched_class
 
 
 ######################## basic mysql command
@@ -54,7 +54,7 @@ def get_book_info(input_ISBN13):
     book_info =  my_custom_sql_dict("select * from books where ISBN13 = '%s'" %(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
     fetched_class.register_class(book_info_save_to_class)
-    print "\n\n =============dictionary info================", book_info_save_to_class._book_info()
+    print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
 
@@ -66,6 +66,18 @@ def get_feedback_info(Fid=1):
         feedback_save_to_class = feedback(**each_feedback)
         feedback_result.append(feedback_save_to_class._feedback_info())
     return feedback_result
+
+
+def get_record_transaction_info(Tid):
+    record_transaction_info = my_custom_sql_dict("SELECT * FROM DBproject.record_transaction where Tid ='%s'" % (Tid))
+    print("\n\n record transaction transaction============================",
+          record_transaction_info)
+
+
+    record_transaction_info_save_to_class = record_transaction(**record_transaction_info[0])
+    print("\n\n transaction============================", record_transaction_info_save_to_class._record_transaction_info())
+
+    return record_transaction_info_save_to_class._record_transaction_info()
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
@@ -152,3 +164,10 @@ class record_transaction:
         self.Tdate = Tdate
         self.copynum = copynum
         self.bid = bid
+        self.info = {}
+
+    def _record_transaction_info(self):
+        if not self.info:
+            self.info = {'Tid': self.Tid, 'Tdate':self.Tdate, 'copynum':self.copynum,
+                                 'bid':self.bid}
+        return self.info

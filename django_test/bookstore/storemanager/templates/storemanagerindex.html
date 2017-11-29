@@ -11,7 +11,21 @@
   <p>The library has the following record counts:</p>
   <ul>
 
-    <p><strong>Transaction Records:</strong> {{ num_authors }}</p>
+    <p><strong>Transaction Records:</strong> </p>
+    <table style="width:100%">
+  <tr>
+    <th>Transaction ID</th>
+    <th>Transaction Date</th>
+    <th>Number of Copies</th>
+      <th>BookID</th>
+  </tr>
+  <tr>
+
+    <td>{{ record_transaction.Tid }}</td>
+    <td>{{ record_transaction.Tdate }}</td>
+    <td>{{ record_transaction.copynum }}</td>
+  </tr>
+</table>
   </ul>
 
 
