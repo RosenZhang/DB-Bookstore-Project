@@ -16,6 +16,5 @@ def signup(request):
         form = UserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
-from django.shortcuts import render
 
 # Create your views here.

@@ -30,9 +30,7 @@ urlpatterns = [
     # url(r'^signup/$', catalog_views.signup, name='signup'),
     # for sign up
     url(r'^books/',include('userbook.urls')),
-
     url(r'^storemanager/', include('storemanager.urls')),
-
     url(r'^signup/$', signup_view.signup, name='signup'),
 
 ]
