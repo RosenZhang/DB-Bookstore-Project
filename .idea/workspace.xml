@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e537c4bc-2d7d-42ae-b968-b0aab07af656" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" afterPath="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html" afterPath="$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/storemanager/urls.py" afterPath="$PROJECT_DIR$/django_test/bookstore/storemanager/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/storemanager/views.py" afterPath="$PROJECT_DIR$/django_test/bookstore/storemanager/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/utils/util.py" afterPath="$PROJECT_DIR$/django_test/bookstore/utils/util.py" />
     </list>
@@ -22,8 +19,8 @@
       <file leaf-file-name="util.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/utils/util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="158" column="22" lean-forward="false" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
+            <state relative-caret-position="2647">
+              <caret line="183" column="24" lean-forward="true" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -54,8 +51,8 @@
       <file leaf-file-name="storemanagerindex.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+            <state relative-caret-position="239">
+              <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#table#0;n#ul#0;n#!!top" expanded="true" />
               </folding>
@@ -86,8 +83,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+            <state relative-caret-position="195">
+              <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#1#36#0" expanded="true" />
               </folding>
@@ -98,8 +95,8 @@
       <file leaf-file-name="userbookpage.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="340">
+              <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -108,8 +105,8 @@
       <file leaf-file-name="book.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="12" />
+            <state relative-caret-position="-68">
+              <caret line="35" column="15" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,8 +115,8 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="63" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="63" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="e#27#62#0" expanded="true" />
               </folding>
@@ -163,9 +160,9 @@
         <option value="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/utils.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/urls.py" />
-        <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html" />
         <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/views.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/utils/util.py" />
+        <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html" />
       </list>
     </option>
   </component>
@@ -856,44 +853,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/utils/fetched_class.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="24" lean-forward="true" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="e#1#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
-          <caret line="46" column="9" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -906,10 +869,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="7" column="1" lean-forward="true" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-68">
+          <caret line="35" column="15" lean-forward="true" selection-start-line="35" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="23" column="1" lean-forward="false" selection-start-line="23" selection-start-column="1" selection-end-line="23" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="18" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#1#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="21" lean-forward="true" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+        <state relative-caret-position="239">
+          <caret line="19" column="14" lean-forward="false" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
           <folding>
             <element signature="n#style#0;n#table#0;n#ul#0;n#!!top" expanded="true" />
           </folding>
@@ -918,8 +915,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="63" lean-forward="false" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="63" />
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="e#27#62#0" expanded="true" />
           </folding>
@@ -928,8 +925,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/utils/util.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="158" column="22" lean-forward="false" selection-start-line="158" selection-start-column="22" selection-end-line="158" selection-end-column="22" />
+        <state relative-caret-position="2647">
+          <caret line="183" column="24" lean-forward="true" selection-start-line="183" selection-start-column="24" selection-end-line="183" selection-end-column="24" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>

@@ -17,14 +17,17 @@
     <th>Transaction ID</th>
     <th>Transaction Date</th>
     <th>Number of Copies</th>
-      <th>BookID</th>
+      <th>Title</th>
   </tr>
+        {% for records in record_transaction %}
   <tr>
+    <td>{{ records.Tid }}</td>
+    <td>{{ records.Tdate }}</td>
+    <td>{{ records.copynum }}</td>
+    <td>{{ records.title }}</td>
 
-    <td>{{ record_transaction.Tid }}</td>
-    <td>{{ record_transaction.Tdate }}</td>
-    <td>{{ record_transaction.copynum }}</td>
   </tr>
+        {% endfor %}
 </table>
   </ul>
 

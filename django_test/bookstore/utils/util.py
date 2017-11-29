@@ -68,16 +68,27 @@ def get_feedback_info(Fid=1):
     return feedback_result
 
 
+# def get_record_transaction_info(Tid):
+#     record_transaction_info = my_custom_sql_dict("SELECT * FROM DBproject.record_transaction where Tid ='%s'" % (Tid))
+#     print("\n\n record transaction transaction============================",
+#           record_transaction_info)
+#
+#
+#     record_transaction_info_save_to_class = record_transaction(**record_transaction_info[0])
+#     print("\n\n transaction============================", record_transaction_info_save_to_class._record_transaction_info())
+#
+#     return record_transaction_info_save_to_class._record_transaction_info()
+
 def get_record_transaction_info(Tid):
-    record_transaction_info = my_custom_sql_dict("SELECT * FROM DBproject.record_transaction where Tid ='%s'" % (Tid))
-    print("\n\n record transaction transaction============================",
-          record_transaction_info)
-
-
-    record_transaction_info_save_to_class = record_transaction(**record_transaction_info[0])
-    print("\n\n transaction============================", record_transaction_info_save_to_class._record_transaction_info())
-
-    return record_transaction_info_save_to_class._record_transaction_info()
+    record_transaction_info = my_custom_sql_dict("SELECT Tid, Tdate, copynum, title FROM DBproject.record_transaction, DBproject.books WHERE bid = books.ISBN13")
+    # TODO: handle multiple feedbacks. currently only one:
+    record_transaction_result = []
+    print (record_transaction_result)
+    for each_record_transaction in record_transaction_info:
+        record_transaction_save_to_class = record_transaction(**each_record_transaction)
+        record_transaction_result.append(record_transaction_save_to_class._record_transaction_info())
+    print ("\n\n transaction============================",record_transaction_result)
+    return record_transaction_result
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
@@ -159,15 +170,15 @@ class orders:
         self.bid = bid
 
 class record_transaction:
-    def __init__(self, Tid, Tdate, copynum, bid):
+    def __init__(self, Tid, Tdate, copynum, title):
         self.Tid = Tid
         self.Tdate = Tdate
         self.copynum = copynum
-        self.bid = bid
+        self.title = title
         self.info = {}
 
     def _record_transaction_info(self):
         if not self.info:
             self.info = {'Tid': self.Tid, 'Tdate':self.Tdate, 'copynum':self.copynum,
-                                 'bid':self.bid}
+                                 'title':self.title}
         return self.info

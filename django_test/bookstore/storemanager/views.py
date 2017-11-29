@@ -7,7 +7,7 @@ from utils.util import get_record_transaction_info
 def storemanager_view(request,Tid=None):
 	template='storemanagerindex.html'
 	context = {}
-	context['record_transaction'] = get_record_transaction_info('100')
+	context['record_transaction'] = get_record_transaction_info(Tid)
 	return render(request,template,context)
 
 
