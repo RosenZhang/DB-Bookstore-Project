@@ -64,7 +64,7 @@ limit 3;
 
 #10 Book recommendation
 
-select title, count(*) AS sales from orders,books
+select title, count(orders.copynum) AS sales from orders,books
 where orders.bid = books.ISBN13
 and userid in (
 select userid
