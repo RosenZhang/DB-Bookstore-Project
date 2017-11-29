@@ -1,11 +1,11 @@
 use dbproject;
 
-drop table if exists record_transaction;
-drop table if exists orders;
-drop table if exists usefulness_rating;
-drop table if exists feedback;
-drop table if exists books;
-
+-- drop table if exists record_transaction;
+-- drop table if exists orders;
+-- drop table if exists usefulness_rating;
+-- drop table if exists feedback;
+-- drop table if exists books;
+-- 
 create table books (
 title VARCHAR(256) NOT NULL,
 piclink VARCHAR(2083),
