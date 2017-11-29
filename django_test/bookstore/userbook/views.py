@@ -2,8 +2,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from .utils import get_book_list
-from utils.util import my_custom_sql_dict, get_book_info,get_feedback_info
+from utils.util import my_custom_sql_dict, get_book_info,get_feedback_info, get_book_list
 
 
 

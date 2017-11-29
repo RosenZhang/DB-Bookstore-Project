@@ -6,16 +6,29 @@
 
 </div>
 
-<h2>Dynamic content</h2>
+<!--<h2>Dynamic content</h2>-->
 
-  <p>The library has the following record counts:</p>
-  <ul>
-    <p><strong>Books:</strong> {{ num_books }}</p>
-    <p><strong>Copies:</strong> {{ num_instances }}</p>
-    <p><strong>Copies available:</strong> {{ num_instances_available }}</p>
-    <p><strong>Authors:</strong> {{ num_authors }}</p>
-  </ul>
-
+  <!--<p>The library has the following record counts:</p>-->
+  <!--<ul>-->
+    <!--<p><strong>Books:</strong> {{ num_books }}</p>-->
+    <!--<p><strong>Copies:</strong> {{ num_instances }}</p>-->
+    <!--<p><strong>Copies available:</strong> {{ num_instances_available }}</p>-->
+    <!--<p><strong>Authors:</strong> {{ num_authors }}</p>-->
+  <!--</ul>-->
+  <table style="width:100%">
+  <tr>
+    <th>Book Name</th>
+    <th>Number of Copies</th>
+    <th>Order Date</th>
+  </tr>
+    {% for order in order_history %}
+  <tr>
+    <td>{{ order.title }}</td>
+    <td>{{ order.copynum }}</td>
+    <td>{{ order.Odate }}</td>
+  </tr>
+    {% endfor %}
+  </table>
 
 
 {% endblock %}

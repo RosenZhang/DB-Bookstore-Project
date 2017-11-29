@@ -1,5 +1,5 @@
 import json
-
+import datetime
 from django.db import connection
 
 from . import fetched_class
@@ -59,6 +59,22 @@ def get_feedback_info(Fid=1):
         feedback_save_to_class = feedback(**each_feedback)
         feedback_result.append(feedback_save_to_class._feedback_info())
     return feedback_result
+
+def get_book_list():
+    cursor = connection.cursor()
+    cursor.execute('SELECT title FROM DBproject.books')
+    titles = [row[0] for row in cursor.fetchall()]
+    return titles
+
+def get_order_history(input_userid = 1):
+    order_info =my_custom_sql_dict("select title, copynum, Odate from books, orders where orders.bid = books.ISBN13 and userid = '%s'" %(input_userid))
+    print order_info [0]
+    order_result = []
+    for each_order in order_info:
+        order_save_to_class = orders(**each_order)
+        order_result.append(order_save_to_class._order_info())
+    return order_result
+
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
@@ -133,11 +149,17 @@ class usefulness_rating:
         self.userid = userid
 
 class orders:
-    def __init__(self,Odate, copynum, userid, bid):
+    def __init__(self, title, copynum, Odate):
         self.Odate = Odate
         self.copynum = copynum
-        self.userid = userid
-        self.bid = bid
+        self.title = title
+
+    def _order_info(self):
+        self.result = {}
+        format = '%Y-%m-%d %H:%M:%S'
+        self.Odate = self.Odate.strftime(format)
+        self.result = {'title':self.title,'copynum':self.copynum,'Odate':self.Odate}
+        return self.result
 
 class record_transaction:
     def __init__(self, Tid, Tdate, copynum, bid):
