@@ -21,8 +21,11 @@ def usermainpage_view(request):
 @login_required
 def book_view(request,ISBN13=None):
 	userid=request.user.id
-	print('hi')
-	if request.method=='POST':
+	if 'HTTP_X_UPDATE' in request.META:
+		Fid=request.POST['Fid']
+		score=request.POST['score']
+		print(Fid,score)
+	elif request.method=='POST':
 		copynum=request.POST['copynum']
 		print(userid,copynum,ISBN13)
 	template='book.html'

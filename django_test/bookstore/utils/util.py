@@ -120,7 +120,7 @@ class feedback:
         self.bid = bid
     def _feedback_info(self):
         self.result = {}
-        self.result = {'Feedback_giver': self.Feedback_giver, "Fcomment":self.Fcomment}
+        self.result = {'Fid':self.Fid, 'Feedback_giver': self.Feedback_giver, "Fcomment":self.Fcomment}
         return self.result
 
     def get_key(self):
