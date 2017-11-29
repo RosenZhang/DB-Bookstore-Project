@@ -5,8 +5,6 @@ from django.contrib.auth.decorators import login_required
 from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_book_info,\
     get_feedback_info,save_user_usefulness_rating, save_user_order, return_user_usefulness_rate
 
-
-
 # Create your views here.
 @login_required
 def usermainpage_view(request):
