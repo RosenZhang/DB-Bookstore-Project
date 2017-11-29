@@ -2,7 +2,7 @@ import json
 
 from django.db import connection
 
-import fetched_class
+from . import fetched_class
 
 
 ######################## basic mysql command
@@ -54,18 +54,45 @@ def get_book_info(input_ISBN13):
     book_info =  my_custom_sql_dict("select * from books where ISBN13 = '%s'" %(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
     fetched_class.register_class(book_info_save_to_class)
-    print "\n\n =============dictionary info================", book_info_save_to_class._book_info()
+    print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
 
-def get_feedback_info(Fid=1):
-    feedbacks_info = my_custom_sql_dict("select * from feedback where Fid = '%s'" %(1))
-    # TODO: handle multiple feedbacks. currently only one:
+def get_feedback_info(bid, userid):
+    query = 'select distinct f.*, u.score from feedback f left join (select * from usefulness_rating where userid = {}) ' \
+            'u on feedback_giver != u.userid and f.fid = u.fid where f.bid = \'{}\';'.format(userid, bid)
+
+    print("query===========================--------{}------\n\n".format(query))
+    feedbacks_info = my_custom_sql_dict(query)
+    print("query=====================feedback_info======--------{}------\n\n".format(feedbacks_info))
     feedback_result = []
     for each_feedback in feedbacks_info:
         feedback_save_to_class = feedback(**each_feedback)
         feedback_result.append(feedback_save_to_class._feedback_info())
+
+    print("feedback result===========================--------------", feedback_result)
     return feedback_result
+
+def return_user_usefulness_rate(fid, userid):
+    #feedbacks_info = my_custom_sql_dict()
+    # TODO: return all the usefulness rate user has done aboutu the book. If there's no record it returns null
+    query = 'select score from usefulness_rating where userid = {} and Fid = {};'.format(userid, fid)
+    result = my_custom_sql_tuple(query)
+    if result == ():
+        return None
+    else:
+        print("______+++++++++++++++++++++++++++++++++_______________ result of usefulness rate", result[0][0], '\n\n')
+        return result[0][0]
+
+def save_user_usefulness_rating(fid, score, userid ):
+    cursor = connection.cursor()
+    cursor.execute('insert into usefulness_rating values ({}, {}, {});'.format(fid, score, userid))
+
+def save_user_order(userid, copynum, ISBN13):
+    cursor = connection.cursor()
+    query = 'insert into orders values (current_timestamp(), {}, {}, {});'.format(userid, copynum, ISBN13)
+    print('========================================== query: ', query)
+    cursor.execute(query)
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
@@ -118,26 +145,21 @@ class books:
         return "ISBN13"+self.ISBN13
 
 class feedback:
-    def __init__(self, Fid, rank, Fdate, Fcomment, Feedback_giver, bid):
+    def __init__(self, Fid, rank, Fdate, Fcomment, Feedback_giver, bid, score=0):
         self.Fid = Fid
         self.rank = rank
         self.Fdate = Fdate
         self.Fcomment = Fcomment
         self.Feedback_giver = Feedback_giver
         self.bid = bid
+        self.score = score
     def _feedback_info(self):
         self.result = {}
-        self.result = {'Feedback_giver': self.Feedback_giver, "Fcomment":self.Fcomment}
+        self.result = {'Fid':self.Fid, 'Feedback_giver': self.Feedback_giver, "Fcomment":self.Fcomment, "Score":self.score}
         return self.result
 
     def get_key(self):
         return "Fid"+self.Fid
-
-class usefulness_rating:
-    def __init__(self, Fid, score, userid):
-        self.Fid = Fid
-        self.score = score
-        self.userid = userid
 
 class orders:
     def __init__(self,Odate, copynum, userid, bid):
