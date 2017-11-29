@@ -95,3 +95,9 @@ where books.ISBN13 = orders.bid and orders.Odate BETWEEN '2017-10-20 00:00:00' A
 group by publisher
 order by sum(orders.copynum) DESC
 limit 2;
+
+#返回feedback score
+select score
+from usefulness_rating
+where userid = someuserid
+and Fid = someFid;
