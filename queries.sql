@@ -66,6 +66,7 @@ limit 3;
 
 select title, sum(orders.copynum) AS sales from orders,books
 where orders.bid = books.ISBN13
+and title <> 'The Great Gatsby' 
 and userid in (
 select userid
 from orders,books
