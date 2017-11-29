@@ -40,13 +40,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-<<<<<<< HEAD
-    'catalog.apps.CatalogConfig',
-    'storemanager',
-=======
     'signuppage',
     'catalog',
->>>>>>> origin/JL_dvp
+    'storemanager'
+
 ]
 
 MIDDLEWARE = [

@@ -12,5 +12,10 @@ class record_transaction:
         self.copynum = copynum
         self.bid = bid
 
-def get_orders_info():
-    orders_info = my_custom_sql_dict("select * from orders where ")
+def get_orders_info(Odate,userid,bid):
+    orders_info = my_custom_sql_dict("select * from orders where Odate = '%s', userid ='%s', bid ='%s'" %(Odate,userid,bid))
+    orders_info_save_to_class = orders(**orders_info)
+    fetched_class.register_class(orders_info_save_to_class)
+    print
+    "\n\n =============dictionary info================", orders_info_save_to_class._orders_info()
+    return orders_info_save_to_class._orders_info()
