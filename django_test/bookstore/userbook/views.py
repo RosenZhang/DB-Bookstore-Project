@@ -22,9 +22,9 @@ def book_view(request,ISBN13=None):
 	if 'HTTP_FEEDBACK_RATING' in request.META:
 		Fid=request.POST['Fid']
 		score=request.POST['score']
+		#TODO:check whether the user has rated the comment and check whether the feedback giver is the same as the user
 		save_user_usefulness_rating(Fid,score,userid)
 	elif 'HTTP_BOOK_RATING' in request.META:
-		print(request)
 		rank=request.POST['rank']
 		Fcomment=request.POST['Fcomment']
 		save_user_feedback(userid,ISBN13,rank,Fcomment)
@@ -34,7 +34,7 @@ def book_view(request,ISBN13=None):
 		save_user_order(userid,copynum,ISBN13)
 	template='book.html'
 	context = {}
-    # check if user has rated
+    # check if user has rated the book
 	context['userhasrated']=check_user_has_posted_feedback(userid)
 	context['book'] =get_book_info(ISBN13)
 	context['feedbacks'] = get_feedback_info(ISBN13, userid)

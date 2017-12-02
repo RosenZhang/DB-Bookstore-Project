@@ -14,8 +14,8 @@ order book-> go to a new page that shows order success and the recommendations
  5. order completion page: after a order, list of suggested books are given. -->
 
 <!-- #ZYTODO:
-2. top n most useful feedbacks(with ranking 0-10)
-3. rate user feedback, user cannot rate their own feedback -->
+1. top n most useful feedbacks
+2. user cannot rate their own feedback or feedback they have rated-->
 
 
 
@@ -51,7 +51,7 @@ order book-> go to a new page that shows order success and the recommendations
 
 <!-- recommendation, highest buy based on the book-->
 <hr>
-<h2>Recommendations</h2>
+<!-- <h2>Recommendations</h2>
 <div class="card-group">
 	{% for recommendation in recommendations %}
 	
@@ -67,7 +67,7 @@ order book-> go to a new page that shows order success and the recommendations
 
 
   {% endfor %}
-</div>
+</div> -->
 
 
 
@@ -113,16 +113,18 @@ order book-> go to a new page that shows order success and the recommendations
 <div id="book_feedback">
 {% for feedback in feedbacks %}
 
-<h5>{{feedback.Feedback_giver}}</h5>
+<h5>user {{feedback.Feedback_giver}}</h5>
 <p>{{feedback.Fcomment}}</p>
 <small>{{feedback.Fdate}}</small>
 
 <p>How useful is the feedback?</p>
 <form class="feedbackratingForm" id="{{feedback.Fid}}">
-<label class="radio-inline"><input type="radio" name="optradio">0</label>
-<label class="radio-inline"><input type="radio" name="optradio">1</label>
-<label class="radio-inline"><input type="radio" name="optradio">2</label>
+Rate this comment:
+<label class="radio-inline"><input type="radio" value="0" name="optradio">0</label>
+<label class="radio-inline"><input type="radio" value="1" name="optradio">1</label>
+<label class="radio-inline"><input type="radio" value="2" name="optradio">2</label>
 </form>
+<hr>
 <!--   <select class='rating' id="{{feedback.Fid}}"> 
     <option value="1">1</option>
     <option value="2">2</option>
@@ -308,76 +310,58 @@ $( document ).ready(function() {
 
 
 
-	$(".rating").change(function(event) {
+	$(".feedbackratingForm").change(function(event) {
 	    	//TODO:disable change if it is selected
-    var Fid=(event.target.id);//string
+    var Fid=$(this).attr("id");//string
     var value=event.target.value;//string
-    if(value==""){
-    	if (confirm("Are you sure you want to rate this as 0?")) {
-    value="0";
-} else {
-    return;
-}	
-    }
+    
+//     if(value==""){
+//     	if (confirm("Are you sure you want to rate this as 0?")) {
+//     value="0";
+// } else {
+//     return;
+// }	
+//     }
  
 
 
-  //   if (typeof(value)=='string'){
-  //   	var valuenum=parseInt(value);
-  //   }
-  //   if (typeof(Fid)=='string'){
-  //   	var Fidnum=parseInt(Fid);
-  //   }
+    if (typeof(value)=='string'){
+    	var valuenum=parseInt(value);
+    }
+    if (typeof(Fid)=='string'){
+    	var Fidnum=parseInt(Fid);
+    }
 
-  //   $.ajax({
-  //       	type:'POST',
-  //       	headers: { 'FEEDBACK-RATING': 'UPDATE_DATA' },
-  //       	beforeSend: function(xhr) {
-  //       xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
-  //   },
+    $.ajax({
+        	type:'POST',
+        	headers: { 'FEEDBACK-RATING': 'UPDATE_DATA' },
+        	beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
         	
-  //       	data:{
-  //       		score: valuenum,
-  //       		Fid: Fidnum
-  //       	},
-  //       	   success: function(response, textStatus, jqXHR) {
-  //    alert("You have give a rating of"+value);
-  //  },
-  //  error: function(jqXHR, textStatus, errorThrown){
-  //    alert(textStatus, errorThrown);
-  // }
-  //       })
+        	data:{
+        		score: valuenum,
+        		Fid: Fidnum
+        	},
+        	   success: function(response, textStatus, jqXHR) {
+     alert("You have give a rating of"+value);
+   },
+   error: function(jqXHR, textStatus, errorThrown){
+     alert(textStatus, errorThrown);
+  }
+        })
+
 
 
   });
 
 
-      $('.rating').barrating('show', {
-  theme: 'fontawesome-stars',
-    initialRating:2,
-  allowEmpty:true,
-  // ,
-//   onSelect: function(value, text, event) {
+//       $('.rating').barrating('show', {
+//   theme: 'fontawesome-stars',
+//     initialRating:2,
+//   allowEmpty:true,
 
-// //value and text are all string representation of the rating e.g. '4',
-
-//     if (typeof(event) != 'undefined') {
-
-//     	// var Fid = $(this).attr("id");
- 
-//       // rating was selected by a user
-      
-
-//     } else {
-
-  
-
-
-//       // rating was selected programmatically
-//       // by calling `set` method
-//     }
-//   }
-});
+// });
 
       $('#book-rating').barrating('show', {
   theme: 'fontawesome-stars',
