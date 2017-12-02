@@ -10,15 +10,16 @@ select title, copynum, Odate from orders,books
 where userid = 1
 and books.ISBN13 = orders.bid;
 
-# his/her full history of feedbacks
+# his/her full history of feedbacks from user 1
 select Fid, rank, Fdate, Fcomment, title from books,feedback
 where Feedback_giver = 1
 and books.ISBN13 = feedback.bid;
 
 # the list of all the feedbacks he/she ranked with respect to usefulness
-select score, Fcomment from usefulness_rating, feedback
+select score, Fcomment, Feedback_giver from usefulness_rating, feedback, auth_user
 where userid = 1
-and feedback.Fid = usefulness_rating.Fid;
+and feedback.Fid = usefulness_rating.Fid
+and feedback.Feedback_giver = auth_user.id;
 
 
 #4  insert new books for store manager
