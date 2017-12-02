@@ -108,6 +108,23 @@ def save_user_order(userid, copynum, ISBN13):
     print('========================================== query: ', query)
     cursor.execute(query)
 
+
+def save_user_feedback(userid,ISBN13,rank,Fcomment):
+    cursor=connection.cursor()
+    query='insert into feedback values (null,{},current_timestamp(), \'{}\', {}, \'{}\');'.format(rank, Fcomment, userid, ISBN13)
+    print(query)
+    cursor.execute(query)
+
+def check_user_has_posted_feedback(userid):
+    cursor=connection.cursor()
+    query='select distinct Feedback_giver from feedback;'
+    cursor.execute(query)
+    users = [row[0] for row in cursor.fetchall()]
+    print(users)
+    return (userid in users)
+
+
+
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
                  pages="NA", subject="NA", language="NA", authors="NA", publisher="NA",
@@ -140,7 +157,7 @@ class books:
         if not self.info:
             self.info = {'piclink': self.piclink, 'title':self.title, 'format':self.format,
                                  'ISBN13':self.ISBN13,"authors":self.authors,'pages':self.pages,
-                                 'language':self.language,'publisher':self.publisher, 'year':self.year}
+                                 'language':self.language,'publisher':self.publisher, 'year':self.year, 'available_copy':self.available_copy}
         return self.info
 
     def _recommentdation_info(self):

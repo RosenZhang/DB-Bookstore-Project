@@ -1,10 +1,31 @@
+<!-- TODO:
+if the feedback is rated, show it's rated and disable rating 
+
+bookorder page:
+show available num of copies on book order page and do a check whether the order num is not larger than available book num when submitting order
+order book-> go to a new page that shows order success and the recommendations  
+3. userbook: 3.1when user search, keywords could be about title or author or publisher or subject
+3.2 result of search can be sorted by year/ average scre of feedbacks
+
+ 4. book: 4.1: for a given book, user can ask for top n most useful feedbacks. N should be specified
+4.1: feedback has rank 0-10;
+4.2 user's feedback on other's has only three choices: 0,1 and 2
+4.3 user can't rate his own feedback
+ 5. order completion page: after a order, list of suggested books are given. -->
+
+<!-- #ZYTODO:
+2. top n most useful feedbacks(with ranking 0-10)
+3. rate user feedback, user cannot rate their own feedback -->
+
+
+
 {% extends "base.html" %}
 
 {% block content %}
 
 <div class="row jumbotron">
 
-<img src={{ book.piclink }} id='bookcover' class="img-rounded col-xs-12 col-md-4",alt={{ book.title }}>
+<img src={{ book.piclink }} id='bookcover' class="img-rounded col-xs-12 col-md-4">
 
 
 <div class="col-xs-12 col-md-8 bookinfo">
@@ -19,22 +40,77 @@
 			<p> Year:{{ book.year }}</p>
 			<br>
 	<form>
+
 	<input type="number" id="num_of_books">
+	<small> {{ book.available_copy }} copies left</small>
 		<button type="button" class="btn btn-warning btn-lg" id="order_book" >Order</button>
 	</form>				
 	
 </div>
 </div>
 
+<!-- recommendation, highest buy based on the book-->
+<hr>
+<h2>Recommendations</h2>
+<div class="card-group">
+	{% for recommendation in recommendations %}
+	
+  <div class="col-sm-4 col-md-3">
+    <div class="thumbnail">
+      <img src="{{ recommendation.piclink }}" >
+      <div class="caption">
+        <p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>
+        
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+</div>
 
 
 
 <!-- comments with rating list based on rating,rate and then it will update the database-->
 
-
-
 <h2>Feedback</h2>
-<div>
+{% if not userhasrated %}
+<div class="form-group" id="user_feedback">
+    <select id='book-rating'> 
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+    <option value="9">9</option>
+    <option value="10">10</option>
+  </select>
+  <label for="comment">Your comment:</label>
+  <textarea class="form-control" rows="5" id="comment" placeholder="Optional"></textarea>
+  <br>
+
+  <button type="button" class="btn btn-warning" id='submitbookrating'>Submit feedback</button>
+</div>
+<hr>
+{% endif %}
+
+
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle" type="button" id="feedbacknum" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Select the number of top comments
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="feedbacknum">
+    <li><a id="feedbacknum1" class="feedbacknum_option"  href="#">1</a></li>
+    <li><a id="feedbacknum5" class="feedbacknum_option" href="#">5</a></li>
+    <li><a id="feedbacknum10" class="feedbacknum_option" href="#">10</a></li>
+  </ul>
+</div>
+
+<div id="book_feedback">
 {% for feedback in feedbacks %}
 
 <h5>{{feedback.Feedback_giver}}</h5>
@@ -42,13 +118,15 @@
 <small>{{feedback.Fdate}}</small>
 
 <p>How useful is the feedback?</p>
-  <select class='rating' id="{{feedback.Fid}}"> 
+<form class="feedbackratingForm" id="{{feedback.Fid}}">
+<label class="radio-inline"><input type="radio" name="optradio">0</label>
+<label class="radio-inline"><input type="radio" name="optradio">1</label>
+<label class="radio-inline"><input type="radio" name="optradio">2</label>
+</form>
+<!--   <select class='rating' id="{{feedback.Fid}}"> 
     <option value="1">1</option>
     <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-  </select>
+  </select> -->
 
 <!-- <h5>{{feedback.Fid}}</h5> -->
 <!--     <div class="lead">
@@ -63,26 +141,7 @@
 
 
 
-<!-- recommendation, highest buy based on the -->
-<hr>
-<h2>Recommendations</h2>
-<div class="card-group">
-	{% for recommendation in recommendations %}
-	
-  <div class="col-sm-4 col-md-3">
-    <div class="thumbnail">
-      <img src="{{ recommendation.piclink }}" >
-      <div class="caption">
-        <p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>
-        
-  
-      </div>
-    </div>
-  </div>
 
-
-  {% endfor %}
-</div>
 {% load static %}
 <script src="{% static 'jquery.barrating.js' %}"></script>
 <script type="text/javascript">
@@ -198,11 +257,19 @@ $(function() {
 // });
 var book_title= "{{ book.title }}";
 var ISBN13="{{ book.ISBN13 }}";
+var availablecopy={{book.available_copy}};
 $( document ).ready(function() {
 	    $("#order_book").click(function(){
+
 	    	//check if input is empty
 	    	if (!$('#num_of_books').val()){
-	    		alert('Enter a number');
+	    		alert('Enter a number.');
+	    		return;
+	    	}
+	    	//check if input is larger than available
+	    	var num_of_books=$('#num_of_books').val()
+	    	if(num_of_books>availablecopy){
+	    		alert('Order failed. There are not enough copies left.');
 	    		return;
 	    	}
 
@@ -215,12 +282,12 @@ $( document ).ready(function() {
     },
         	
         	data:{
-        		copynum:$('#num_of_books').val()
+        		copynum:num_of_books
         		// bid: ISBN13
 
         	},
         	   success: function(response, textStatus, jqXHR) {
-     alert("You have ordered "+$('#num_of_books').val()+" of "+book_title+"!");
+     alert("You have ordered "+num_of_books+" of "+book_title+"!");
    },
    error: function(jqXHR, textStatus, errorThrown){
      alert(textStatus, errorThrown);
@@ -231,42 +298,64 @@ $( document ).ready(function() {
         })
        
     }); 
-	    $(".rating").change(function(event) {
-	    	//disable change if it is selected
+
+
+	// $(".feedbacknum_option").on("click",function(e) {
+ //    e.preventDefault(); // cancel the link itself
+ //    var feedbacknum=parseInt(this.val());
+ //    $.post(this.href, {'feedbacknum':feedbacknum});
+ //  });
+
+
+
+	$(".rating").change(function(event) {
+	    	//TODO:disable change if it is selected
     var Fid=(event.target.id);//string
     var value=event.target.value;//string
-    if (typeof(value)=='string'){
-    	var valuenum=parseInt(value);
+    if(value==""){
+    	if (confirm("Are you sure you want to rate this as 0?")) {
+    value="0";
+} else {
+    return;
+}	
     }
-    if (typeof(Fid)=='string'){
-    	var Fidnum=parseInt(Fid);
-    }
+ 
 
-    $.ajax({
-        	type:'POST',
-        	headers: { 'X-UPDATE': 'UPDATE_DATA' },
-        	beforeSend: function(xhr) {
-        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
-    },
+
+  //   if (typeof(value)=='string'){
+  //   	var valuenum=parseInt(value);
+  //   }
+  //   if (typeof(Fid)=='string'){
+  //   	var Fidnum=parseInt(Fid);
+  //   }
+
+  //   $.ajax({
+  //       	type:'POST',
+  //       	headers: { 'FEEDBACK-RATING': 'UPDATE_DATA' },
+  //       	beforeSend: function(xhr) {
+  //       xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+  //   },
         	
-        	data:{
-        		score: valuenum,
-        		Fid: Fidnum
-        	},
-        	   success: function(response, textStatus, jqXHR) {
-     alert("Yay");
-   },
-   error: function(jqXHR, textStatus, errorThrown){
-     alert(textStatus, errorThrown);
-  }
-        })
+  //       	data:{
+  //       		score: valuenum,
+  //       		Fid: Fidnum
+  //       	},
+  //       	   success: function(response, textStatus, jqXHR) {
+  //    alert("You have give a rating of"+value);
+  //  },
+  //  error: function(jqXHR, textStatus, errorThrown){
+  //    alert(textStatus, errorThrown);
+  // }
+  //       })
 
 
   });
 
 
       $('.rating').barrating('show', {
-  theme: 'fontawesome-stars'
+  theme: 'fontawesome-stars',
+    initialRating:2,
+  allowEmpty:true,
   // ,
 //   onSelect: function(value, text, event) {
 
@@ -289,6 +378,85 @@ $( document ).ready(function() {
 //     }
 //   }
 });
+
+      $('#book-rating').barrating('show', {
+  theme: 'fontawesome-stars',
+  initialRating:10,
+  allowEmpty:true,
+});
+
+    $("#submitbookrating").on("click",function(e) {
+    e.preventDefault(); // cancel the link itself
+    var feedback_content=$("#comment").val();
+    if (!$("#book-rating option:selected").length) {
+    alert("Rate the book pls");
+    return;
+  }
+    var bookrating=$("#book-rating option:selected").val();
+    if(bookrating==""){
+    	if (confirm("Are you sure you want to rate this as 0?")) {
+    bookrating=0;
+} else {
+    return;
+}	
+    }
+    var bookratingnum=parseInt(bookrating);
+
+
+	$.ajax({
+        	type:'POST',
+        	headers: { 'BOOK-RATING': 'UPDATE_DATA' },
+        	beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
+        	
+        	data:{
+        		rank: bookratingnum,
+        		Fcomment: feedback_content
+	
+        	},
+        	   success: function(response, textStatus, jqXHR) {
+     alert("You have posted your book rating and comment.");
+     location.reload();
+     $("#book_feedback").load(location.href + " #book_feedback");
+
+   },
+   error: function(jqXHR, textStatus, errorThrown){
+     alert(textStatus, errorThrown);
+  }
+        })
+
+  });
+
+
+  //  	$("#book-rating").change(function(event) {
+	 //    	//disable change if it is selected
+  //   var bookrating=event.target.value;//string
+  //   if (typeof(bookrating)=='string'){
+  //   	var bookratingnum=parseInt(bookrating);
+  //   }
+
+  //   $.ajax({
+  //       	type:'POST',
+  //       	headers: { 'BOOK-RATING': 'UPDATE_DATA' },
+  //       	beforeSend: function(xhr) {
+  //       xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+  //   },
+        	
+  //       	data:{
+  //       		rank: bookratingnum,
+        		
+  //       	},
+  //       	   success: function(response, textStatus, jqXHR) {
+  //    alert("You have give a rating of"+value);
+  //  },
+  //  error: function(jqXHR, textStatus, errorThrown){
+  //    alert(textStatus, errorThrown);
+  // }
+  //       })
+
+
+  // });
 
 
 
