@@ -16,7 +16,7 @@ where Feedback_giver = 1
 and books.ISBN13 = feedback.bid;
 
 # the list of all the feedbacks he/she ranked with respect to usefulness
-select score, Fcomment, Feedback_giver from usefulness_rating, feedback, auth_user
+select score, Fcomment, username from usefulness_rating, feedback, auth_user
 where userid = 1
 and feedback.Fid = usefulness_rating.Fid
 and feedback.Feedback_giver = auth_user.id;
