@@ -80,7 +80,7 @@ def get_feedback_info(Fid=1):
 #     return record_transaction_info_save_to_class._record_transaction_info()
 
 def get_record_transaction_info(Tid):
-    record_transaction_info = my_custom_sql_dict("SELECT Tid, Tdate, copynum, title FROM DBproject.record_transaction, DBproject.books WHERE bid = books.ISBN13")
+    record_transaction_info = my_custom_sql_dict("SELECT Tid, Tdate, copynum, title,available_copy FROM DBproject.record_transaction, DBproject.books WHERE bid = books.ISBN13")
     # TODO: handle multiple feedbacks. currently only one:
     record_transaction_result = []
     print (record_transaction_result)
@@ -170,15 +170,16 @@ class orders:
         self.bid = bid
 
 class record_transaction:
-    def __init__(self, Tid, Tdate, copynum, title):
+    def __init__(self, Tid, Tdate, copynum, title, available_copy):
         self.Tid = Tid
         self.Tdate = Tdate
         self.copynum = copynum
         self.title = title
+        self.available_copy = available_copy
         self.info = {}
 
     def _record_transaction_info(self):
         if not self.info:
             self.info = {'Tid': self.Tid, 'Tdate':self.Tdate, 'copynum':self.copynum,
-                                 'title':self.title}
+                                 'title':self.title, 'available_copy':self.available_copy }
         return self.info

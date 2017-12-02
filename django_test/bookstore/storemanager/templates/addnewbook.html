@@ -2,9 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+
+    <title>New Record to be added</title>
+    {% include 'snippets/css.html' %}
+    {% include 'snippets/js.html' %}
+
 </head>
 <body>
-$END$
+
+<p> </p>
+
+
+<p>Please insert any new book information here:</p>
+
+<p> </p>
+
+<form action="" method="post" id="transactionForm">
+    {% csrf_token %}
+	<!--<p>Title:</p>-->
+    <!--<label for="Tid">Transaction ID: </label>-->
+	<!--<p><input id="Tid" type="text" name="Tid" required="true"></p>-->
+    <!--<label for="Tdate">Date: </label>-->
+	<!--<p><input id="Tdate" type="text" name="Tdate" required="true"></p>-->
+    <label for="copynum">Number of copies: </label>
+	<p><input id="copynum" type="text" name="copynum" required="true"></p>
+    <label for="Bid">ISBN-13: </label>
+	<p><input id="Bid" type="text" name="Bid" required="true"></p>
+	<input type="submit" value="Save"  />
+
+	</form>
+
 </body>
 </html>

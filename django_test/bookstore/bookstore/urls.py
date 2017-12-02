@@ -33,6 +33,7 @@ urlpatterns = [
     url(r'^storemanager/', include('storemanager.urls')),
     url(r'^signup/$', signup_view.signup, name='signup'),
 
+
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

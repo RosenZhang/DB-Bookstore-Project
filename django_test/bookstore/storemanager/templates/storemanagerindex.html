@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="title">
+<div class="Store Manager">
     <h2>Home</h2>
 
 </div>
 
 <h2>Welcome Store Manager</h2>
 
-  <p>The library has the following record counts:</p>
+
   <ul>
 
     <p><strong>Transaction Records:</strong> </p>
@@ -16,8 +16,9 @@
   <tr>
     <th>Transaction ID</th>
     <th>Transaction Date</th>
-    <th>Number of Copies</th>
+    <th>Number of Copies added</th>
       <th>Title</th>
+    <th>Number of Copies in Bookstore</th>
   </tr>
         {% for records in record_transaction %}
   <tr>
@@ -25,12 +26,17 @@
     <td>{{ records.Tdate }}</td>
     <td>{{ records.copynum }}</td>
     <td>{{ records.title }}</td>
+      <td>{{ records.available_copy }}</td>
+
 
   </tr>
         {% endfor %}
+
+
 </table>
   </ul>
 
 
 
 {% endblock %}
+
