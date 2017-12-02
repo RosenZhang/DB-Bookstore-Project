@@ -12,7 +12,7 @@ and books.ISBN13 = orders.bid;
 
 # his/her full history of feedbacks
 select Fid, rank, Fdate, Fcomment, title from books,feedback
-where feedback_giver = 1
+where Feedback_giver = 1
 and books.ISBN13 = feedback.bid;
 
 # the list of all the feedbacks he/she ranked with respect to usefulness
@@ -53,11 +53,12 @@ order by avg(rank) desc;
 #9 For a given book, a user could ask for the top n most useful feedbacks. 
 #The usefulness of a feedback is its average usefulness score.
 
-select Fcomment, avg(usefulness_rating.score) as avgscore
-from feedback, usefulness_rating, books
+select auth_user.username, Fcomment, avg(usefulness_rating.score) as avgscore
+from feedback, usefulness_rating, books, auth_user
 where feedback.Fid = usefulness_rating.Fid
 and books.ISBN13 = feedback.bid
 and books.title = 'The Great Gatsby'
+and feedback.Feedback_giver = auth_user.id
 group by usefulness_rating.Fid
 order by avg(score) desc
 limit 3;
