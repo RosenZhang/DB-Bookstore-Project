@@ -1,0 +1,166 @@
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+{% load static %}
+<link rel="stylesheet" href="{% static 'fontawesome-stars.css' %}">
+
+<style type="text/css">
+
+.title{
+    background-image:url("http://ak1.picdn.net/shutterstock/videos/6983851/thumb/1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top-;
+    text-align: left;
+    padding: 60px;
+}
+.title h2{
+    color:whitesmoke;
+}
+
+
+#bookcover{
+  height:30em;
+  width:20em;
+}
+
+#SearchItemsContainer
+{
+    display: block;
+
+}
+
+
+
+.hearts { color: #ee8b2d;}
+
+
+.bookinfo p{
+  font-size: 15px;
+}
+
+
+
+
+#logo{
+    display: block;
+    margin: auto;
+    padding: 20px;
+
+
+}
+
+
+
+
+ul {
+
+    list-style-type: none;
+    /*margin-left: 5%;*/
+    margin: auto;
+    /*margin-right: 10%;*/
+    overflow: hidden;
+    /*position: fixed;*/
+    top:100px;
+    /*width:100%;*/
+
+
+}
+
+li {
+    float:left;
+
+}
+
+li a {
+    position: relative;
+    display: block;
+    color: gray;
+    text-transform: capitalize;
+    text-align: center;
+    padding-top: 14px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    text-decoration: none;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    color: cadetblue;
+}
+
+
+
+
+
+
+
+
+input:focus {
+    outline: none;
+    outline: 2px solid seagreen;
+    box-shadow: 0 0 2px seagreen;
+}
+
+
+
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 15em auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 5px;
+  width: 50%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: Tahoma, Arial, sans-serif;
+}
+.popup .close {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  transition: all 200ms;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #06D85F;
+}
+.popup .content {
+  
+  max-height: 30%;
+  overflow: auto;
+
+</style>

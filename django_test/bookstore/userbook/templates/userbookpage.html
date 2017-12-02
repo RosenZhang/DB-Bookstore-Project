@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--a search bar on top-->
+
+<div class="title">
+    <h2>Bookstore</h2>
+    <br>
+</div>
+ {% csrf_token %} 
+
+<!--a placeholder image or popular books-->
+<!--when something is searched, show booktitle, author, copies etc in a list-->
+<div class="list-group">
+{% for book in books %}
+  <a href="{{book.ISBN13}}" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ book.title }}</h5>
+      <small>{{ book.authors }}</small>
+      <small>{{ book.publisher }}</small>
+    </div>
+    <p class="mb-1"></p>
+    <!-- <small>Donec id elit non mi porta.</small> -->
+  </a>
+ {% endfor %}
+</div>
+
+<!--when some book is clicked, show a page with the information of the book, with feedback, recommendation-->
+<!-- <div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<img src="https://www.littlebrown.co.uk/assets/img/newsletter_placeholder.jpg" alt="Book cover">
+				</td>
+				<td></td>
+			</td>
+		</tbody>
+	</table>
+</div> -->
+
+
+
+
+
+{% endblock %}

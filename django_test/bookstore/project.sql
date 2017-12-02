@@ -25,7 +25,7 @@ Feedback_giver int(11),
 bid CHAR(14),
 primary key (Fid),
 foreign key (Feedback_giver) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE,
-foreign key (bid) references books(ISBN13) ON DELETE CASCADE ON UPDATE CASCADE
+foreign key (Feedback_giver) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 #Problem: userid needed as primary key
@@ -85,15 +85,6 @@ create trigger after_orders
 	update book
 	set available_copy = available_copy - orders.copynum
 	where orders.bname = book.title;
-
-
-delimiter //
-create trigger after_insert_newbook
-	after insert on books
-	for each row
-	begin 
-		insert into record_transaction (copynum, bid) values (new.available_copy, new.ISBN13);
-	end // delimiter ;
 
 
 
