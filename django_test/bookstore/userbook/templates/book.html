@@ -64,25 +64,25 @@
 
 
 <!-- recommendation, highest buy based on the -->
-<hr>
-<h2>Recommendations</h2>
-<div class="card-group">
-	{% for recommendation in recommendations %}
-	
-  <div class="col-sm-4 col-md-3">
-    <div class="thumbnail">
-      <img src="{{ recommendation.piclink }}" >
-      <div class="caption">
-        <p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>
-        
-  
-      </div>
-    </div>
-  </div>
+<!--<hr>-->
+<!--<h2>Recommendations</h2>-->
+<!--<div class="card-group">-->
+	<!--{% for recommendation in recommendations %}-->
+	<!---->
+  <!--<div class="col-sm-4 col-md-3">-->
+    <!--<div class="thumbnail">-->
+      <!--<img src="{{ recommendation.piclink }}" >-->
+      <!--<div class="caption">-->
+        <!--<p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>-->
+        <!---->
+  <!---->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
 
 
-  {% endfor %}
-</div>
+  <!--{% endfor %}-->
+<!--</div>-->
 {% load static %}
 <script src="{% static 'jquery.barrating.js' %}"></script>
 <script type="text/javascript">

@@ -14,7 +14,26 @@
     <!--<p><strong>Copies:</strong> {{ num_instances }}</p>-->
     <!--<p><strong>Copies available:</strong> {{ num_instances_available }}</p>-->
     <!--<p><strong>Authors:</strong> {{ num_authors }}</p>-->
+
+ <br>
   <!--</ul>-->
+<h3>User Information</h3>
+  <table style="width:100%">
+  <tr>
+    <th>Username</th>
+    <th>Email</th>
+    <th>Date Joined</th>
+      <th>Last Login</th>
+  </tr>
+  <tr>
+    <td>{{ user_info.username }}</td>
+    <td>{{ user_info.email }}</td>
+    <td>{{ user_info.date_joined }}</td>
+      <td>{{ user_info.last_login }}</td>
+  </tr>
+  </table>
+      <br>
+<h3>Order History</h3>
   <table style="width:100%">
   <tr>
     <th>Book Name</th>
@@ -30,5 +49,39 @@
     {% endfor %}
   </table>
 
+      <br>
+<h3>Feedback History</h3>
+  <table style="width:100%">
+  <tr>
+    <th>Book Name</th>
+    <th>Rank</th>
+    <th>Comment</th>
+      <th>Date</th>
+  </tr>
+    {% for feedback in feedback_history %}
+  <tr>
+    <td>{{ feedback.title }}</td>
+    <td style="padding-right: 60px">{{ feedback.rank }}</td>
+    <td>{{ feedback.Fcomment }}</td>
+      <td>{{ feedback.Fdate }}</td>
+  </tr>
+    {% endfor %}
+  </table>
+<br>
+<h3>Rating History</h3>
+  <table style="width:100%">
+  <tr>
+    <th>Feedback Giver</th>
+    <th>Comment</th>
+    <th>Rating Score</th>
+  </tr>
+    {% for rating in rating_history %}
+  <tr>
+    <td>{{ rating.feedback_giver }}</td>
+    <td style="padding-right: 60px">{{ rating.Fcomment }}</td>
+    <td>{{ rating.score }}</td>
+  </tr>
+    {% endfor %}
+  </table>
 
 {% endblock %}

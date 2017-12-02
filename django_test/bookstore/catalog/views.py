@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from utils.util import get_order_history
+from utils.util import get_order_history, get_user_information,get_feedback_history,get_rating_history
 
 # Create your views here.
 from .models import Book, Author, BookInstance, Genre # use to access data
@@ -51,6 +51,10 @@ def catalog_view(request, userid = None):
     template = "index.html"
     context = {}
     context['order_history'] = get_order_history()
-    print context['order_history']
+    context['user_info'] = get_user_information()
+    context['feedback_history'] = get_feedback_history()
+    context['rating_history'] = get_rating_history()
+
+
     return render(request,template,context)
 

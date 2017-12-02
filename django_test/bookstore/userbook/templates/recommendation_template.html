@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<hr>
+<h2>Recommendations</h2>
+<div class="card-group">
+	{% for recommendation in recommendations %}
+
+  <div class="col-sm-4 col-md-3">
+    <div class="thumbnail">
+      <img src="{{ recommendation.piclink }}" >
+      <div class="caption">
+        <p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>
+      </div>
+    </div>
+  </div>
+
+
+  {% endfor %}
+</div>
+</body>
+</html>
