@@ -113,7 +113,15 @@ def get_rating_history(input_userid = 1):
     return rating_history_result
 #########################for user catalog page #########################
 
-
+#########################for book recommendation page#########################
+def get_book_recommendation(input_bid = '978-0321474049'):
+    recom_info = my_custom_sql_dict("select ISBN13, title, sum(orders.copynum), piclink AS sales from orders,books where orders.bid = books.ISBN13 and books.ISBN13 <> %s and userid in ( select userid from orders,books where orders.bid = books.ISBN13 and books.ISBN13 = %s) group by bid order by sales desc"%(input_bid,input_bid))
+    recom_result = []
+    for book in recom_info:
+        recom_save_to_class = books(**book)
+        recom_result.append(recom_save_to_class.recom_info())
+    return recom_result
+#########################for book recommendation page#########################
 def return_user_usefulness_rate(fid, userid):
     #feedbacks_info = my_custom_sql_dict()
     # TODO: return all the usefulness rate user has done about the book. If there's no record it returns null
@@ -169,9 +177,10 @@ class books:
                                  'language':self.language,'publisher':self.publisher, 'year':self.year}
         return self.info
 
-    def _recommentdation_info(self):
+    def _recommendation_info(self):
         if not self.recom_info:
             self.recom_info["recommendations"]={'title','piclink'}
+        return self.recom_info
 
     def book_info_json(self):
         if not self.info:

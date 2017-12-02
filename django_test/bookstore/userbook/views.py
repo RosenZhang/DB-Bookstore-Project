@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from utils.util import get_book_list, get_book_info,\
-	get_feedback_info,save_user_usefulness_rating, save_user_order, return_user_usefulness_rate
+	get_feedback_info,save_user_usefulness_rating, save_user_order, return_user_usefulness_rate,get_book_recommendation
 
 
 
@@ -39,4 +39,11 @@ def book_view(request,ISBN13=None):
 	# 'recommendations':[{'title':'a girl','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'},{'title':'two girls','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'}]
 	# }
 	return render(request, template, context)
+
+@login_required
+def recommendation_view(request,ISBN13=None):
+    template = 'recommendation_template.html'
+    context = {}
+    context["recommendations"] = get_book_recommendation()
+    return render(request, template, context)
 
