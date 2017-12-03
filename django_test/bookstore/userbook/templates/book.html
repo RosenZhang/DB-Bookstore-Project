@@ -117,13 +117,14 @@ order book-> go to a new page that shows order success and the recommendations
 <p>{{feedback.Fcomment}}</p>
 <small>{{feedback.Fdate}}</small>
 
-<p>How useful is the feedback?</p>
+{% if feedback.ableToRate %}
 <form class="feedbackratingForm" id="{{feedback.Fid}}">
 Rate this comment:
 <label class="radio-inline"><input type="radio" value="0" name="optradio">0</label>
 <label class="radio-inline"><input type="radio" value="1" name="optradio">1</label>
 <label class="radio-inline"><input type="radio" value="2" name="optradio">2</label>
 </form>
+{% endif %}
 <hr>
 <!--   <select class='rating' id="{{feedback.Fid}}"> 
     <option value="1">1</option>

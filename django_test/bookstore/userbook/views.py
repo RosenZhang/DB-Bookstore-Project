@@ -22,7 +22,6 @@ def book_view(request,ISBN13=None):
 	if 'HTTP_FEEDBACK_RATING' in request.META:
 		Fid=request.POST['Fid']
 		score=request.POST['score']
-		#TODO:check whether the user has rated the comment and check whether the feedback giver is the same as the user
 		save_user_usefulness_rating(Fid,score,userid)
 	elif 'HTTP_BOOK_RATING' in request.META:
 		rank=request.POST['rank']

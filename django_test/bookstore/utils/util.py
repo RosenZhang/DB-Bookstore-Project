@@ -71,7 +71,6 @@ def get_book_info(input_ISBN13):
     print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
-
 def get_feedback_info(bid, userid):
     query = 'select distinct f.*, u.score from feedback f left join (select * from usefulness_rating where userid = {}) ' \
             'u on feedback_giver != u.userid and f.fid = u.fid where f.bid = \'{}\';'.format(userid, bid)
@@ -82,10 +81,26 @@ def get_feedback_info(bid, userid):
     feedback_result = []
     for each_feedback in feedbacks_info:
         feedback_save_to_class = feedback(**each_feedback)
-        feedback_result.append(feedback_save_to_class._feedback_info())
+        feedback_dict=add_able_to_rate_set(feedback_save_to_class._feedback_info(),userid)  
+        feedback_result.append(feedback_dict)
 
     print("feedback result===========================--------------", feedback_result)
     return feedback_result
+
+def add_able_to_rate_set(feedbackdict,userid):
+#user cannot rate their own comment
+    if userid==feedbackdict['Feedback_giver']:
+        ableToRate=False
+#user cannot rate comment that has been rated by them
+    elif feedbackdict['Score']!=None:
+        ableToRate=False
+    else:
+        ableToRate=True
+    feedbackdict['ableToRate']=ableToRate
+    return feedbackdict
+
+
+    
 
 def return_user_usefulness_rate(fid, userid):
     #feedbacks_info = my_custom_sql_dict()
