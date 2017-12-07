@@ -42,14 +42,13 @@ select * from books
 order by year desc;
 
 #### order by avg feedback
-select books.*, avg(IFNULL(rank,0)) as avgrank from books,feedback
-where books.ISBN13 = feedback.bid
--- and authors = input_author_optional
+select books.*, avg(IFNULL(rank,0)) as avgrank from books left join feedback
+on books.ISBN13 = feedback.bid
+-- where authors = input_author_optional
 -- and publisher = input_publisher_optional
 -- and title  = input_title_optinal
 -- and subject = input_subject_optional
-group by feedback.bid
-order by avgrank desc;
+group by books.ISBN13
 
 #9 For a given book, a user could ask for the top n most useful feedbacks. 
 #The usefulness of a feedback is its average usefulness score.
