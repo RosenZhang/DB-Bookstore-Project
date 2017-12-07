@@ -349,6 +349,7 @@ $( document ).ready(function() {
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have give a rating of"+value);
+     $("#book_feedback").load(location.href + " #book_feedback");
    },
    error: function(jqXHR, textStatus, errorThrown){
      alert(textStatus, errorThrown);
@@ -405,7 +406,7 @@ $( document ).ready(function() {
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have posted your book rating and comment.");
-     location.reload();
+     // location.reload();
      $("#book_feedback").load(location.href + " #book_feedback");
 
    },
