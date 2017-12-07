@@ -100,6 +100,7 @@ def add_able_to_rate_set(feedbackdict,userid):
     return feedbackdict
 
 
+
     
 
 def return_user_usefulness_rate(fid, userid):
@@ -130,12 +131,11 @@ def save_user_feedback(userid,ISBN13,rank,Fcomment):
     print(query)
     cursor.execute(query)
 
-def check_user_has_posted_feedback(userid):
+def check_user_has_posted_feedback(userid,bid):
     cursor=connection.cursor()
-    query='select distinct Feedback_giver from feedback;'
+    query='select distinct Feedback_giver from feedback where bid=\'{}\';'.format(bid)
     cursor.execute(query)
     users = [row[0] for row in cursor.fetchall()]
-    print(users)
     return (userid in users)
 
 

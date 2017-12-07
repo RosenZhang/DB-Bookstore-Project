@@ -27,14 +27,14 @@ def book_view(request,ISBN13=None):
 		rank=request.POST['rank']
 		Fcomment=request.POST['Fcomment']
 		save_user_feedback(userid,ISBN13,rank,Fcomment)
-	elif request.method=='POST':
+	elif 'HTTP_ORDER_BOOK' in request.META:
 		copynum=request.POST['copynum']
 		print(userid,copynum,ISBN13)
 		save_user_order(userid,copynum,ISBN13)
 	template='book.html'
 	context = {}
     # check if user has rated the book
-	context['userhasrated']=check_user_has_posted_feedback(userid)
+	context['userhasrated']=check_user_has_posted_feedback(userid,ISBN13)
 	context['book'] =get_book_info(ISBN13)
 	context['feedbacks'] = get_feedback_info(ISBN13, userid)
 	print("feedback information ===========================--------------", context['feedbacks'])

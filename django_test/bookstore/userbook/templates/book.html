@@ -15,7 +15,10 @@ order book-> go to a new page that shows order success and the recommendations
 
 <!-- #ZYTODO:
 1. top n most useful feedbacks
-2. user cannot rate their own feedback or feedback they have rated-->
+2. order has problem
+-->
+
+
 
 
 
@@ -280,6 +283,7 @@ $( document ).ready(function() {
 
         $.ajax({
         	type:'POST',
+        	headers: { 'ORDER-BOOK': 'UPDATE_DATA' },
         	beforeSend: function(xhr) {
         xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
     },
