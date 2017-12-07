@@ -15,6 +15,7 @@ order book-> go to a new page that shows order success and the recommendations
 
 <!-- #ZYTODO:
 1. top n most useful feedbacks
+2. save order does not decrease the number of available books(any trigger?)
 -->
 
 
@@ -44,7 +45,7 @@ order book-> go to a new page that shows order success and the recommendations
 	<form>
 
 	<input type="number" id="num_of_books">
-	<small> {{ book.available_copy }} copies left</small>
+	<small id='books_left'> {{ book.available_copy }} copies left</small>
 		<button type="button" class="btn btn-warning btn-lg" id="order_book" >Order</button>
 	</form>				
 	
@@ -74,7 +75,7 @@ order book-> go to a new page that shows order success and the recommendations
 
 
 <!-- comments with rating list based on rating,rate and then it will update the database-->
-
+<div id="book_feedback">
 <h2>Feedback</h2>
 {% if not userhasrated %}
 <div class="form-group" id="user_feedback">
@@ -106,18 +107,19 @@ order book-> go to a new page that shows order success and the recommendations
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="feedbacknum">
-    <li><a id="feedbacknum1" class="feedbacknum_option"  href="#">1</a></li>
-    <li><a id="feedbacknum5" class="feedbacknum_option" href="#">5</a></li>
-    <li><a id="feedbacknum10" class="feedbacknum_option" href="#">10</a></li>
+    <li><a class="feedbacknum_option" href="1">1</a></li>
+    <li><a class="feedbacknum_option" href="5" >5</a></li>
+    <li><a class="feedbacknum_option" href="10" >10</a></li>
   </ul>
 </div>
 
-<div id="book_feedback">
+
 {% for feedback in feedbacks %}
 
-<h5>user {{feedback.Feedback_giver}}</h5>
+<h5>{{feedback.username}} <small>{{feedback.Fdate}}</small></h5>
 <p>{{feedback.Fcomment}}</p>
-<small>{{feedback.Fdate}}</small>
+<small>The user gave a ranking of {{feedback.rank}} for the book.</small>
+
 
 {% if feedback.ableToRate %}
 <form class="feedbackratingForm" id="{{feedback.Fid}}">
@@ -294,6 +296,7 @@ $( document ).ready(function() {
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have ordered "+num_of_books+" of "+book_title+"!");
+     $("#books_left").load(location.href + " #books_left");
    },
    error: function(jqXHR, textStatus, errorThrown){
      alert(textStatus, errorThrown);
@@ -306,10 +309,28 @@ $( document ).ready(function() {
     }); 
 
 
-	// $(".feedbacknum_option").on("click",function(e) {
- //    e.preventDefault(); // cancel the link itself
- //    var feedbacknum=parseInt(this.val());
- //    $.post(this.href, {'feedbacknum':feedbacknum});
+	// $(".feedbacknum_option").click(function() {
+	// 	selected_num=parseInt($(this).text());
+
+	// 	$.ajax({
+ //        	type:'POST',
+ //        	headers: { 'TOP-FEEDBACK': 'UPDATE_DATA' },
+ //        	beforeSend: function(xhr) {
+ //        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+ //    },
+        	
+ //        	data:{
+ //        		top_num: selected_num,
+ //        	},
+ //        	   success: function(response, textStatus, jqXHR) {
+        	   	
+ //     $("#book_feedback").load(location.href + " #book_feedback");
+ //   },
+ //   error: function(jqXHR, textStatus, errorThrown){
+ //     alert(textStatus, errorThrown);
+ //  }
+ //        })
+		
  //  });
 
 
@@ -374,8 +395,7 @@ $( document ).ready(function() {
   allowEmpty:true,
 });
 
-    $("#submitbookrating").on("click",function(e) {
-    e.preventDefault(); // cancel the link itself
+    $("#submitbookrating").click(function() {
     var feedback_content=$("#comment").val();
     if (!$("#book-rating option:selected").length) {
     alert("Rate the book pls");

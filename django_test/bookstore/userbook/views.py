@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
 from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_book_info,\
-    get_feedback_info,save_user_usefulness_rating, save_user_order, return_user_usefulness_rate,check_user_has_posted_feedback, save_user_feedback
+    get_feedback_info,save_user_usefulness_rating, save_user_order, return_user_usefulness_rate,\
+    check_user_has_posted_feedback, save_user_feedback, get_feedback_info_with_limit
 
 # Create your views here.
 @login_required
@@ -17,8 +18,18 @@ def usermainpage_view(request):
     return render(request,template,context)
 
 @login_required
-def book_view(request,ISBN13=None):
+def book_view(request,ISBN13=None,topnum=None):
 	userid=request.user.id
+	template='book.html'
+	context = {}
+    # check if user has rated the book
+	context['userhasrated']=check_user_has_posted_feedback(userid,ISBN13)
+	context['book'] =get_book_info(ISBN13)
+	if topnum=='':
+		context['feedbacks'] = get_feedback_info(ISBN13, userid)
+	else:
+		context['feedbacks'] = get_feedback_info_with_limit(ISBN13, userid,topnum)
+	# print("feedback information ===========================--------------", context['feedbacks'])
 	if 'HTTP_FEEDBACK_RATING' in request.META:
 		Fid=request.POST['Fid']
 		score=request.POST['score']
@@ -31,13 +42,7 @@ def book_view(request,ISBN13=None):
 		copynum=request.POST['copynum']
 		print(userid,copynum,ISBN13)
 		save_user_order(userid,copynum,ISBN13)
-	template='book.html'
-	context = {}
-    # check if user has rated the book
-	context['userhasrated']=check_user_has_posted_feedback(userid,ISBN13)
-	context['book'] =get_book_info(ISBN13)
-	context['feedbacks'] = get_feedback_info(ISBN13, userid)
-	print("feedback information ===========================--------------", context['feedbacks'])
+		
 
     # context={'book':{'piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png','title':'Fred the lonely monster','format':'paperback','ISBN13':ISBN13,"authors":'author_name'},
     # 'feedbacks':[{'Feedback_giver':'user1','Fcomment':'hi'}],
