@@ -54,15 +54,13 @@ order by avgrank desc;
 #9 For a given book, a user could ask for the top n most useful feedbacks. 
 #The usefulness of a feedback is its average usefulness score.
 
-select auth_user.username, Fcomment, avg(IFNULL(usefulness_rating.score, 0)) as avgscore
-from feedback, usefulness_rating, books, auth_user
-where feedback.Fid = usefulness_rating.Fid
-and books.ISBN13 = feedback.bid
-and books.title = 'The Great Gatsby'
-and feedback.Feedback_giver = auth_user.id
-group by usefulness_rating.Fid
+select auth_user.username, Feedback_giver, feedback.Fid, rank, Fcomment, avg(IFNULL(usefulness_rating.score, 0)) as avgscore
+from (feedback left join usefulness_rating on feedback.Fid = usefulness_rating.Fid) join auth_user
+on feedback.Feedback_giver = auth_user.id
+where feedback.bid = '978-0684801520'
+group by feedback.Fid
 order by avgscore desc
-limit 3;
+limit 2;
 
 #10 Book recommendation: including the user his own ordering history
 
