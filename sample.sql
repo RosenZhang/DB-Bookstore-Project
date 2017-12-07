@@ -20,5 +20,5 @@ insert into feedback values (null,'3',now(),'The Great Gatsby is a story told by
  and he tells the story sometime after 1922, when the incidents that fill the book take place. ','3','978-0684801520');
 
 #usefulness rating
-insert into usefulness_rating values ('1','4','2');
-insert into usefulness_rating values ('2','3','5');
+insert into usefulness_rating values ('1','2','2');
+insert into usefulness_rating values ('2','1','1');
