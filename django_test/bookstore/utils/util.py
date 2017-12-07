@@ -120,7 +120,7 @@ def save_user_usefulness_rating(fid, score, userid ):
 
 def save_user_order(userid, copynum, ISBN13):
     cursor = connection.cursor()
-    query = 'insert into orders values (current_timestamp(), {}, {}, {});'.format(userid, copynum, ISBN13)
+    query = 'insert into orders values (current_timestamp(), {}, {}, \'{}\');'.format(userid, copynum, ISBN13)
     print('========================================== query: ', query)
     cursor.execute(query)
 
