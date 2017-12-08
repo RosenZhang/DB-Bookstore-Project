@@ -7,15 +7,38 @@ from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_bo
     check_user_has_posted_feedback, save_user_feedback, get_feedback_info_with_limit
 
 # Create your views here.
+# @login_required
+# def usermainpage_view(request):
+#     # book_list=get_book_list()
+#     template='userbookpage.html'
+#     book_list, books = get_book_list_v2_with_brief_record('a')
+#     # books = [{'title':'book1','ISBN13':'1028374','authors':"author1", 'publisher':"publisher1"},
+# 		# {'title':'book2','ISBN13':'1028375','authors':"author2", 'publisher':"publisher1"}]
+#     context={'book_list':book_list,'books':books}
+#     return render(request,template,context)
+
 @login_required
 def usermainpage_view(request):
+    search_key_word = '%'
     # book_list=get_book_list()
     template='userbookpage.html'
-    book_list, books = get_book_list_v2_with_brief_record('a')
+
+
+    if 'HTTP_SEARCH_BOOK' in request.META:
+        search_key_word = request.POST['search_keyword']
+        print ("0000000000000000input {} \n\n".format(search_key_word)) # watch your command line
+
+    else:
+        print(" no post detection+_+_+_+_+_+_+_+_ POST,,,,,,,,,,{}\n".format(search_key_word))
+    book_list, books = get_book_list_v2_with_brief_record(search_key_word)
     # books = [{'title':'book1','ISBN13':'1028374','authors':"author1", 'publisher':"publisher1"},
-		# {'title':'book2','ISBN13':'1028375','authors':"author2", 'publisher':"publisher1"}]
+  # {'title':'book2','ISBN13':'1028375','authors':"author2", 'publisher':"publisher1"}]
     context={'book_list':book_list,'books':books}
     return render(request,template,context)
+
+
+
+
 
 @login_required
 def book_view(request,ISBN13=None,topnum=None):

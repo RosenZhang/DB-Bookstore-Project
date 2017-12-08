@@ -1,55 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
+
   {% block title %}<title>Bookstore</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-{% include 'snippets/css.html' %}
-{% include 'snippets/js.html' %}
+  {% include 'snippets/css.html' %}
+  {% include 'snippets/js.html' %}
 
 
 </head>
 
 <body>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Bookstore</a>
-    </div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Bookstore</a>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="search" id="SearchBar" class="form-control" placeholder="Search" aria-label="Search">
-        </div>
-        <button type="submit" id="SearchButton" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav">
-            <li>
-        <a href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-        {% if user.is_authenticated %}
-         <li >
-         <a href="{% url 'logout'%}?next=/catalog/">Logout</a></li>   
-       {% else %}
-         <li ><a  href="{% url 'login'%}?next=/catalog/">Login</a></li>   
-       {% endif %} 
-      </ul>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="search" id="SearchBar" class="form-control" placeholder="Search" aria-label="Search">
+          </div>
+          <button type="submit" id="SearchButton" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="{% url 'index'%}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          {% if user.is_authenticated %}
+          <li >
+           <a href="{% url 'logout'%}?next=/catalog/">Logout</a></li>   
+           {% else %}
+           <li ><a  href="{% url 'login'%}?next=/catalog/">Login</a></li>   
+           {% endif %} 
+         </ul>
 
 
 
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+       </div><!-- /.navbar-collapse -->
+     </div><!-- /.container-fluid -->
+   </nav>
 
 
 
@@ -79,23 +79,24 @@
 
     </ul>
 
-</nav> -->
+  </nav> -->
   <div class="container-fluid" id="SearchItemsContainer">
-            <div class="row">
-                <div class="col-xs-12" id="SearchItems">
-                </div>
-            </div>
+    <div class="row">
+      <div class="col-xs-12" id="SearchItems">
+      </div>
+    </div>
   </div>
+  <div id="#search_result_test"></div>
 
 
   <div class="container-fluid">
-     
-      {% block content %}{% endblock %}
-      
-    </div>
+
+    {% block content %}{% endblock %}
+
+  </div>
 
 
-<script>
+  <script>
 //TODO:select something then it will update the 'input', submit then it will show the records
 var searchItems ={{book_list |safe }};
 
@@ -114,24 +115,58 @@ $( document ).ready( function( )
     // {
     //     ToggleSearch( event );
     // } );
+    function ToggleSearch( event )
+    {
+        event.preventDefault( ); //prevent submission of form
+
+        $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear if we are using search functions
+      }
+
+    $( "#SearchButton" ).click( function( event ) // detect search function is clicked
+    {
+      event.preventDefault( ); //prevent submission of form
+
+      // ToggleSearch( event );
+
+      $.ajax({
+        type : "POST",
+        headers: { 'SEARCH-BOOK': 'UPDATE_DATA' },
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+        },
+          data: {
+            search_keyword: $('#SearchBar').val()
+                // scrfmiddlewaretoken: $("input[name=scrfmiddlewaretoken]").val()
+              },
+          success: function(response, textStatus, jqXHR){ // if request works, function will response
+            // $("#search_result").load(location.href + " #search_result");
+              alert("You have keyed in "+$('#SearchBar').val());
+              // $("#search_result").load(location.href + " #search_result");
+                $('#search_result_test').html("hi");
+              },
+            // dataType: 'html' // what we are expecting
+          });
+
+    
+    } );
 
 
 
     $( "#SearchBar" ).keyup( function( ) {  //when the key is release
 
-        $( "#SearchItems" ).empty( );
+      $( "#SearchItems" ).empty( );
 
-        for ( var i = 0; i < searchItems.length; i++ )
+      for ( var i = 0; i < searchItems.length; i++ )
+      {
+        var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
+        if ( searchItems[i].toLowerCase( ).includes( searchInput )
+         && searchInput.length > 0 )
         {
-            var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
-            if ( searchItems[i].toLowerCase( ).includes( searchInput )
-               && searchInput.length > 0 )
-            {
-                $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
-            }
+          $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
         }
+      }
     } );
-} );
+  } );
 </script>
 </body>
 </html>
