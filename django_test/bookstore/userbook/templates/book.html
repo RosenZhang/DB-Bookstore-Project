@@ -1,22 +1,13 @@
 <!-- TODO:
-if the feedback is rated, show it's rated and disable rating 
 
 bookorder page:
-show available num of copies on book order page and do a check whether the order num is not larger than available book num when submitting order
-order book-> go to a new page that shows order success and the recommendations  
 3. userbook: 3.1when user search, keywords could be about title or author or publisher or subject
 3.2 result of search can be sorted by year/ average scre of feedbacks
-
- 4. book: 4.1: for a given book, user can ask for top n most useful feedbacks. N should be specified
+4. book: 4.1: for a given book, user can ask for top n most useful feedbacks. N should be specified
 4.1: feedback has rank 0-10;
-4.2 user's feedback on other's has only three choices: 0,1 and 2
-4.3 user can't rate his own feedback
- 5. order completion page: after a order, list of suggested books are given. -->
+5. order completion page: after a order, list of suggested books are given. -->
 
-<!-- #ZYTODO:
-1. top n most useful feedbacks
-2. save order does not decrease the number of available books(any trigger?)
--->
+
 
 
 
@@ -296,7 +287,8 @@ $( document ).ready(function() {
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have ordered "+num_of_books+" of "+book_title+"!");
-     $("#books_left").load(location.href + " #books_left");
+     location.reload();
+     // $("#books_left").load(location.href + " #books_left");
    },
    error: function(jqXHR, textStatus, errorThrown){
      alert(textStatus, errorThrown);
@@ -347,7 +339,7 @@ $( document ).ready(function() {
 //     return;
 // }	
 //     }
- 
+
 
 
     if (typeof(value)=='string'){
@@ -370,7 +362,8 @@ $( document ).ready(function() {
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have give a rating of"+value);
-     $("#book_feedback").load(location.href + " #book_feedback");
+     location.reload();
+     // $("#book_feedback").load(location.href + " #book_feedback");
    },
    error: function(jqXHR, textStatus, errorThrown){
      alert(textStatus, errorThrown);
@@ -426,8 +419,8 @@ $( document ).ready(function() {
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have posted your book rating and comment.");
-     // location.reload();
-     $("#book_feedback").load(location.href + " #book_feedback");
+     location.reload();
+     // $("#book_feedback").load(location.href + " #book_feedback");
 
    },
    error: function(jqXHR, textStatus, errorThrown){
