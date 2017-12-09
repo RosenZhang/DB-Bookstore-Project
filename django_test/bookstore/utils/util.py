@@ -66,10 +66,13 @@ def get_book_list_v2_with_brief_record(keyword):
 
 def get_book_info(input_ISBN13):
     print("_____________________________{}______________________________\n".format(input_ISBN13))
-    book_info =  my_custom_sql_dict("select * from books where ISBN13 = \'%s\'" %(input_ISBN13))[0]
+    print("_____________________________{}______________________________\n".format("select * from books where ISBN13 = \'{}\';".format(input_ISBN13)))
+    book_info =  my_custom_sql_dict("select * from books where ISBN13 = \'{}\';".format(input_ISBN13))[0]
+    print("_____________________________{}______________________________\n".format(book_info))
     book_info_save_to_class = books(**book_info)
+
     fetched_class.register_class(book_info_save_to_class)
-    # print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
+    print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
 def get_feedback_info(bid, userid):
@@ -146,7 +149,7 @@ def get_feedback_info_with_limit(bid, userid,limit):
 ' on f.Feedback_giver = usr.id where f.bid = \'{}\' group by f.Fid order by avgscore desc limit {};'.format(bid,limit)
 
 
-    # print("query===========================--------{}------\n\n".format(query))
+    print("query===========================--------{}------\n\n".format(query))
     feedbacks_info = my_custom_sql_dict(query)
     print("query=====================feedback_info======--------{}------\n\n".format(feedbacks_info))
     feedback_result = []
