@@ -50,7 +50,7 @@ def get_book_list():
     return titles
 
 def get_book_list_v2_with_brief_record(keyword):
-    query = 'select * from books where title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\';'.format(keyword,keyword,keyword)
+    query = 'select * from books where title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\' or subject like \'%{}%\';'.format(keyword,keyword,keyword,keyword)
     print('+++++++++++++++++++++++++++++++++++++++++++++++++++{}++++++++++++'.format(query))
     titles = []
     details = []
@@ -123,7 +123,7 @@ def get_feedback_history(input_userid):
 def get_rating_history(input_userid):
     rating_info = my_custom_sql_dict("select score, Fcomment, username from usefulness_rating, feedback, auth_user where feedback.Fid = usefulness_rating.Fid and feedback.Feedback_giver = auth_user.id and userid = '%s'" %(input_userid))
     rating_history_result = []
-    print rating_info
+    print(rating_info)
     for rating in rating_info:
         rating_save_to_class = usefulness_rating_history(**rating)
         rating_history_result.append(rating_save_to_class._rating_history_info())
@@ -133,7 +133,7 @@ def get_rating_history(input_userid):
 #########################for book recommendation page#########################
 def get_book_recommendation(input_bid):
     recom_info = my_custom_sql_dict("select ISBN13, title, sum(orders.copynum) AS sales, piclink from orders,books where orders.bid = books.ISBN13 and books.ISBN13 <> '%s' and userid in ( select userid from orders,books where orders.bid = books.ISBN13 and books.ISBN13 = '%s') group by bid order by sales desc"%(input_bid,input_bid))
-    print recom_info
+    print(recom_info)
     recom_result = []
     print("book rcom************************")
     for book in recom_info:
@@ -249,14 +249,15 @@ class books:
             self.overview = {'title':self.title,
                                            'ISBN13':self.ISBN13,
                                            'authors':self.authors,
-                                           'publisher':self.publisher}
+                                           'publisher':self.publisher,
+                                           'subject':self.subject}
         return self.overview
 
     def _book_info(self):
         if not self.info:
             self.info = {'piclink': self.piclink, 'title':self.title, 'format':self.format,
-                                 'ISBN13':self.ISBN13,"authors":self.authors,'pages':self.pages,
-                                 'language':self.language,'publisher':self.publisher, 'year':self.year, 'available_copy':self.available_copy}
+                                 'ISBN13':self.ISBN13, 'ISBN10':self.ISBN10,"authors":self.authors,'pages':self.pages,
+                                 'language':self.language,'publisher':self.publisher, 'year':self.year, 'available_copy':self.available_copy,'subject':self.subject}
         return self.info
 
     def book_info_json(self):
