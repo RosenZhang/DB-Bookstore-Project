@@ -6,6 +6,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+#messages {
+	text-align: center;
+    vertical-align: middle;
+	display:block;
+	background: #ffd028;
+	min-height: 30px;
+	height: auto;
+	width: 60%;
+	margin: auto;
+	font-size: 16px;
+	text-color: #ffffff;
+}
+
 
 /* Pen Title */
 .pen-title {
@@ -63,7 +76,7 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
-  color: #ffffff;
+  font-color: #ffffff;
   text-align: center;
 }
 #codepen i, #portfolio i {

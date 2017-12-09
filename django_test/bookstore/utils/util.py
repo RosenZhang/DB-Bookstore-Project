@@ -1,7 +1,9 @@
 import json
 import datetime
 from django.db import connection
+
 from datetime import timedelta
+
 
 
 ######################## basic mysql command
@@ -48,8 +50,17 @@ def get_book_list():
     titles = [row[0] for row in cursor.fetchall()]
     return titles
 
-def get_book_list_v2_with_brief_record(keyword):
-    query = 'select * from books where title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\';'.format(keyword,keyword,keyword)
+def get_book_list_v2_with_brief_record(keyword,sorted_by):
+    query='select books.*, avg(rank) as avgscore from books,feedback '\
+'where feedback.bid=books.ISBN13 and '\
+'(title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\' or subject like \'%{}%\') '\
+'group by books.ISBN13'.format(keyword,keyword,keyword,keyword)
+    if sorted_by=='-':
+        query+=';'
+    elif sorted_by=='year':
+        query+=' order by year desc;'
+    elif sorted_by=='average score':
+        query+=' order by avgscore desc;'
     print('+++++++++++++++++++++++++++++++++++++++++++++++++++{}++++++++++++'.format(query))
     titles = []
     details = []
@@ -231,13 +242,7 @@ def get_order_author_info():
 
     order_author_info = my_custom_sql_dict("select books.authors,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by authors order by copynum DESC Limit 1"%(previous,now))
     order_author_result = []
-    # print(order_author)
-    # print(now)
-    # print(previous)
-    # print (type(now))
-    # print (type(previous))
 
-    #print (order_author_result)
     for each_order_author in order_author_info:
         order_author_save_to_class = order_author(**each_order_author)
         order_author_result.append(order_author_save_to_class._order_author_info())
@@ -252,13 +257,7 @@ def get_order_title_info():
 
     order_title_info = my_custom_sql_dict("select books.title,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by title order by copynum DESC Limit 1"%(previous,now))
     order_title_result = []
-    # print(order_title)
-    # print(now)
-    # print(previous)
-    # print (type(now))
-    # print (type(previous))
 
-    #print (order_title_result)
     for each_order_title in order_title_info:
         order_title_save_to_class = order_title(**each_order_title)
         order_title_result.append(order_title_save_to_class._order_title_info())
@@ -274,23 +273,18 @@ def get_order_publisher_info():
     order_publisher_info = my_custom_sql_dict("select books.publisher,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by publisher order by copynum DESC Limit 1"%(previous,now))
     order_publisher_result = []
     print(order_publisher_info)
-    # print(now)
-    # print(previous)
-    # print (type(now))
-    # print (type(previous))
 
-    #print (order_publisher_result)
     for each_order_publisher in order_publisher_info:
         order_publisher_save_to_class = order_publisher(**each_order_publisher)
         order_publisher_result.append(order_publisher_save_to_class._order_publisher_info())
     #print ("\n\n transaction============================",order_title_result)
     return order_publisher_result
-    #print (order_publisher_result)
+  
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
                  pages="NA", subject="NA", language="NA", authors="NA", publisher="NA",
-                 year="NA", ISBN10="NA", ISBN13="NA", available_copy="NA" ):
+                 year="NA", ISBN10="NA", ISBN13="NA", available_copy="NA",avgscore="NA" ):
         self.title = title
         self.piclink = piclink
         self.format = format
@@ -303,6 +297,7 @@ class books:
         self.ISBN10 = ISBN10
         self.ISBN13 = ISBN13
         self.available_copy = available_copy
+        self.avgscore=avgscore
         self.overview = {}
         self.info = {}
         self.recom_info = {}
@@ -312,14 +307,15 @@ class books:
             self.overview = {'title':self.title,
                                            'ISBN13':self.ISBN13,
                                            'authors':self.authors,
-                                           'publisher':self.publisher}
+                                           'publisher':self.publisher,
+                                           'subject':self.subject}
         return self.overview
 
     def _book_info(self):
         if not self.info:
             self.info = {'piclink': self.piclink, 'title':self.title, 'format':self.format,
-                                 'ISBN13':self.ISBN13,"authors":self.authors,'pages':self.pages,
-                                 'language':self.language,'publisher':self.publisher, 'year':self.year, 'available_copy':self.available_copy}
+                                 'ISBN13':self.ISBN13, 'ISBN10':self.ISBN10,"authors":self.authors,'pages':self.pages,
+                                 'language':self.language,'publisher':self.publisher, 'year':self.year, 'available_copy':self.available_copy,'subject':self.subject}
         return self.info
 
     def book_info_json(self):

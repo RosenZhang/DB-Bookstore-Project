@@ -11,8 +11,23 @@
  {% csrf_token %}
    <form>
           <div class="search_input">
-            <input  type="text" id="SearchBar" class="search" placeholder="Search" aria-label="Search" >
-          <button type="submit" class="search Button" id="SearchButton">Submit</button>
+                     <!--  <div > -->
+            
+
+  <!-- </div> -->
+            <input  type="text" id="SearchBar" class="search" placeholder="Search for authors or publisher or title or subject" aria-label="Search" >
+            <label>Sorted by</label>
+              <select class="styled-select yellow semi-square" id='search-sorting' >
+    <option>-</option>
+    <option>year</option>
+    <option>average score</option>
+  </select>
+                      <button type="submit" class="search Button" id="SearchButton">Search</button>
+
+
+
+
+
           </div>
         </form>
  <br>
@@ -25,6 +40,7 @@ $( document ).ready( function( )
 {
     $( "#SearchButton" ).click( function( event ) // detect search function is clicked
     {
+    	var sorted_option=$("#search-sorting option:selected").val();
 
       event.preventDefault( ); //prevent submission of form
       $.ajax({
@@ -35,7 +51,8 @@ $( document ).ready( function( )
           xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
         },
           data: {
-            search_keyword: $('#SearchBar').val()
+            search_keyword: $('#SearchBar').val(),
+            sorted_by: sorted_option,
               },
           success: function(resp){ // if request works, function will response
               data=resp.books;
