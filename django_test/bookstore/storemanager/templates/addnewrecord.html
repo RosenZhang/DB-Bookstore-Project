@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<h3>Book exists! Please insert new transaction information here:</h3>
+
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="Bid"> ISBN-13: </label>
+    <p><input type="text" name="Bid" required="true"></p>
+
+    <label for="copynum"> Number of copies: </label>
+	<p><input id="copynum" type="text" name="copynum" required="true"></p>
+
+	<input type="submit" value="Save" ></input> 
+
+	</form>
+    <button><a href="{% url 'storemanager' %}">Go back</a></button>
+<script type="text/javascript">
+    
+</script>
+{% endblock %}

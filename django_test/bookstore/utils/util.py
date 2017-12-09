@@ -2,8 +2,9 @@ import json
 import datetime
 from django.db import connection
 
-from . import fetched_class
-
+def remove_quote(inp):
+    inp.replace("'","")
+    inp.replace('"',"")
 
 ######################## basic mysql command
 def dictfetchall(cursor):
@@ -21,16 +22,25 @@ def namedtuplefetchall(cursor):
     nt_result = namedtuple('Result', [col[0] for col in desc])
     return [nt_result(*row) for row in cursor.fetchall()]
 
-def my_custom_sql_dict(sql_command_string):
+def my_custom_sql_dict(sql_command_string,command_tuple=None):
     with connection.cursor() as cursor:
-        cursor.execute(sql_command_string)
+        if command_tuple is not None:
+            cursor.execute(sql_command_string,command_tuple)
+        else:
+            cursor.execute(sql_command_string)
+
         rows = dictfetchall(cursor)
         # print("==========================", rows,"===================")
     return rows
 
-def my_custom_sql_tuple(sql_command_string):
+def my_custom_sql_tuple(sql_command_string,command_tuple=None):
     with connection.cursor() as cursor:
-        cursor.execute(sql_command_string)
+        if command_tuple is not None:
+            cursor.execute(sql_command_string,command_tuple)
+        else:
+            cursor.execute(sql_command_string)
+
+
         rows = cursor.fetchall()
         # print("==========================", rows,"===================")
     return rows
@@ -52,8 +62,8 @@ def get_book_list():
 def get_book_list_v2_with_brief_record(keyword,sorted_by):
     query='select books.*, avg(rank) as avgscore from books,feedback '\
 'where feedback.bid=books.ISBN13 and '\
-'(title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\' or subject like \'%{}%\') '\
-'group by books.ISBN13'.format(keyword,keyword,keyword,keyword)
+'(title like %s  or authors like  %s  or publisher like  %s or subject like %s) '\
+'group by books.ISBN13'
     if sorted_by=='-':
         query+=';'
     elif sorted_by=='year':
@@ -63,7 +73,8 @@ def get_book_list_v2_with_brief_record(keyword,sorted_by):
     print('+++++++++++++++++++++++++++++++++++++++++++++++++++{}++++++++++++'.format(query))
     titles = []
     details = []
-    books_info = my_custom_sql_dict(query)
+    books_info = my_custom_sql_dict(query,('%'+keyword+'%','%'+keyword+'%','%'+keyword+'%','%'+keyword+'%'))
+    print(books_info)
     for book_info in books_info:
         book_class = books(**book_info)
         titles.append(book_class.title)
@@ -73,18 +84,21 @@ def get_book_list_v2_with_brief_record(keyword,sorted_by):
     return titles, details
 
 
+
 def get_book_info(input_ISBN13):
+    #remove quotation mark
+    remove_quote(input_ISBN13)
     print("_____________________________{}______________________________\n".format(input_ISBN13))
-    book_info =  my_custom_sql_dict("select * from books where ISBN13 = \'%s\'" %(input_ISBN13))[0]
+    book_info =  my_custom_sql_dict("select * from books where ISBN13 = \'{}\'".format(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
-    fetched_class.register_class(book_info_save_to_class)
     # print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
 def get_feedback_info(bid, userid):
+    remove_quote(bid)
     query = 'select f.Fid, rank, Fdate, Fcomment, usr.username, Feedback_giver,  avg(IFNULL(u.score, 0)) as avgscore'\
 ' from (feedback f left join usefulness_rating u on f.Fid = u.Fid) join auth_user usr'\
-' on f.Feedback_giver = usr.id where f.bid = \'{}\' group by f.Fid order by avgscore desc;'.format( bid)
+' on f.Feedback_giver = usr.id where f.bid = \'{}\' group by f.Fid order by avgscore desc;'.format(bid)
 
 
     # print("query===========================--------{}------\n\n".format(query))
@@ -102,14 +116,16 @@ def get_feedback_info(bid, userid):
 
 def get_book_list():
     cursor = connection.cursor()
-    cursor.execute('SELECT title FROM DBproject.books')
+    cursor.execute('SELECT ISBN13 FROM DBproject.books')
     titles = [row[0] for row in cursor.fetchall()]
+    print(titles)
     return titles
 
 #########################for user catalog page #########################
 # todo: need to change input_userid dynamically for all methods in the section
 def get_order_history(input_userid):
-    order_info =my_custom_sql_dict("select title, copynum, Odate from books, orders where orders.bid = books.ISBN13 and userid = '%s'" %(input_userid))
+    remove_quote(input_userid)
+    order_info =my_custom_sql_dict("select title, copynum, Odate from books, orders where orders.bid = books.ISBN13 and userid = {}".format(input_userid))
     order_result = []
     for each_order in order_info:
         order_save_to_class = orders(**each_order)
@@ -117,12 +133,14 @@ def get_order_history(input_userid):
     return order_result
 
 def get_user_information(input_userid):
-    user_information_data = my_custom_sql_dict("select username, email, date_joined, last_login from auth_user where id = '%s'" %(input_userid))[0]
+    remove_quote(input_userid)
+    user_information_data = my_custom_sql_dict("select username, email, date_joined, last_login from auth_user where id = {}".format(input_userid))[0]
     info_save_to_class = user_information(**user_information_data)
     return info_save_to_class
 
 def get_feedback_history(input_userid):
-    feedback_info = my_custom_sql_dict("select rank, Fdate, Fcomment, title from books,feedback where books.ISBN13 = feedback.bid and Feedback_giver = '%s'" %(input_userid))
+    remove_quote(input_userid)
+    feedback_info = my_custom_sql_dict("select rank, Fdate, Fcomment, title from books,feedback where books.ISBN13 = feedback.bid and Feedback_giver = {}".format(input_userid))
     feedback_history_result = []
     for each_feedback in feedback_info:
         feedback_save_to_class = feedback_history(**each_feedback)
@@ -130,7 +148,8 @@ def get_feedback_history(input_userid):
     return feedback_history_result
 
 def get_rating_history(input_userid):
-    rating_info = my_custom_sql_dict("select score, Fcomment, username from usefulness_rating, feedback, auth_user where feedback.Fid = usefulness_rating.Fid and feedback.Feedback_giver = auth_user.id and userid = '%s'" %(input_userid))
+    remove_quote(input_userid)
+    rating_info = my_custom_sql_dict("select score, Fcomment, username from usefulness_rating, feedback, auth_user where feedback.Fid = usefulness_rating.Fid and feedback.Feedback_giver = auth_user.id and userid = {}".format(input_userid))
     rating_history_result = []
     print(rating_info)
     for rating in rating_info:
@@ -141,7 +160,8 @@ def get_rating_history(input_userid):
 
 #########################for book recommendation page#########################
 def get_book_recommendation(input_bid):
-    recom_info = my_custom_sql_dict("select ISBN13, title, sum(orders.copynum) AS sales, piclink from orders,books where orders.bid = books.ISBN13 and books.ISBN13 <> '%s' and userid in ( select userid from orders,books where orders.bid = books.ISBN13 and books.ISBN13 = '%s') group by bid order by sales desc"%(input_bid,input_bid))
+    remove_quote(input_bid)
+    recom_info = my_custom_sql_dict("select ISBN13, title, sum(orders.copynum) AS sales, piclink from orders,books where orders.bid = books.ISBN13 and books.ISBN13 <> %s and userid in ( select userid from orders,books where orders.bid = books.ISBN13 and books.ISBN13 = %s) group by bid order by sales desc",(input_bid,input_bid))
     print(recom_info)
     recom_result = []
     print("book rcom************************")
@@ -152,12 +172,15 @@ def get_book_recommendation(input_bid):
 #########################for book recommendation page#########################
 
 def get_feedback_info_with_limit(bid, userid,limit):
+    remove_quote(bid)
+    remove_quote(limit)
+    limit=int(limit)
     query = 'select f.Fid, rank, Fdate, Fcomment, usr.username, Feedback_giver,  avg(IFNULL(u.score, 0)) as avgscore'\
 ' from (feedback f left join usefulness_rating u on f.Fid = u.Fid) join auth_user usr'\
-' on f.Feedback_giver = usr.id where f.bid = \'{}\' group by f.Fid order by avgscore desc limit {};'.format(bid,limit)
+' on f.Feedback_giver = usr.id where f.bid = %s group by f.Fid order by avgscore desc limit %s;'
 
     # print("query===========================--------{}------\n\n".format(query))
-    feedbacks_info = my_custom_sql_dict(query)
+    feedbacks_info = my_custom_sql_dict(query,(bid,limit))
     print("query=====================feedback_info======--------{}------\n\n".format(feedbacks_info))
     feedback_result = []
     for each_feedback in feedbacks_info:
@@ -204,23 +227,49 @@ def save_user_usefulness_rating(fid, score, userid ):
 
 def save_user_order(userid, copynum, ISBN13):
     cursor = connection.cursor()
-    query = 'insert into orders values (current_timestamp(), {}, {}, \'{}\');'.format(copynum, userid, ISBN13)
+    query = 'insert into orders values (current_timestamp(), %s, %s, %s);'
     print('========================================== query: ', query)
-    cursor.execute(query)
+    cursor.execute(query,(copynum, userid, ISBN13))
 
 
 def save_user_feedback(userid,ISBN13,rank,Fcomment):
     cursor=connection.cursor()
-    query='insert into feedback values (null,{},current_timestamp(), \'{}\', {}, \'{}\');'.format(rank, Fcomment, userid, ISBN13)
+    query='insert into feedback values (null,%s,current_timestamp(), %s, %s, %s);'
     print(query)
-    cursor.execute(query)
+    cursor.execute(query,(rank, Fcomment, userid, ISBN13))
 
 def check_user_has_posted_feedback(userid,bid):
     cursor=connection.cursor()
+    print(type(bid))
     query='select distinct Feedback_giver from feedback where bid=\'{}\';'.format(bid)
     cursor.execute(query)
     users = [row[0] for row in cursor.fetchall()]
     return (userid in users)
+
+def check_book_exists(bid):
+    book_list=get_book_list()
+    if bid in book_list:
+        return True
+    else:
+        return False
+
+
+def add_new_book_and_transaction(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,bid,available_copy,copynum):
+    cursor=connection.cursor()
+    query='insert into books values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);'
+    cursor.execute(query,(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,bid,available_copy))
+    print(query)
+    query='insert into record_transaction values (null,current_timestamp(),%s,%s);'
+    cursor.execute(query,(copynum, bid))
+    print(query)
+
+
+
+def save_transaction(copynum, bid):
+    cursor=connection.cursor()
+    query='insert into record_transaction values (null,current_timestamp(),%s,%s);'
+    cursor.execute(query,(copynum, bid))
+
 
 
 def get_record_transaction_info():
