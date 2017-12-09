@@ -2,8 +2,18 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_book_info,get_feedback_info,save_user_usefulness_rating, save_user_order, return_user_usefulness_rate, check_user_has_posted_feedback, save_user_feedback, get_feedback_info_with_limit,get_book_recommendation
+
 from django.http import HttpResponse
 import json
+
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponse
+import json
+
+from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_book_info, \
+    get_feedback_info, save_user_usefulness_rating, save_user_order, return_user_usefulness_rate, \
+    check_user_has_posted_feedback, save_user_feedback, get_feedback_info_with_limit
 
 
 # Create your views here.
@@ -19,60 +29,56 @@ import json
 
 @login_required
 def usermainpage_view(request):
-    search_key_word = '%'
     # book_list=get_book_list()
-    template='userbookpage.html'
-
+    template = 'userbookpage.html'
 
     if 'HTTP_SEARCH_BOOK' in request.META:
         search_key_word = request.POST['search_keyword']
-        print ("0000000000000000input {} \n\n".format(search_key_word)) # watch your command line
+        print ("0000000000000000input {} \n\n".format(search_key_word))  # watch your command line
         book_list, books = get_book_list_v2_with_brief_record(search_key_word)
         return HttpResponse(json.dumps({'books': books}), content_type="application/json")
 
     else:
-        print(" no post detection+_+_+_+_+_+_+_+_ POST,,,,,,,,,,{}\n".format(search_key_word))
-    book_list=get_book_list()
-    
+        print(" no post detection+_+_+_+_+_+_+_+_ POST,,,,,,,,,,\n")
+    book_list = get_book_list()
+
     # books = [{'title':'book1','ISBN13':'1028374','authors':"author1", 'publisher':"publisher1"},
-
-  # {'title':'book2','ISBN13':'1028375','authors':"author2", 'publisher':"publisher1"}]
-    context={'book_list':book_list}
-    return render(request,template,context)
-
+    # {'title':'book2','ISBN13':'1028375','authors':"author2", 'publisher':"publisher1"}]
+    context = {'book_list': book_list}
+    return render(request, template, context)
 
 
 @login_required
-def book_view(request,ISBN13=None,topnum=None):
-    userid=request.user.id
-    template='book.html'
+def book_view(request, ISBN13=None, topnum=None):
+    userid = request.user.id
+    template = 'book.html'
     context = {}
     # check if user has rated the book
-    context['userhasrated']=check_user_has_posted_feedback(userid,ISBN13)
-    context['book'] =get_book_info(ISBN13)
-    if topnum==''or topnum is None:
+    context['userhasrated'] = check_user_has_posted_feedback(userid, ISBN13)
+    context['book'] = get_book_info(ISBN13)
+    if topnum == '':
         context['feedbacks'] = get_feedback_info(ISBN13, userid)
     else:
-        context['feedbacks'] = get_feedback_info_with_limit(ISBN13, userid,topnum)
+        context['feedbacks'] = get_feedback_info_with_limit(ISBN13, userid, topnum)
     # print("feedback information ===========================--------------", context['feedbacks'])
     if 'HTTP_FEEDBACK_RATING' in request.META:
-        Fid=request.POST['Fid']
-        score=request.POST['score']
-        save_user_usefulness_rating(Fid,score,userid)
+        Fid = request.POST['Fid']
+        score = request.POST['score']
+        save_user_usefulness_rating(Fid, score, userid)
     elif 'HTTP_BOOK_RATING' in request.META:
-        rank=request.POST['rank']
-        Fcomment=request.POST['Fcomment']
-        save_user_feedback(userid,ISBN13,rank,Fcomment)
+        rank = request.POST['rank']
+        Fcomment = request.POST['Fcomment']
+        save_user_feedback(userid, ISBN13, rank, Fcomment)
     elif 'HTTP_ORDER_BOOK' in request.META:
-        copynum=request.POST['copynum']
-        print(userid,copynum,ISBN13)
-        save_user_order(userid,copynum,ISBN13)
+        copynum = request.POST['copynum']
+        print(userid, copynum, ISBN13)
+        save_user_order(userid, copynum, ISBN13)
 
 
-    # context={'book':{'piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png','title':'Fred the lonely monster','format':'paperback','ISBN13':ISBN13,"authors":'author_name'},
-    # 'feedbacks':[{'Feedback_giver':'user1','Fcomment':'hi'}],
-    # 'recommendations':[{'title':'a girl','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'},{'title':'two girls','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'}]
-    # }
+        # context={'book':{'piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png','title':'Fred the lonely monster','format':'paperback','ISBN13':ISBN13,"authors":'author_name'},
+        # 'feedbacks':[{'Feedback_giver':'user1','Fcomment':'hi'}],
+        # 'recommendations':[{'title':'a girl','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'},{'title':'two girls','piclink':'https://about.canva.com/wp-content/uploads/sites/3/2015/01/children_bookcover.png'}]
+        # }
     return render(request, template, context)
 
 @login_required

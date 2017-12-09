@@ -46,9 +46,8 @@ def login_user(request):
                 return redirect(catalog_view)
             else:
                 return  redirect(signuppage.views.signup)
-    else:
-        return redirect(signuppage.views.signup)
-        # TODO: prompt a "invalid username and  password combination"
+    return redirect(signuppage.views.signup)
+    # TODO: prompt a "invalid username and  password combination"
 
 
 @login_required
@@ -65,3 +64,4 @@ def catalog_view(request):
 def logout_user(request):
     logout(request)
     return redirect(signuppage.views.signup)
+

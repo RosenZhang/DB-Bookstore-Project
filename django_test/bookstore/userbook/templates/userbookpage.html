@@ -1,36 +1,62 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!--a search bar on top-->
+
 
 <div class="title">
     <h2>Bookstore</h2>
     <br>
 </div>
+<br>
  {% csrf_token %}
+   <form>
+          <div class="search_input">
+            <input  type="text" id="SearchBar" class="search" placeholder="Search" aria-label="Search" >
+          <button type="submit" class="search Button" id="SearchButton">Submit</button>
+          </div>
+        </form>
+ <br>
  <div class="list-group" id="search_result">
  </div> 
 
-<!--a placeholder image or popular books-->
-<!--when something is searched, show booktitle, author, copies etc in a list-->
 
+  <script>
+$( document ).ready( function( )
+{
+    $( "#SearchButton" ).click( function( event ) // detect search function is clicked
+    {
 
-<!--when some book is clicked, show a page with the information of the book, with feedback, recommendation-->
-<!-- <div>
-	<table>
-		<tbody>
-			<tr>
-				<td>
-					<img src="https://www.littlebrown.co.uk/assets/img/newsletter_placeholder.jpg" alt="Book cover">
-				</td>
-				<td></td>
-			</td>
-		</tbody>
-	</table>
-</div> -->
+      event.preventDefault( ); //prevent submission of form
+      $.ajax({
+        type : "POST",
+        url:"/books/",
+        headers: { 'SEARCH-BOOK': 'UPDATE_DATA' },
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+        },
+          data: {
+            search_keyword: $('#SearchBar').val()
+              },
+          success: function(resp){ // if request works, function will response
+              data=resp.books;
+              var htmlText = '';
+            for ( var book in data ) {
+                htmlText +='  <a href="'+data[book].ISBN13+'" class="list-group-item list-group-item-action flex-column align-items-start">';
+                htmlText += '<div class="d-flex w-100 justify-content-between">';
+                htmlText += '<h5 class="mb-1">' + data[book].title + '</h5>';
+                htmlText += '<small>' + data[book].authors + '</small>';
+                htmlText += '<small>,' + data[book].publisher + '</small>';
+                htmlText += '</div>';
+                htmlText += '</a>';
+            }
 
+            $("#search_result").html(htmlText);
+              },
 
+          });
 
-
+    } );
+  } );
+</script>
 
 {% endblock %}
