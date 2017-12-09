@@ -79,3 +79,11 @@ insert into usefulness_rating values ('9',1,'5');
 insert into usefulness_rating values ('10',1,'1');
 insert into usefulness_rating values ('10',0,'3');
 insert into usefulness_rating values ('10',1,'4');
+
+#transcation data: Tid; Tdate; copynum;bid 
+insert into record_transaction values (null,now,5,'978-1449389670');
+insert into record_transaction values (null,now,10,'978-1594487711');
+insert into record_transaction values (null,now,10,'978-0321474042');
+insert into record_transaction values (null,now,10,'978-0684801523');
+
+
