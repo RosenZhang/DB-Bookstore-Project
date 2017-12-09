@@ -11,7 +11,7 @@ These are the following features that are implemented in our bookstore
   * Usefulness Ratings
   * Browsing 
   * Recommendations
-  * Statistics
+  * Statistics and increasing inventory functions for store manager
   
 # Getting startued
 ## Prerequisites
