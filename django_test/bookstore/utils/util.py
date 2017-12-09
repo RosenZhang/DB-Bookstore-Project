@@ -49,8 +49,17 @@ def get_book_list():
     titles = [row[0] for row in cursor.fetchall()]
     return titles
 
-def get_book_list_v2_with_brief_record(keyword):
-    query = 'select * from books where title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\' or subject like \'%{}%\';'.format(keyword,keyword,keyword,keyword)
+def get_book_list_v2_with_brief_record(keyword,sorted_by):
+    query='select books.*, avg(rank) as avgscore from books,feedback '\
+'where feedback.bid=books.ISBN13 and '\
+'(title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\' or subject like \'%{}%\') '\
+'group by books.ISBN13'.format(keyword,keyword,keyword,keyword)
+    if sorted_by=='-':
+        query+=';'
+    elif sorted_by=='year':
+        query+=' order by year desc;'
+    elif sorted_by=='average score':
+        query+=' order by avgscore desc;'
     print('+++++++++++++++++++++++++++++++++++++++++++++++++++{}++++++++++++'.format(query))
     titles = []
     details = []
@@ -227,7 +236,7 @@ def get_record_transaction_info():
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
                  pages="NA", subject="NA", language="NA", authors="NA", publisher="NA",
-                 year="NA", ISBN10="NA", ISBN13="NA", available_copy="NA" ):
+                 year="NA", ISBN10="NA", ISBN13="NA", available_copy="NA",avgscore="NA" ):
         self.title = title
         self.piclink = piclink
         self.format = format
@@ -240,6 +249,7 @@ class books:
         self.ISBN10 = ISBN10
         self.ISBN13 = ISBN13
         self.available_copy = available_copy
+        self.avgscore=avgscore
         self.overview = {}
         self.info = {}
         self.recom_info = {}

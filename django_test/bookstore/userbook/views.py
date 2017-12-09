@@ -29,8 +29,9 @@ def usermainpage_view(request):
 
     if 'HTTP_SEARCH_BOOK' in request.META:
         search_key_word = request.POST['search_keyword']
-        print ("0000000000000000input {} \n\n".format(search_key_word))  # watch your command line
-        book_list, books = get_book_list_v2_with_brief_record(search_key_word)
+        sorted_by=request.POST['sorted_by']
+        print ("0000000000000000input {} {} \n\n".format(search_key_word,sorted_by))  # watch your command line
+        book_list, books = get_book_list_v2_with_brief_record(search_key_word,sorted_by)
         return HttpResponse(json.dumps({'books': books}), content_type="application/json")
 
     else:
