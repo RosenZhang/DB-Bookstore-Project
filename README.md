@@ -94,7 +94,7 @@ To make the whole project more efficient, we implement idea of code recycling. T
 ## Recommendation
 
 ## Usage of git
-Our team use git as our main platform so all code 
+Our team use git as our main platform so even every team member works on different features, code is still regulated under one big project. Everyone has a branch and we can view eacn one's update and commitment clearly.
 
 # Authors
   * [Zou Yun 1001831](https://github.com/pappar1027)
