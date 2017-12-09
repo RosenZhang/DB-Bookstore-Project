@@ -12,8 +12,6 @@ These are the following features that are implemented in our bookstore
   * Browsing 
   * Recommendations
   * Statistics
-  
-# Getting started
 
 # Entity Relationship Diagram
 --> INSERT IMAGE HERE
@@ -23,4 +21,10 @@ SQL DDL code can be found [here](https://github.com/RosenZhang/DB-Bookstore-Proj
 
 
 # Authors
+
+  * Zou Yun
+  * Zhang Ruochen
+  * Wu Jinglian
+  * Elaine Cheong
+  * He Jiabei
 
