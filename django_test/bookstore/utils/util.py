@@ -166,6 +166,16 @@ def check_user_has_posted_feedback(userid,bid):
     return (userid in users)
 
 
+def get_record_transaction_info():
+    record_transaction_info = my_custom_sql_dict("SELECT Tid, Tdate, copynum, title, bid, available_copy FROM record_transaction, books WHERE bid = books.ISBN13")
+    # TODO: handle multiple feedbacks. currently only one:
+    record_transaction_result = []
+    #print (record_transaction_result)
+    for each_record_transaction in record_transaction_info:
+        record_transaction_save_to_class = record_transaction(**each_record_transaction)
+        record_transaction_result.append(record_transaction_save_to_class._record_transaction_info())
+    #print ("\n\n transaction============================",record_transaction_result)
+    return record_transaction_result
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
@@ -244,8 +254,18 @@ class orders:
         self.bid = bid
 
 class record_transaction:
-    def __init__(self, Tid, Tdate, copynum, bid):
+    def __init__(self, Tid, Tdate, copynum, title, available_copy, bid):
         self.Tid = Tid
         self.Tdate = Tdate
         self.copynum = copynum
+        self.title = title
         self.bid = bid
+        self.available_copy = available_copy
+        self.info = {}
+
+    def _record_transaction_info(self):
+        if not self.info:
+            self.info = {'Tid': self.Tid, 'Tdate':self.Tdate, 'copynum':self.copynum,
+                                 'title':self.title, 'bid':self.bid,  'available_copy':self.available_copy }
+        return self.info
+        print (self.info)
