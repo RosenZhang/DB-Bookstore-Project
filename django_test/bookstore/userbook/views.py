@@ -69,7 +69,7 @@ def book_view(request, ISBN13=None, topnum=None):
     return render(request, template, context)
 
 @login_required
-def recommendation_view(request,ISBN13=None):
+def recommendation_view(request,ISBN13=None,topnum=None):
     template = 'recommendation_template.html'
     context = {}
     context["recommendations"] = get_book_recommendation(ISBN13)
