@@ -80,9 +80,9 @@ $ source [project location]/sample.sql
 ## Django Ajax
 
 # Authors
-  * [Zou Yun](https://github.com/pappar1027)
-  * [Zhang Ruochen](https://github.com/RosenZhang)
-  * [Wu Jinglian](https://github.com/Gilliamwu)
+  * [Zou Yun 1001831](https://github.com/pappar1027)
+  * [Zhang Ruochen 1001433](https://github.com/RosenZhang)
+  * [Wu Jinglian 1001428](https://github.com/Gilliamwu)
   * [Elaine Cheong](https://github.com/ElaineJ)
-  * [He Jiabei](https://github.com/HeJiabei616)
+  * [He Jiabei 1001435](https://github.com/HeJiabei616)
 
