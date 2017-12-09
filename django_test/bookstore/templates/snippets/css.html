@@ -39,7 +39,6 @@
 
 
 
-.hearts { color: #ee8b2d;}
 
 
 .bookinfo p{
@@ -98,69 +97,50 @@ li a:hover {
     color: cadetblue;
 }
 
+#search_input {
+  display: flex;
+  align-items: center;
+}
+
+#SearchBar {
+  width: 75%;
+  background: #fffce2;
+  font-family: inherit;
+  color: black;
+  letter-spacing: 1px;
+  text-indent: 5%;
+}
 
 
+.Button {
+  width: 20%;
+  height: 44px;
+  background: #ffd028;
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+  letter-spacing: 1px;
 
+  cursor: pointer;
+  transition: background .3s ease-in-out;
+}
+  
+.search {
+  height: 44px;
+  border: none;
+}
 
+#SearchButton:hover {
+  background: #ffe949;
+}
 
 
 
 input:focus {
     outline: none;
-    outline: 2px solid seagreen;
-    box-shadow: 0 0 2px seagreen;
+    outline: 2px solid #ffd028;
+    box-shadow: 0 0 2px #ffd028;
 }
 
-
-
-
-.overlay {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.7);
-  transition: opacity 500ms;
-  visibility: hidden;
-  opacity: 0;
-}
-.overlay:target {
-  visibility: visible;
-  opacity: 1;
-}
-
-.popup {
-  margin: 15em auto;
-  padding: 30px;
-  background: #fff;
-  border-radius: 5px;
-  width: 50%;
-  position: relative;
-  transition: all 5s ease-in-out;
-}
-
-.popup h2 {
-  margin-top: 0;
-  color: #333;
-  font-family: Tahoma, Arial, sans-serif;
-}
-.popup .close {
-  position: absolute;
-  top: 5%;
-  right: 5%;
-  transition: all 200ms;
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close:hover {
-  color: #06D85F;
-}
-.popup .content {
-  
-  max-height: 30%;
-  overflow: auto;
 
 </style>

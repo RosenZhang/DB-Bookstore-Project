@@ -27,15 +27,13 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-left">
-          <div class="form-group">
-            <input type="search" id="SearchBar" class="form-control" placeholder="Search" aria-label="Search">
-          </div>
-          <button type="submit" id="SearchButton" class="btn btn-default">Submit</button>
-        </form>
+
         <ul class="nav navbar-nav">
           <li>
             <a href="{% url 'index'%}">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+          <a href="{% url 'main'%}">Search books <span class="sr-only">(current)</span></a>
           </li>
           {% if user.is_authenticated %}
           <li >
@@ -86,7 +84,7 @@
       </div>
     </div>
   </div> -->
-  <div id="#search_result_test"></div>
+
 
 
   <div class="container-fluid">
@@ -96,87 +94,8 @@
   </div>
 
 
-  <script>
-
-var searchItems ={{book_list |safe }};
 
 
-$( document ).ready( function( )
-{
-    // function ToggleSearch( event )
-    // {
-    //     event.preventDefault( ); //prevent submission of form
-
-
-    //     $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear
-    // }
-
-    // $( "#SearchButton" ).click( function( event )
-    // {
-    //     ToggleSearch( event );
-    // } );
-
-
-    $( "#SearchButton" ).click( function( event ) // detect search function is clicked
-    {
-      event.preventDefault( ); //prevent submission of form
-
-     
-
-      $.ajax({
-        type : "POST",
-        headers: { 'SEARCH-BOOK': 'UPDATE_DATA' },
-        beforeSend: function(xhr) {
-          xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
-        },
-          data: {
-            search_keyword: $('#SearchBar').val()
-                // scrfmiddlewaretoken: $("input[name=scrfmiddlewaretoken]").val()
-              },
-          success: function(resp){ // if request works, function will response
-            // $("#search_result").load(location.href + " #search_result");
-              // alert("You have keyed in "+$('#SearchBar').val());
-              // $("#search_result").load(location.href + " #search_result");
-              data=resp.books;
-              var htmlText = '';
-
-            for ( var book in data ) {
-                htmlText +='  <a href="'+data[book].ISBN13+'" class="list-group-item list-group-item-action flex-column align-items-start">';
-                htmlText += '<div class="d-flex w-100 justify-content-between">';
-                htmlText += '<h5 class="mb-1">' + data[book].title + '</h5>';
-                htmlText += '<small>' + data[book].authors + '</small>';
-                htmlText += '<small>,' + data[book].publisher + '</small>';
-                htmlText += '</div>';
-                htmlText += '</a>';
-            }
-            
-            $("#search_result").html(htmlText);
-              
-              },
-         
-          });
-
-    
-    } );
-
-
-
-    // $( "#SearchBar" ).keyup( function( ) {  //when the key is release
-
-    //   $( "#SearchItems" ).empty( );
-
-    //   for ( var i = 0; i < searchItems.length; i++ )
-    //   {
-    //     var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
-    //     if ( searchItems[i].toLowerCase( ).includes( searchInput )
-    //      && searchInput.length > 0 )
-    //     {
-    //       $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
-    //     }
-    //   }
-    // } );
-  } );
-</script>
 </body>
 </html>
 

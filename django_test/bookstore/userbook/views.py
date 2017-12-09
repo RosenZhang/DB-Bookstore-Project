@@ -21,7 +21,6 @@ from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_bo
 
 @login_required
 def usermainpage_view(request):
-    search_key_word = '%'
     # book_list=get_book_list()
     template='userbookpage.html'
 
@@ -33,7 +32,7 @@ def usermainpage_view(request):
         return HttpResponse(json.dumps({'books': books}), content_type="application/json")
 
     else:
-        print(" no post detection+_+_+_+_+_+_+_+_ POST,,,,,,,,,,{}\n".format(search_key_word))
+        print(" no post detection+_+_+_+_+_+_+_+_ POST,,,,,,,,,,\n")
     book_list=get_book_list()
     
     # books = [{'title':'book1','ISBN13':'1028374','authors':"author1", 'publisher':"publisher1"},

@@ -7,7 +7,15 @@
     <h2>Bookstore</h2>
     <br>
 </div>
+<br>
  {% csrf_token %}
+   <form>
+          <div class="search_input">
+            <input  type="text" id="SearchBar" class="search" placeholder="Search" aria-label="Search" >
+          <button type="submit" class="search Button" id="SearchButton">Submit</button>
+          </div>
+        </form>
+ <br>
  <div class="list-group" id="search_result">
  </div> 
 
@@ -31,6 +39,86 @@
 
 
 
+  <script>
 
+var searchItems ={{book_list |safe }};
+
+
+$( document ).ready( function( )
+{
+    // function ToggleSearch( event )
+    // {
+    //     event.preventDefault( ); //prevent submission of form
+
+
+    //     $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear
+    // }
+
+    // $( "#SearchButton" ).click( function( event )
+    // {
+    //     ToggleSearch( event );
+    // } );
+
+
+    $( "#SearchButton" ).click( function( event ) // detect search function is clicked
+    {
+   
+      event.preventDefault( ); //prevent submission of form
+
+      $.ajax({
+        type : "POST",
+        url:"/books/",
+        headers: { 'SEARCH-BOOK': 'UPDATE_DATA' },
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+        },
+          data: {
+            search_keyword: $('#SearchBar').val()
+                // scrfmiddlewaretoken: $("input[name=scrfmiddlewaretoken]").val()
+              },
+          success: function(resp){ // if request works, function will response
+            // $("#search_result").load(location.href + " #search_result");
+              // alert("You have keyed in "+$('#SearchBar').val());
+              // $("#search_result").load(location.href + " #search_result");
+              data=resp.books;
+              var htmlText = '';
+
+            for ( var book in data ) {
+                htmlText +='  <a href="'+data[book].ISBN13+'" class="list-group-item list-group-item-action flex-column align-items-start">';
+                htmlText += '<div class="d-flex w-100 justify-content-between">';
+                htmlText += '<h5 class="mb-1">' + data[book].title + '</h5>';
+                htmlText += '<small>' + data[book].authors + '</small>';
+                htmlText += '<small>,' + data[book].publisher + '</small>';
+                htmlText += '</div>';
+                htmlText += '</a>';
+            }
+            
+            $("#search_result").html(htmlText);
+
+              },
+         
+          });
+
+    
+    } );
+
+
+
+    // $( "#SearchBar" ).keyup( function( ) {  //when the key is release
+
+    //   $( "#SearchItems" ).empty( );
+
+    //   for ( var i = 0; i < searchItems.length; i++ )
+    //   {
+    //     var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
+    //     if ( searchItems[i].toLowerCase( ).includes( searchInput )
+    //      && searchInput.length > 0 )
+    //     {
+    //       $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
+    //     }
+    //   }
+    // } );
+  } );
+</script>
 
 {% endblock %}
