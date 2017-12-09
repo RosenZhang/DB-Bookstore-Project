@@ -2,19 +2,22 @@
 
 from django.shortcuts import render
 
-from utils.util import get_record_transaction_info, get_book_info
+from django.shortcuts import render, redirect
+from utils.util import get_record_transaction_info
 from django.db import connection
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
+from django.contrib.auth import login, authenticate, logout
 import datetime
 from .forms import addrecord
+import catalog.views
+import signuppage.views
 
-def storemanager_view(request,Tid=None):
-	template='storemanagerindex.html'
-	context = {}
-	context['record_transaction'] = get_record_transaction_info()
-	return render(request,template,context)
-
+def storemanager_view(request):
+    template='storemanagerindex.html'
+    context = {}
+    context['record_transaction'] = get_record_transaction_info()
+    return render(request,template,context)
 
 def add_transaction_record(request):
     Tid = 'null'
@@ -54,7 +57,6 @@ def add_transaction_record(request):
                 cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
                    Tid, now, copynum, Bid)))
                 return HttpResponseRedirect(reverse('storemanager'))
-
             form.save()
 
     else:

@@ -11,7 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 import signuppage.views
-
+import storemanager.views
 
 def signup_user(request):
     if request.method == 'POST':
@@ -30,18 +30,23 @@ def signup_user(request):
 
 
 def login_user(request):
+    username = None
+    password = None
     if request.method == 'POST':
         for key in request.POST:
             username = request.POST['username_login']
             password = request.POST['password_login']
         user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect(catalog_view)
+        if 'manager_login' in request.POST:
+            if user is not None and user.is_superuser:
+                return redirect(storemanager.views.storemanager_view)
         else:
-            return  redirect(signuppage.views.signup)
-    else:
-        return redirect(signuppage.views.signup)
+            if user is not None:
+                login(request, user)
+                return redirect(catalog_view)
+            else:
+                return  redirect(signuppage.views.signup)
+    return redirect(signuppage.views.signup)
     # TODO: prompt a "invalid username and  password combination"
 
 
@@ -54,11 +59,9 @@ def catalog_view(request):
     context['user_info'] = get_user_information(userid)
     context['feedback_history'] = get_feedback_history(userid)
     context['rating_history'] = get_rating_history(userid)
-
-
     return render(request,template,context)
-
 
 def logout_user(request):
     logout(request)
     return redirect(signuppage.views.signup)
+

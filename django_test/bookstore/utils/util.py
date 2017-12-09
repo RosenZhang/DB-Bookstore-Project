@@ -84,7 +84,7 @@ def get_feedback_info(bid, userid):
     feedback_result = []
     for each_feedback in feedbacks_info:
         feedback_save_to_class = feedback(**each_feedback)
-        feedback_dict=add_able_to_rate_set(feedback_save_to_class._feedback_info(),userid)  
+        feedback_dict=add_able_to_rate_set(feedback_save_to_class._feedback_info(),userid)
         feedback_result.append(feedback_dict)
 
     # print("feedback result===========================--------------", feedback_result)
@@ -153,7 +153,7 @@ def get_feedback_info_with_limit(bid, userid,limit):
     feedback_result = []
     for each_feedback in feedbacks_info:
         feedback_save_to_class = feedback(**each_feedback)
-        feedback_dict=add_able_to_rate_set(feedback_save_to_class._feedback_info(),userid)  
+        feedback_dict=add_able_to_rate_set(feedback_save_to_class._feedback_info(),userid)
         feedback_result.append(feedback_dict)
 
     # print("feedback result===========================--------------", feedback_result)
@@ -164,7 +164,7 @@ def add_able_to_rate_set(feedbackdict,userid):
     if userid==feedbackdict['Feedback_giver']:
         ableToRate=False
 #user cannot rate comment that has been rated by them
-    else: 
+    else:
         fid=feedbackdict['Fid']
         ableToRate= not check_user_rated_feedback(userid,fid)
     feedbackdict['ableToRate']=ableToRate
@@ -216,7 +216,6 @@ def check_user_has_posted_feedback(userid,bid):
 
 def get_record_transaction_info():
     record_transaction_info = my_custom_sql_dict("SELECT Tid, Tdate, copynum, title, bid, available_copy FROM record_transaction, books WHERE bid = books.ISBN13")
-    # TODO: handle multiple feedbacks. currently only one:
     record_transaction_result = []
     #print (record_transaction_result)
     for each_record_transaction in record_transaction_info:

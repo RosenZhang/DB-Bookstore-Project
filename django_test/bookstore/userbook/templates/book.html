@@ -1,16 +1,10 @@
 <!-- TODO:
-
 bookorder page:
 3. userbook: 3.1when user search, keywords could be about title or author or publisher or subject
 3.2 result of search can be sorted by year/ average scre of feedbacks
 4. book: 4.1: for a given book, user can ask for top n most useful feedbacks. N should be specified
 4.1: feedback has rank 0-10;
 5. order completion page: after a order, list of suggested books are given. -->
-
-
-
-
-
 
 
 {% extends "base.html" %}
@@ -37,9 +31,9 @@ bookorder page:
 
 	<input type="number" id="num_of_books">
 	<small id='books_left'> {{ book.available_copy }} copies left</small>
-		<button type="button" class="btn btn-warning btn-lg" id="order_book" >Order</button>
-	</form>				
-	
+	<button type="button" class="Button" id="order_book" >Order</button>
+	</form>
+
 </div>
 </div>
 
@@ -48,18 +42,16 @@ bookorder page:
 <!-- <h2>Recommendations</h2>
 <div class="card-group">
 	{% for recommendation in recommendations %}
-	
+
   <div class="col-sm-4 col-md-3">
     <div class="thumbnail">
       <img src="{{ recommendation.piclink }}" >
       <div class="caption">
         <p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>
-        
+
       </div>
     </div>
   </div>
-
-
   {% endfor %}
 </div> -->
 
@@ -70,7 +62,7 @@ bookorder page:
 <h2>Feedback</h2>
 {% if not userhasrated %}
 <div class="form-group" id="user_feedback">
-    <select id='book-rating'> 
+    <select id='book-rating'>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
@@ -121,17 +113,7 @@ Rate this comment:
 </form>
 {% endif %}
 <hr>
-<!--   <select class='rating' id="{{feedback.Fid}}"> 
-    <option value="1">1</option>
-    <option value="2">2</option>
-  </select> -->
 
-<!-- <h5>{{feedback.Fid}}</h5> -->
-<!--     <div class="lead">
-        <div  class="hearts starrr"></div>
-	</div> 
-<div class="container">
-</div> -->
 {% endfor %}
 </div>
 
@@ -139,122 +121,11 @@ Rate this comment:
 {% load static %}
 <script src="{% static 'jquery.barrating.js' %}"></script>
 <script type="text/javascript">
-//pass the Fid to jquery
-$(function() {
-
-   });
-
-
-// // Starrr plugin (https://github.com/dobtco/starrr)
-// var __slice = [].slice;
-
-// (function($, window) {
-//   var Starrr;
-
-//   Starrr = (function() {
-//     Starrr.prototype.defaults = {
-//       rating: void 0,
-//       numStars: 5,
-//       change: function(e, value) {}
-//     };
-
-//     function Starrr($el, options) {
-//       var i, _, _ref,
-//         _this = this;
-
-//       this.options = $.extend({}, this.defaults, options);
-//       this.$el = $el;
-//       _ref = this.defaults;
-//       for (i in _ref) {
-//         _ = _ref[i];
-//         if (this.$el.data(i) != null) {
-//           this.options[i] = this.$el.data(i);
-//         }
-//       }
-//       this.createStars();
-//       this.syncRating();
-//       this.$el.on('mouseover.starrr', 'span', function(e) {
-//         return _this.syncRating(_this.$el.find('span').index(e.currentTarget) + 1);
-//       });
-//       this.$el.on('mouseout.starrr', function() {
-//         return _this.syncRating();
-//       });
-//       this.$el.on('click.starrr', 'span', function(e) {
-//         return _this.setRating(_this.$el.find('span').index(e.currentTarget) + 1);
-//       });
-//       this.$el.on('starrr:change', this.options.change);
-//     }
-
-//     Starrr.prototype.createStars = function() {
-//       var _i, _ref, _results;
-
-//       _results = [];
-//       for (_i = 1, _ref = this.options.numStars; 1 <= _ref ? _i <= _ref : _i >= _ref; 1 <= _ref ? _i++ : _i--) {
-//         _results.push(this.$el.append("<span class='glyphicon glyphicon-star-empty'></span>"));
-//       }
-//       return _results;
-//     };
-
-//     Starrr.prototype.setRating = function(rating) {
-//       if (this.options.rating === rating) {
-//         rating = void 0;
-//       }
-//       this.options.rating = rating;
-//       this.syncRating();
-//       return this.$el.trigger('starrr:change', rating);
-//     };
-
-//     Starrr.prototype.syncRating = function(rating) {
-//       var i, _i, _j, _ref;
-
-//       rating || (rating = this.options.rating);
-//       if (rating) {
-//         for (i = _i = 0, _ref = rating - 1; 0 <= _ref ? _i <= _ref : _i >= _ref; i = 0 <= _ref ? ++_i : --_i) {
-//           this.$el.find('span').eq(i).removeClass('glyphicon-star-empty').addClass('glyphicon-star');
-//         }
-//       }
-//       if (rating && rating < 5) {
-//         for (i = _j = rating; rating <= 4 ? _j <= 4 : _j >= 4; i = rating <= 4 ? ++_j : --_j) {
-//           this.$el.find('span').eq(i).removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-//         }
-//       }
-//       if (!rating) {
-//         return this.$el.find('span').removeClass('glyphicon-star').addClass('glyphicon-star-empty');
-//       }
-//     };
-
-//     return Starrr;
-
-//   })();
-//   return $.fn.extend({
-//     starrr: function() {
-//       var args, option;
-
-//       option = arguments[0], args = 2 <= arguments.length ? __slice.call(arguments, 1) : [];
-//       return this.each(function() {
-//         var data;
-
-//         data = $(this).data('star-rating');
-//         if (!data) {
-//           $(this).data('star-rating', (data = new Starrr($(this), option)));
-//         }
-//         if (typeof option === 'string') {
-//           return data[option].apply(data, args);
-//         }
-//       });
-//     }
-//   });
-// })(window.jQuery, window);
-
-// $(function() {
-//   return $(".starrr").starrr();
-// });
 var book_title= "{{ book.title }}";
 var ISBN13="{{ book.ISBN13 }}";
 var availablecopy={{book.available_copy}};
 $( document ).ready(function() {
 	    $("#order_book").click(function(){
-
 	    	//check if input is empty
 	    	if (!$('#num_of_books').val()){
 	    		alert('Enter a number.');
@@ -267,19 +138,16 @@ $( document ).ready(function() {
 	    		return;
 	    	}
 
-	    	
-
         $.ajax({
         	type:'POST',
         	headers: { 'ORDER-BOOK': 'UPDATE_DATA' },
         	beforeSend: function(xhr) {
         xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
     },
-        	
+
         	data:{
         		copynum:num_of_books
         		// bid: ISBN13
-
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have ordered "+num_of_books+" of "+book_title+"!");
@@ -290,53 +158,12 @@ $( document ).ready(function() {
      alert(textStatus, errorThrown);
   }
 
-
-    
         })
-       
-    }); 
 
-
-	// $(".feedbacknum_option").click(function() {
-	// 	selected_num=parseInt($(this).text());
-
-	// 	$.ajax({
- //        	type:'POST',
- //        	headers: { 'TOP-FEEDBACK': 'UPDATE_DATA' },
- //        	beforeSend: function(xhr) {
- //        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
- //    },
-        	
- //        	data:{
- //        		top_num: selected_num,
- //        	},
- //        	   success: function(response, textStatus, jqXHR) {
-        	   	
- //     $("#book_feedback").load(location.href + " #book_feedback");
- //   },
- //   error: function(jqXHR, textStatus, errorThrown){
- //     alert(textStatus, errorThrown);
- //  }
- //        })
-		
- //  });
-
-
-
+    });
 	$(".feedbackratingForm").change(function(event) {
-	    	//TODO:disable change if it is selected
     var Fid=$(this).attr("id");//string
     var value=event.target.value;//string
-    
-//     if(value==""){
-//     	if (confirm("Are you sure you want to rate this as 0?")) {
-//     value="0";
-// } else {
-//     return;
-// }	
-//     }
-
-
 
     if (typeof(value)=='string'){
     	var valuenum=parseInt(value);
@@ -344,14 +171,13 @@ $( document ).ready(function() {
     if (typeof(Fid)=='string'){
     	var Fidnum=parseInt(Fid);
     }
-
     $.ajax({
         	type:'POST',
         	headers: { 'FEEDBACK-RATING': 'UPDATE_DATA' },
         	beforeSend: function(xhr) {
         xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
     },
-        	
+
         	data:{
         		score: valuenum,
         		Fid: Fidnum
@@ -365,25 +191,12 @@ $( document ).ready(function() {
      alert(textStatus, errorThrown);
   }
         })
-
-
-
   });
-
-
-//       $('.rating').barrating('show', {
-//   theme: 'fontawesome-stars',
-//     initialRating:2,
-//   allowEmpty:true,
-
-// });
-
       $('#book-rating').barrating('show', {
   theme: 'fontawesome-stars',
   initialRating:10,
   allowEmpty:true,
 });
-
     $("#submitbookrating").click(function() {
     var feedback_content=$("#comment").val();
     if (!$("#book-rating option:selected").length) {
@@ -396,77 +209,32 @@ $( document ).ready(function() {
     bookrating=0;
 } else {
     return;
-}	
+}
     }
     var bookratingnum=parseInt(bookrating);
-
-
 	$.ajax({
         	type:'POST',
         	headers: { 'BOOK-RATING': 'UPDATE_DATA' },
         	beforeSend: function(xhr) {
         xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
     },
-        	
+
         	data:{
         		rank: bookratingnum,
         		Fcomment: feedback_content
-	
+
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have posted your book rating and comment.");
      location.reload();
      // $("#book_feedback").load(location.href + " #book_feedback");
-
    },
    error: function(jqXHR, textStatus, errorThrown){
      alert(textStatus, errorThrown);
   }
         })
-
   });
 
-
-  //  	$("#book-rating").change(function(event) {
-	 //    	//disable change if it is selected
-  //   var bookrating=event.target.value;//string
-  //   if (typeof(bookrating)=='string'){
-  //   	var bookratingnum=parseInt(bookrating);
-  //   }
-
-  //   $.ajax({
-  //       	type:'POST',
-  //       	headers: { 'BOOK-RATING': 'UPDATE_DATA' },
-  //       	beforeSend: function(xhr) {
-  //       xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
-  //   },
-        	
-  //       	data:{
-  //       		rank: bookratingnum,
-        		
-  //       	},
-  //       	   success: function(response, textStatus, jqXHR) {
-  //    alert("You have give a rating of"+value);
-  //  },
-  //  error: function(jqXHR, textStatus, errorThrown){
-  //    alert(textStatus, errorThrown);
-  // }
-  //       })
-
-
-  // });
-
-
-
-
-      
-  // $('#hearts').on('starrr:change', function(e, value){
-  //   $('#count').html(value);
-  // });
-  
-  // $('#hearts-existing').on('starrr:change', function(e, value){
-  //   $('#count-existing').html(value);
-  // });
 });
 </script>
 
