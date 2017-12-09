@@ -1,0 +1,173 @@
+
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"> -->
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+{% load static %}
+<link rel="stylesheet" href="{% static 'fontawesome-stars.css' %}">
+
+<style type="text/css">
+
+.title{
+    background-image:url("http://ak1.picdn.net/shutterstock/videos/6983851/thumb/1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: top-;
+    text-align: left;
+    padding: 60px;
+}
+.title h2{
+    color:whitesmoke;
+}
+
+
+#bookcover{
+  height:30em;
+  width:20em;
+}
+
+#SearchItemsContainer
+{
+    display: block;
+
+}
+
+
+
+
+
+.bookinfo p{
+  font-size: 15px;
+}
+
+
+
+
+#logo{
+    display: block;
+    margin: auto;
+    padding: 20px;
+
+
+}
+
+
+
+
+ul {
+
+    list-style-type: none;
+    /*margin-left: 5%;*/
+    margin: auto;
+    /*margin-right: 10%;*/
+    overflow: hidden;
+    /*position: fixed;*/
+    top:100px;
+    /*width:100%;*/
+
+
+}
+
+li {
+    float:left;
+
+}
+
+li a {
+    position: relative;
+    display: block;
+    color: gray;
+    text-transform: capitalize;
+    text-align: center;
+    padding-top: 14px;
+    padding-right: 30px;
+    padding-left: 30px;
+    padding-bottom: 5px;
+    text-decoration: none;
+
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    color: cadetblue;
+}
+
+#search_input {
+  display: flex;
+  align-items: center;
+}
+
+#SearchBar {
+  width: 55%;
+  background: #fffce2;
+  font-family: inherit;
+  color: black;
+  letter-spacing: 1px;
+  text-indent: 5%;
+}
+
+
+.Button {
+  width: 20%;
+  height: 44px;
+  background: #ffd028;
+  font-family: inherit;
+  font-weight: bold;
+  color: inherit;
+  letter-spacing: 1px;
+
+  cursor: pointer;
+  transition: background .3s ease-in-out;
+}
+  
+.search {
+  height: 44px;
+  border: none;
+}
+
+#SearchButton:hover {
+  background: #ffe949;
+}
+
+.styled-select {
+/*   background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 93%;*/
+   /*background-size: 13%;*/
+   height: 44px;
+   overflow: hidden;
+   width: 15%;
+   display: inline-block;
+   
+}
+
+.styled-select select {
+   background: transparent;
+   border: none;
+   font-size: 14px;
+   height: 44px;
+   padding: 1px;
+   width: 15%;
+}
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+}
+.yellow  { background-color: #ffd028; }
+.yellow select  { color: #000; }
+
+
+input:focus {
+    outline: none;
+    outline: 2px solid #ffd028;
+    box-shadow: 0 0 2px #ffd028;
+}
+
+
+
+
+</style>
