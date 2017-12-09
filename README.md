@@ -26,7 +26,7 @@ Packages requirements for the project
   * Python: 3.5
   * [MySQL: 5.5,5.6,5.7](https://dev.mysql.com/downloads/installer/)
   * [Django: 1.8,1.9,1.10,1.11](https://docs.djangoproject.com/en/2.0/intro/install/)
-  * mysqlclient via
+  * mysqlclient via following command
 ```shell
 (virtualenv)$ pip install django-mysql
 ```
@@ -41,6 +41,7 @@ $ source [project location]/bookstoremysqlsetup.sql
 $ source [project location]/project.sql
 ```
 3. Django load project and create superuser
+Superuser is the store manager, and you can only use superuser to explore our store manager sites after logging in.
 ```shell
 # cd to corresponding project folder
 # run following command to makemigrations, mostly for authentication purposes
