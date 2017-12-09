@@ -99,4 +99,16 @@ create trigger after_orders
 
 
 
+delimiter //
+create trigger after_insert_newbook
+	after insert on books
+	for each row
+	begin 
+		insert into record_transaction (copynum, bid) values (new.available_copy, new.ISBN13);
+	end // delimiter ;
+
+
+
+
+
 

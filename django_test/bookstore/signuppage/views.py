@@ -16,7 +16,7 @@ def signup(request):
             return redirect(catalog.views.index)
     else:
         form = UserCreationForm()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'signup2.html', {'form': form})
 
 
 # Create your views here.

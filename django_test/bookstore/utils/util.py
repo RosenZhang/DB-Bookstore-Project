@@ -47,11 +47,25 @@ def get_book_list():
     cursor = connection.cursor()
     cursor.execute('SELECT title FROM DBproject.books')
     titles = [row[0] for row in cursor.fetchall()]
-    #db.close()
     return titles
 
+def get_book_list_v2_with_brief_record(keyword):
+    query = 'select * from books where title like \'%{}%\';'.format(keyword)
+    print('+++++++++++++++++++++++++++++++++++++++++++++++++++{}++++++++++++'.format(query))
+    titles = []
+    details = []
+    books_info = my_custom_sql_dict(query)
+    for book_info in books_info:
+        book_class = books(**book_info)
+        titles.append(book_class.title)
+        details.append(book_class._overview_info())
+    print('++++++++++++++++++++title+++++++++++++++++++++++++++++++{}++++++++++++'.format(titles))
+    print('++++++++++++++++++++details+++++++++++++++++++++++++++++++{}++++++++++++'.format(details))
+    return titles, details
+
+
 def get_book_info(input_ISBN13):
-    book_info =  my_custom_sql_dict("select * from books where ISBN13 = '%s'" %(input_ISBN13))[0]
+    book_info =  my_custom_sql_dict("select * from books where ISBN13 = \'%s\'" %(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
     fetched_class.register_class(book_info_save_to_class)
     # print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
@@ -166,7 +180,9 @@ class books:
 
     def _overview_info(self):
         if not self.overview:
-            self.overview['bookoverview']={'piclink':self.piclink,'title':self.title,'authors':self.authors,
+            self.overview = {'title':self.title,
+                                           'ISBN13':self.ISBN13,
+                                           'authors':self.authors,
                                            'publisher':self.publisher}
         return self.overview
 
