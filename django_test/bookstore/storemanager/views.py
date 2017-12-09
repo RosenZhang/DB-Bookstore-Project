@@ -13,12 +13,16 @@ from .forms import addrecord
 import catalog.views
 import signuppage.views
 
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def storemanager_view(request):
     template='storemanagerindex.html'
     context = {}
     context['record_transaction'] = get_record_transaction_info()
     return render(request,template,context)
 
+@login_required
 def add_transaction_record(request):
     Tid = 'null'
     #print(get_record_transaction_info(Tid))
