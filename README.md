@@ -49,7 +49,7 @@ $ source [project location]\project.sql
 # create superuser
 (virtualenv)$ python manage.py createsuperuser
 ```
-4. Start service and view bookstore at 127.0.0.1:8000
+4. Direct to DB-Bookstore-Project/django_test/bookstore and start service running the following command
 ```shell
 # start service
 (virtualenv)$ python manage.py runserver
