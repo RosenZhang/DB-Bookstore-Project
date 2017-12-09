@@ -19,7 +19,7 @@ These are the following features that are implemented in our bookstore
 --> INSERT IMAGE HERE
 
 # Relational Schema 
-SQL DDL code can be found here [GitHub](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/project.sql).
+SQL DDL code can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/project.sql).
 
 
 # Authors
