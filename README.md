@@ -109,3 +109,5 @@ Our team use git as our main platform so even every team member works on differe
   * [Elaine Cheong 1001721](https://github.com/ElaineJ)
   * [He Jiabei 1001435](https://github.com/HeJiabei616)
 
+# Acknowledgments
+We appreciate Professor Dorien Herremans for teaching us database knowledge and Jon Wong for introducing Django and agile in SUTD 50.008 couse from September to December 2017.
