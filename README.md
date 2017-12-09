@@ -23,7 +23,7 @@ Sample data can be found [here](https://github.com/RosenZhang/DB-Bookstore-Proje
 # Getting started
 ## Prerequisites
 Packages requirements for the project
-  * Python: 2.7
+  * Python: 3.5
   * [MySQL: 5.5,5.6,5.7](https://dev.mysql.com/downloads/installer/)
   * [Django: 1.8,1.9,1.10,1.11](https://docs.djangoproject.com/en/2.0/intro/install/)
   * mysqlclient via
