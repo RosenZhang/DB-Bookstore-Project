@@ -28,7 +28,7 @@ insert into books values (); #(<title>,<piclink>,<format>,<pages>,<subject>,<lan
 #5  The store manager increases the number of copies in inventory.
 insert into record_transaction values ();#(<copynum>,<bid>)
 
-#7 user view all feedback but can only rate others (is it part in django?)
+#7 user have access to view all feedback but they can only rate others (implemented in front end)
 select * from feedback;
 
 
@@ -61,8 +61,8 @@ group by feedback.Fid
 order by avgscore desc
 limit 2;
 
-#10 Book recommendation: including the user his own ordering history
-
+#10 Book recommendation:when a user orders book A, system will recommend books based on ordering records including the user his own ordering history
+#suggested books are arranged in S-type((2n+1)th row, from left to right; (2n)th row, from right to left) on decreasing sales count
 select title, sum(orders.copynum) AS sales from orders,books
 where orders.bid = books.ISBN13
 and books.ISBN13 <> 1
@@ -96,8 +96,4 @@ group by publisher
 order by sum(orders.copynum) DESC
 limit 2;
 
-#返回feedback score
-select score
-from usefulness_rating
-where userid = someuserid
-and Fid = someFid;
+
