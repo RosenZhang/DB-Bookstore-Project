@@ -50,7 +50,7 @@ def get_book_list():
     return titles
 
 def get_book_list_v2_with_brief_record(keyword):
-    query = 'select * from books where title like \'%{}%\';'.format(keyword)
+    query = 'select * from books where title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\';'.format(keyword,keyword,keyword)
     print('+++++++++++++++++++++++++++++++++++++++++++++++++++{}++++++++++++'.format(query))
     titles = []
     details = []
@@ -59,8 +59,8 @@ def get_book_list_v2_with_brief_record(keyword):
         book_class = books(**book_info)
         titles.append(book_class.title)
         details.append(book_class._overview_info())
-    print('++++++++++++++++++++title+++++++++++++++++++++++++++++++{}++++++++++++'.format(titles))
-    print('++++++++++++++++++++details+++++++++++++++++++++++++++++++{}++++++++++++'.format(details))
+    print('++++++++++++++++++++title+++++++++++++++++++++++++++++++{}++++++++++++\n'.format(titles))
+    print('++++++++++++++++++++details+++++++++++++++++++++++++++++++{}++++++++++++\n'.format(details))
     return titles, details
 
 

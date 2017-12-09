@@ -8,7 +8,8 @@ from .models import Book, Author, BookInstance, Genre # use to access data
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
+import signuppage.views
 
 @login_required
 def index(request):
@@ -32,7 +33,7 @@ def index(request):
     login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
-def signup(request):
+def signup_user(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
@@ -41,7 +42,25 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+            return redirect(index)
+        else:
+            pass
+            # TODO: prompt a window
+    return redirect(signuppage.views.signup)
+
+def login_user(request):
+    if request.method == 'POST':
+        for key in request.POST:
+            username = request.POST['username_login']
+            password = request.POST['password_login']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect(index)
     else:
-        form = UserCreationForm()
-    #return render(request, 'signup.html', {'form': form})
+        return redirect(signuppage.views.signup)
+        # TODO: prompt a "invalid username and  password combination"
+
+def logout_user(request):
+    logout(request)
+    return redirect(signuppage.views.signup)
