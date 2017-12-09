@@ -12,7 +12,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 import signuppage.views
 
-@login_required
+
 # def index(request):
 #     """
 #     View function for home page of site.
@@ -43,11 +43,12 @@ def signup_user(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect(index)
+            return redirect(catalog_view)
         else:
             pass
             # TODO: prompt a window
     return redirect(signuppage.views.signup)
+
 
 def login_user(request):
     if request.method == 'POST':
@@ -65,6 +66,7 @@ def login_user(request):
     # TODO: prompt a "invalid username and  password combination"
     #return render(request, 'signup.html', {'form': form})
 
+@login_required
 def catalog_view(request, userid = None):
     template = "index.html"
     context = {}

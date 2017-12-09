@@ -65,6 +65,7 @@ def get_book_list_v2_with_brief_record(keyword):
 
 
 def get_book_info(input_ISBN13):
+    print("_____________________________{}______________________________\n".format(input_ISBN13))
     book_info =  my_custom_sql_dict("select * from books where ISBN13 = \'%s\'" %(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
     fetched_class.register_class(book_info_save_to_class)
