@@ -34,7 +34,7 @@ Packages requirements for the project
 ## Running procedure
 1. Create DB project, user and grant privilage for user in MySQL
 ```MySQL
-$ source [project location]\bookstoremysqlsetup.sql
+$ source [project location]/bookstoremysqlsetup.sql
 ```
 2. Create schema and corresponding triggers
 ```MySQL
