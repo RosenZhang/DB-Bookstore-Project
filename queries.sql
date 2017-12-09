@@ -42,12 +42,9 @@ select * from books
 order by year desc;
 
 #### order by avg feedback
-select books.*, avg(IFNULL(rank,0)) as avgrank from books left join feedback
-on books.ISBN13 = feedback.bid
--- where authors = input_author_optional
--- and publisher = input_publisher_optional
--- and title  = input_title_optinal
--- and subject = input_subject_optional
+select books.*, avg(rank) as avgscore from books left join feedback on 
+feedback.bid=books.ISBN13 where 
+title like <input> or authors like  <input> or publisher like  <input> or subject like <input>
 group by books.ISBN13
 
 #9 For a given book, a user could ask for the top n most useful feedbacks. 
