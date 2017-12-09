@@ -80,12 +80,12 @@
     </ul>
 
   </nav> -->
-  <div class="container-fluid" id="SearchItemsContainer">
+<!--   <div class="container-fluid" id="SearchItemsContainer">
     <div class="row">
       <div class="col-xs-12" id="SearchItems">
       </div>
     </div>
-  </div>
+  </div> -->
   <div id="#search_result_test"></div>
 
 
@@ -97,7 +97,7 @@
 
 
   <script>
-//TODO:select something then it will update the 'input', submit then it will show the records
+
 var searchItems ={{book_list |safe }};
 
 
@@ -115,18 +115,13 @@ $( document ).ready( function( )
     // {
     //     ToggleSearch( event );
     // } );
-    function ToggleSearch( event )
-    {
-        event.preventDefault( ); //prevent submission of form
 
-        $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear if we are using search functions
-      }
 
     $( "#SearchButton" ).click( function( event ) // detect search function is clicked
     {
       event.preventDefault( ); //prevent submission of form
 
-      // ToggleSearch( event );
+     
 
       $.ajax({
         type : "POST",
@@ -138,13 +133,27 @@ $( document ).ready( function( )
             search_keyword: $('#SearchBar').val()
                 // scrfmiddlewaretoken: $("input[name=scrfmiddlewaretoken]").val()
               },
-          success: function(response, textStatus, jqXHR){ // if request works, function will response
+          success: function(resp){ // if request works, function will response
             // $("#search_result").load(location.href + " #search_result");
-              alert("You have keyed in "+$('#SearchBar').val());
+              // alert("You have keyed in "+$('#SearchBar').val());
               // $("#search_result").load(location.href + " #search_result");
-                $('#search_result_test').html("hi");
+              data=resp.books;
+              var htmlText = '';
+
+            for ( var book in data ) {
+                htmlText +='  <a href="'+data[book].ISBN13+'" class="list-group-item list-group-item-action flex-column align-items-start">';
+                htmlText += '<div class="d-flex w-100 justify-content-between">';
+                htmlText += '<h5 class="mb-1">' + data[book].title + '</h5>';
+                htmlText += '<small>' + data[book].authors + '</small>';
+                htmlText += '<small>,' + data[book].publisher + '</small>';
+                htmlText += '</div>';
+                htmlText += '</a>';
+            }
+            
+            $("#search_result").html(htmlText);
+              
               },
-            // dataType: 'html' // what we are expecting
+         
           });
 
     
@@ -152,20 +161,20 @@ $( document ).ready( function( )
 
 
 
-    $( "#SearchBar" ).keyup( function( ) {  //when the key is release
+    // $( "#SearchBar" ).keyup( function( ) {  //when the key is release
 
-      $( "#SearchItems" ).empty( );
+    //   $( "#SearchItems" ).empty( );
 
-      for ( var i = 0; i < searchItems.length; i++ )
-      {
-        var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
-        if ( searchItems[i].toLowerCase( ).includes( searchInput )
-         && searchInput.length > 0 )
-        {
-          $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
-        }
-      }
-    } );
+    //   for ( var i = 0; i < searchItems.length; i++ )
+    //   {
+    //     var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
+    //     if ( searchItems[i].toLowerCase( ).includes( searchInput )
+    //      && searchInput.length > 0 )
+    //     {
+    //       $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
+    //     }
+    //   }
+    // } );
   } );
 </script>
 </body>

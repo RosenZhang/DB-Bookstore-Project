@@ -1,7 +1,12 @@
 
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_book_info,get_feedback_info,save_user_usefulness_rating, save_user_order, return_user_usefulness_rate, check_user_has_posted_feedback, save_user_feedback, get_feedback_info_with_limit,get_book_recommendation
+=======
+from django.http import HttpResponse
+import json
+>>>>>>> webdesign
 
 
 # Create your views here.
@@ -25,13 +30,16 @@ def usermainpage_view(request):
     if 'HTTP_SEARCH_BOOK' in request.META:
         search_key_word = request.POST['search_keyword']
         print ("0000000000000000input {} \n\n".format(search_key_word)) # watch your command line
+        book_list, books = get_book_list_v2_with_brief_record(search_key_word)
+        return HttpResponse(json.dumps({'books': books}), content_type="application/json")
 
     else:
         print(" no post detection+_+_+_+_+_+_+_+_ POST,,,,,,,,,,{}\n".format(search_key_word))
-    book_list, books = get_book_list_v2_with_brief_record(search_key_word)
+    book_list=get_book_list()
+    
     # books = [{'title':'book1','ISBN13':'1028374','authors':"author1", 'publisher':"publisher1"},
   # {'title':'book2','ISBN13':'1028375','authors':"author2", 'publisher':"publisher1"}]
-    context={'book_list':book_list,'books':books}
+    context={'book_list':book_list}
     return render(request,template,context)
 
 

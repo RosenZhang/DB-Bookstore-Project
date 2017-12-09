@@ -12,26 +12,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 import signuppage.views
 
-# def index(request):
-#     """
-#     View function for home page of site.
-#     """
-#     # Generate counts of some of the main objects
-#     num_books = Book.objects.all().count()
-#     num_instances = BookInstance.objects.all().count()
-#     # Available books (status = 'a')
-#     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
-#     num_authors = Author.objects.count()  # The 'all()' is implied by default.
-#
-#     # Render the HTML template index.html with the data in the context variable
-#     return render(
-#         request,
-#         'index.html',
-#         context={'num_books': num_books, 'num_instances': num_instances,
-#                  'num_instances_available': num_instances_available, 'num_authors': num_authors},
-#     )
-#     login_url = '/login/'
-#     redirect_field_name = 'redirect_to'
 
 def signup_user(request):
     if request.method == 'POST':
@@ -63,7 +43,7 @@ def login_user(request):
     else:
         return redirect(signuppage.views.signup)
     # TODO: prompt a "invalid username and  password combination"
-    #return render(request, 'signup.html', {'form': form})
+
 
 @login_required
 def catalog_view(request, userid = None):
