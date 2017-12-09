@@ -83,6 +83,6 @@ $ source [project location]/sample.sql
   * [Zou Yun 1001831](https://github.com/pappar1027)
   * [Zhang Ruochen 1001433](https://github.com/RosenZhang)
   * [Wu Jinglian 1001428](https://github.com/Gilliamwu)
-  * [Elaine Cheong](https://github.com/ElaineJ)
+  * [Elaine Cheong 1001721](https://github.com/ElaineJ)
   * [He Jiabei 1001435](https://github.com/HeJiabei616)
 
