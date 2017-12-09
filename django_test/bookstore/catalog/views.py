@@ -12,7 +12,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 import signuppage.views
 
-@login_required
 # def index(request):
 #     """
 #     View function for home page of site.
@@ -65,6 +64,7 @@ def login_user(request):
     # TODO: prompt a "invalid username and  password combination"
     #return render(request, 'signup.html', {'form': form})
 
+@login_required
 def catalog_view(request, userid = None):
     template = "index.html"
     context = {}
