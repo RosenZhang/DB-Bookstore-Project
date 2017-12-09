@@ -59,6 +59,10 @@ $ source [project location]\sample.sql
 # Relational Schema 
 SQL DDL code can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/project.sql).
 
+# Features
+## RESTFUL call
+
+## Django Ajax
 
 # Authors
   * [Zou Yun](https://github.com/pappar1027)
