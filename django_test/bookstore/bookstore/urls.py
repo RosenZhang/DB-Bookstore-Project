@@ -38,7 +38,6 @@ urlpatterns = [
     url(r'^accounts/login', catalog.views.login_user, name='login'),
     url(r'^accounts/signup', catalog.views.signup_user),
     url(r'^accounts/logout', catalog.views.logout_user,name='logout'),
-
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

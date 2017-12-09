@@ -11,27 +11,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 import signuppage.views
-
-# def index(request):
-#     """
-#     View function for home page of site.
-#     """
-#     # Generate counts of some of the main objects
-#     num_books = Book.objects.all().count()
-#     num_instances = BookInstance.objects.all().count()
-#     # Available books (status = 'a')
-#     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
-#     num_authors = Author.objects.count()  # The 'all()' is implied by default.
-#
-#     # Render the HTML template index.html with the data in the context variable
-#     return render(
-#         request,
-#         'index.html',
-#         context={'num_books': num_books, 'num_instances': num_instances,
-#                  'num_instances_available': num_instances_available, 'num_authors': num_authors},
-#     )
-#     login_url = '/login/'
-#     redirect_field_name = 'redirect_to'
+import storemanager.views
 
 def signup_user(request):
     if request.method == 'POST':
@@ -48,34 +28,39 @@ def signup_user(request):
             # TODO: prompt a window
     return redirect(signuppage.views.signup)
 
+
 def login_user(request):
+    username = None
+    password = None
     if request.method == 'POST':
         for key in request.POST:
             username = request.POST['username_login']
             password = request.POST['password_login']
         user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect(catalog_view)
+        if 'manager_login' in request.POST:
+            if user is not None and user.is_superuser:
+                return redirect(storemanager.views.storemanager_view)
         else:
-            return  redirect(signuppage.views.signup)
+            if user is not None:
+                login(request, user)
+                return redirect(catalog_view)
+            else:
+                return  redirect(signuppage.views.signup)
     else:
         return redirect(signuppage.views.signup)
-    # TODO: prompt a "invalid username and  password combination"
-    #return render(request, 'signup.html', {'form': form})
+        # TODO: prompt a "invalid username and  password combination"
+
 
 @login_required
-def catalog_view(request, userid = None):
+def catalog_view(request):
     template = "index.html"
     context = {}
-    context['order_history'] = get_order_history()
-    context['user_info'] = get_user_information()
-    context['feedback_history'] = get_feedback_history()
-    context['rating_history'] = get_rating_history()
-
-
+    userid = request.user.id
+    context['order_history'] = get_order_history(userid)
+    context['user_info'] = get_user_information(userid)
+    context['feedback_history'] = get_feedback_history(userid)
+    context['rating_history'] = get_rating_history(userid)
     return render(request,template,context)
-
 
 def logout_user(request):
     logout(request)
