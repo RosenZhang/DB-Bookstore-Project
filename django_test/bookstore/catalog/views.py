@@ -57,6 +57,8 @@ def login_user(request):
         if user is not None:
             login(request, user)
             return redirect(index)
+        else:
+            return  redirect(signuppage.views.signup)
     else:
         return redirect(signuppage.views.signup)
         # TODO: prompt a "invalid username and  password combination"
