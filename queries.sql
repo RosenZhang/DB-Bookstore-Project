@@ -52,7 +52,6 @@ group by books.ISBN13
 
 #9 For a given book, a user could ask for the top n most useful feedbacks. 
 #The usefulness of a feedback is its average usefulness score.
-
 select auth_user.username, Feedback_giver, feedback.Fid, rank, Fcomment, avg(IFNULL(usefulness_rating.score, 0)) as avgscore
 from (feedback left join usefulness_rating on feedback.Fid = usefulness_rating.Fid) join auth_user
 on feedback.Feedback_giver = auth_user.id
