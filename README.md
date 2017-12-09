@@ -16,8 +16,9 @@ These are the following features that are implemented in our bookstore
 # Entity Relationship Diagram
 ![alt text](https://github.com/RosenZhang/DB-Bookstore-Project/blob/master/DB_bookstore.jpg)
 
-# Relational Schema 
+# Relational Schema and Sample Data
 SQL DDL code can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/project.sql).
+Sample data can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/sample.sql)
 
 # Getting started
 ## Prerequisites
