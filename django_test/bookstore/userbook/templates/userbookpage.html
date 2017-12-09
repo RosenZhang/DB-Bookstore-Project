@@ -7,23 +7,13 @@
     <h2>Bookstore</h2>
     <br>
 </div>
-
+ {% csrf_token %}
+ <div class="list-group" id="search_result">
+ </div> 
 
 <!--a placeholder image or popular books-->
 <!--when something is searched, show booktitle, author, copies etc in a list-->
-<div class="list-group">
-{% for book in books %}
-  <a href="{{book.ISBN13}}" class="list-group-item list-group-item-action flex-column align-items-start">
-    <div class="d-flex w-100 justify-content-between">
-      <h5 class="mb-1">{{ book.title }}</h5>
-      <small>{{ book.authors }}</small>
-    </div>
-    <p class="mb-1"></p>
-    <!-- <small>Donec id elit non mi porta.</small> -->
-  </a>
 
- {% endfor %}
-</div>
 
 <!--when some book is clicked, show a page with the information of the book, with feedback, recommendation-->
 <!-- <div>

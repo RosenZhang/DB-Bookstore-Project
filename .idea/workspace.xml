@@ -2,11 +2,224 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e537c4bc-2d7d-42ae-b968-b0aab07af656" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/storemanager/utils.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/antenna.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/antenna@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/bars.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/bars@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/github.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/github@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/star.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/img/star@2x.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/.idea/bookstore.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/.idea/workspace.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/.npmignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/CHANGELOG.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/jquery.barrating.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/jquery.barrating.min.js.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/bars-1to10.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/bars-horizontal.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/bars-movie.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/bars-pill.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/bars-reversed.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/bars-square.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/bootstrap-stars.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/css-stars.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/fontawesome-stars-o.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/dist/themes/fontawesome-stars.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/css/examples.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/css/main.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/css/normalize.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/css/normalize.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/js/examples.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/js/vendor/html5shiv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/js/vendor/jquery-1.11.2.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/less/examples.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/less/main.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/less/mixins.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/examples/less/variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/gulpfile.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/jquery.barrating.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/karma.conf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/test/jquery.barrating-spec.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/bars-1to10.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/bars-horizontal.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/bars-movie.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/bars-pill.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/bars-reversed.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/bars-square.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/bootstrap-stars.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/css-stars.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/fontawesome-stars-o.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/fontawesome-stars.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/mixins.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery-bar-rating/themes/variables.less" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/AUTHORS.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/bower.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/dist/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/dist/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/dist/jquery.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/dist/jquery.min.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/dist/jquery.slim.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/dist/jquery.slim.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/dist/jquery.slim.min.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/external/sizzle/LICENSE.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/external/sizzle/dist/sizzle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/external/sizzle/dist/sizzle.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/external/sizzle/dist/sizzle.min.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/package.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/.eslintrc.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/jsonp.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/load.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/parseXML.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/script.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/var/location.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/var/nonce.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/var/rquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/ajax/xhr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/attributes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/attributes/attr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/attributes/classes.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/attributes/prop.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/attributes/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/attributes/val.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/callbacks.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/DOMEval.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/access.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/init.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/nodeName.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/parseHTML.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/ready-no-deferred.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/ready.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/readyException.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/stripAndCollapse.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/core/var/rsingleTag.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/addGetHookIf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/adjustCSS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/curCSS.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/hiddenVisibleSelectors.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/showHide.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/var/cssExpand.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/var/getStyles.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/var/isHiddenWithinTree.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/var/rmargin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/var/rnumnonpx.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/css/var/swap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/data/Data.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/data/var/acceptData.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/data/var/dataPriv.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/data/var/dataUser.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/deferred.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/deferred/exceptionHook.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/deprecated.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/dimensions.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/effects.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/effects/Tween.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/effects/animatedSelector.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/event.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/event/ajax.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/event/alias.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/event/focusin.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/event/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/event/trigger.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/exports/amd.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/exports/global.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/jquery.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/_evalUrl.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/buildFragment.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/getAll.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/setGlobalEval.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/var/rcheckableType.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/var/rscriptType.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/var/rtagName.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/manipulation/wrapMap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/offset.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/queue.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/queue/delay.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/selector-native.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/selector-sizzle.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/selector.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/serialize.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/traversing.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/traversing/findFilter.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/traversing/var/dir.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/traversing/var/rneedsContext.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/traversing/var/siblings.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/ObjectFunctionString.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/arr.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/class2type.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/concat.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/document.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/documentElement.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/fnToString.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/getProto.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/hasOwn.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/indexOf.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/pnum.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/push.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/rcssNum.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/rnothtmlwhite.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/slice.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/support.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/var/toString.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/node_modules/jquery/src/wrap.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/package-lock.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/queries.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/sample.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/admin.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/apps.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/migrations/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/models.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/static/css/style.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/static/js/index.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/static/scss/style.scss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/templates/index.pug" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/templates/signup2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/tests.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/views.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/registration/signup2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/static/fontawesome-stars.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/static/jquery.barrating.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/utils/__init__.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/utils/fetched_class.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/utils/util.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/queries.sql" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/sample.sql" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/utils.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/django_test/bookstore/catalog/templates/signup.html" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/templates/signup.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" afterPath="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py" afterPath="$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/catalog/models.py" afterPath="$PROJECT_DIR$/django_test/bookstore/catalog/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html" afterPath="$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/catalog/views.py" afterPath="$PROJECT_DIR$/django_test/bookstore/catalog/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/project.sql" afterPath="$PROJECT_DIR$/django_test/bookstore/project.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/templates/base.html" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/templates/snippets/css.html" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/snippets/css.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/templates/snippets/js.html" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/snippets/js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/urls.py" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/views.py" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.sql" afterPath="$PROJECT_DIR$/project.sql" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,21 +231,35 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py">
+      <file leaf-file-name="util.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/utils/util.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="43" column="18" lean-forward="false" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
+            <state relative-caret-position="1471">
+              <caret line="170" column="23" lean-forward="false" selection-start-line="170" selection-start-column="23" selection-end-line="170" selection-end-column="23" />
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+                <marker date="1512792610000" expanded="true" signature="650:778" ph="..." />
+                <marker date="1512792610000" expanded="true" signature="690:778" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="storemanagerindex.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <element signature="e#24#63#0" expanded="true" />
               </folding>
@@ -40,87 +267,79 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/templates/index.html">
+      <file leaf-file-name="book.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="2160">
+              <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <marker date="1512792610000" expanded="true" signature="12699:12711" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/urls.py">
+      <file leaf-file-name="userbookpage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/bookstore/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+            <state relative-caret-position="124">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
-                <element signature="e#644#676#0" expanded="true" />
+                <marker date="1512792610000" expanded="true" signature="447:653" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="storemanagerindex.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html">
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="utils.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/utils.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="359">
+              <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <marker date="1512792610000" expanded="true" signature="3365:3368" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tests.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/tests.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/models.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/apps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <folding>
+                <element signature="e#27#62#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -159,15 +378,15 @@
         <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/urls.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/utils.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html" />
-        <option value="$PROJECT_DIR$/django_test/bookstore/catalog/models.py" />
         <option value="$PROJECT_DIR$/django_test/bookstore/bookstore/settings.py" />
+        <option value="$PROJECT_DIR$/django_test/bookstore/catalog/models.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="382" />
+    <option name="x" value="600" />
     <option name="y" value="23" />
-    <option name="width" value="983" />
+    <option name="width" value="680" />
     <option name="height" value="728" />
   </component>
   <component name="ProjectView">
@@ -185,7 +404,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -248,6 +466,28 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="utils" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bookstore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="userbook" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -270,7 +510,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="userbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="django_test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bookstore" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="userbook" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="migrations" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,32 +611,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="catalog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="django_test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bookstore" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="catalog" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -395,6 +639,7 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -528,18 +773,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="382" y="23" width="983" height="728" extended-state="0" />
+    <frame x="600" y="23" width="680" height="728" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23702951" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15735294" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18968134" sideWeight="0.5078278" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32776934" sideWeight="0.51198256" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39908952" sideWeight="0.4921722" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.48801744" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -581,7 +826,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -589,7 +833,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -605,9 +848,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
           <folding>
-            <element signature="e#1#36#0" expanded="true" />
-            <marker date="1511687187000" expanded="true" signature="130:398" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="468:1103" ph="..." />
+            <marker date="1512792610000" expanded="true" signature="3365:3368" ph="..." />
           </folding>
         </state>
       </provider>
@@ -616,7 +857,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="55" lean-forward="false" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -645,7 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -661,9 +900,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
           <folding>
-            <element signature="e#1#36#0" expanded="true" />
-            <marker date="1511687187000" expanded="true" signature="130:398" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="468:1103" ph="..." />
+            <marker date="1512792610000" expanded="true" signature="3365:3368" ph="..." />
           </folding>
         </state>
       </provider>
@@ -672,7 +909,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="8" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1512792610000" expanded="true" signature="447:653" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -680,7 +919,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="55" lean-forward="false" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -688,7 +926,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -710,7 +947,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1018">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -718,7 +954,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="8" selection-end-column="6" />
-          <folding />
+          <folding>
+            <marker date="1512792610000" expanded="true" signature="447:653" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -733,7 +971,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="13" column="55" lean-forward="false" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -741,7 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -757,9 +993,7 @@
         <state relative-caret-position="90">
           <caret line="6" column="42" lean-forward="false" selection-start-line="6" selection-start-column="42" selection-end-line="6" selection-end-column="42" />
           <folding>
-            <element signature="e#1#36#0" expanded="true" />
-            <marker date="1511687187000" expanded="true" signature="130:398" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="468:1103" ph="..." />
+            <marker date="1512792610000" expanded="true" signature="3365:3368" ph="..." />
           </folding>
         </state>
       </provider>
@@ -778,13 +1012,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/templates/signup.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/templates/signup.html" />
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-29">
@@ -795,16 +1023,21 @@
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/__init__.py" />
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-28">
-          <caret line="58" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+        <state relative-caret-position="2160">
+          <caret line="144" column="8" lean-forward="false" selection-start-line="144" selection-start-column="8" selection-end-line="144" selection-end-column="8" />
+          <folding>
+            <marker date="1512792610000" expanded="true" signature="12699:12711" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="124">
+          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <marker date="1512792610000" expanded="true" signature="447:653" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -812,7 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1065">
           <caret line="71" column="6" lean-forward="false" selection-start-line="71" selection-start-column="6" selection-end-line="71" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -820,18 +1052,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="359">
+          <caret line="80" column="0" lean-forward="false" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding>
-            <element signature="e#1#36#0" expanded="true" />
-            <marker date="1511687187000" expanded="true" signature="130:398" ph="..." />
-            <marker date="1511687187000" expanded="true" signature="468:1103" ph="..." />
+            <marker date="1512792610000" expanded="true" signature="3365:3368" ph="..." />
           </folding>
         </state>
       </provider>
@@ -863,7 +1092,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#27#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -871,7 +1102,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -879,9 +1109,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="236">
           <caret line="34" column="4" lean-forward="true" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-          <folding>
-            <element signature="e#644#676#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -889,9 +1116,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="8" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -899,7 +1123,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -907,25 +1130,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/utils.py" />
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/utils.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -933,17 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#24#63#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -951,15 +1152,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="43" column="18" lean-forward="false" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/storemanager/templates/storemanagerindex.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="14" lean-forward="true" selection-start-line="21" selection-start-column="14" selection-end-line="21" selection-end-column="14" />
+        <state relative-caret-position="210">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/django_test/bookstore/catalog/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding>
+            <element signature="e#24#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
