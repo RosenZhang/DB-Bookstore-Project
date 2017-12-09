@@ -72,6 +72,7 @@ $ source [project location]/sample.sql
 3. By click the search book button on the top bar, you will be directed to the search page and you can click any books in your search result for more details
 4. In the book details page, you can see detail info about the book and other's feedback on the book.
 5. After ordering the book, you'll be directed to the order confirmation page where all the recommendations will be displayed.
+![alt text](https://github.com/RosenZhang/DB-Bookstore-Project/blob/master/RecommendationPage.png)
 #### Log in as store manager
 1. Input you superuser account then click manager button to login
 ![alt text](https://github.com/RosenZhang/DB-Bookstore-Project/blob/master/Storemanager.png)
