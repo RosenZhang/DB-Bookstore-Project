@@ -1,7 +1,7 @@
 # Bookstore
 This is a web application that is implemented using Django 
 
-# Features
+# Project Requirements
 These are the following features that are implemented in our bookstore
 
   * Registration 
@@ -80,26 +80,26 @@ $ source [project location]/sample.sql
 3. By clicking the add new record order, you can input book details to increase the inventory.
 
 # Features
-## Double checking of commenting data
+#### Double checking of commenting data
 When we are adding data via website, our front end will have check of all the conditions (number of available copies, data format etc), and in Database, schema and trigger design also makes sure no bad datas are inserted, like any order of unexisting books. Our double protection makes sure the correctness and safety of the whole bookstore system.
 
-## MySQL collection utils
+#### MySQL collection utils
 All MySQL handling are put under project/utils/util file, for clear management of the code in Django.
 
-## RESTFUL call
+#### RESTFUL call
 For passing of information within the program, like the passing ISBN13 of book between genearl book page and book details page, we basically use RESTful call. We will pass parameters via URL conf and use Restful API, by simply registering viewsets with a router class. The RESTful call make whole structure more seralized and easier for debugging.
 
-## Django Ajax
+#### Django Ajax
 Ajax request is used in web application as it makes whole application faster and more dynamic when HTML pass data to script. AJAX also helps to avoid inline scripts. AJAX works together with JQuery, make part of page reloadable and thus reduce the number of pages loads.
 Examples of Ajax could be seen at almost all our html pages that POST data to corresponding views.py.
 
-## Code recycling
+#### Code recycling
 To make the whole project more efficient, we implement idea of code recycling. The template folder only contains base.html that from which all other websites inherit from. Base html has HOME, SEARCH BOOK, LOGOUT that leads to corresponding website, so user can direct use any of these function on every website (home page/book page/ order confirmation page/ store manager page).
 
-## Recommendation
+#### Recommendation
 Book recommendation:when a user orders book A, system will recommend books based on ordering records including the user his own ordering history. Suggested books are arranged in S-type((2n+1)th row, from left to right; (2n)th row, from right to left) on decreasing sales count.
 
-## Usage of git
+#### Usage of git
 Our team use git as our main platform so even every team member works on different features, code is still regulated under one big project. Everyone has a branch and we can view eacn one's update and commitment clearly.
 
 # Authors
