@@ -24,9 +24,6 @@ def add_transaction_record(request):
     if request.method == 'POST':
         form = addrecord(request.POST)
         if form.is_valid():
-            #and (d['Bid'] == 'Bid' for d in get_record_transaction_info(Tid)):
-			#Tid = form.cleaned_data['Tid']
-			#Tdate = form.cleaned_data['Tdate']
             title = form.cleaned_data['title']
             piclink = form.cleaned_data['piclink']
             format = form.cleaned_data['format']
@@ -40,33 +37,23 @@ def add_transaction_record(request):
             copynum = form.cleaned_data['copynum']
             Bid =form.cleaned_data['Bid']
             now = 'now()'
-
-
-            #if Bid in get_record_transaction_info.bid.values():
-            # if not any(d['Bid'] == 'Bid' for d in get_record_transaction_info.record_transaction_result):
-            #     form = addrecord()
-            #
-            # else:
             cursor = connection.cursor()
             #cursor.execute("SET FOREIGN_KEY_CHECKS=1")
             bidlist=list(d['bid'] for d in get_record_transaction_info())
             print(bidlist)
             if Bid in bidlist:
-                print('hi')
                 # if ISBN13 is found in book records
                 cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
                     Tid, now, copynum, Bid)))
                 #cursor.execute(("select * from record_transaction order by Tid ASC"))
                 return HttpResponseRedirect(reverse('storemanager'))
             else:
-                print ("hello")
                 #when ISBN13 is not found in book record this will be run
                 cursor.execute(("insert into books(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,isbn13,available_copy) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"
                     %(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,Bid,available_copy)))
                 cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
                    Tid, now, copynum, Bid)))
                 return HttpResponseRedirect(reverse('storemanager'))
-                #form = addrecord()
 
             form.save()
 

@@ -2,8 +2,7 @@ from django import forms
 from django.core.exceptions import ValidationError
 
 class addrecord(forms.Form):
-    #Tid = forms.CharField(required=True)
-    #Tdate =forms.DateField(required=True)
+
     title =forms.CharField()
     piclink = forms.CharField()
     format = forms.CharField()
