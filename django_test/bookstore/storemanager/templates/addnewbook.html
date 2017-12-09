@@ -1,51 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
+{% extends "base.html" %}
 
-    <title>New Record to be added</title>
-
-</head>
-<body>
-
-<p> </p>
+{% block content %}
 
 
-<p>Please insert any new book information here:</p>
 
-<p> </p>
+
+<h3>Book does not exist. Please insert any new book information here:</h3>
+
 
 <form action="" method="post" id="transactionForm">
     {% csrf_token %}
-	<label for="title">Title: </label>
-    <p><input id="title" type="text" name="title"></p>
+    <label for="Bid"> ISBN-13: </label>
+    <p><input id="Bid" type="text" name="Bid" required="true"></p>
+
+
+    <!-- <button type="submit" class="Button" id="checkButton">Check whether book exists</button> -->
+
+    <label for="title">Title: </label>
+    <p><input id="title" type="text" name="title" required="true"></p>
     <label for="piclink">Picture Link: </label>
-    <p><input id="piclink" type="text" name="piclink"></p>
+    <p><input id="piclink" type="text" name="piclink" required="true"></p>
     <label for="format">Format: </label>
-    <p><input id="format" type="text" name="format"></p>
+    <p><input id="format" type="text" name="format" required="true"></p>
     <label for="pages">Number of pages: </label>
-    <p><input id="pages" type="text" name="pages"></p>
+    <p><input id="pages" type="text" name="pages" required="true"></p>
     <label for="subject">Subject: </label>
-    <p><input id="subject" type="text" name="subject"></p>
+    <p><input id="subject" type="text" name="subject" required="true"></p>
     <label for="language">Language: </label>
-    <p><input id="language" type="text" name="language"></p>
+    <p><input id="language" type="text" name="language" required="true"></p>
     <label for="authors">Authors: </label>
-    <p><input id="authors" type="text" name="authors"></p>
+    <p><input id="authors" type="text" name="authors" required="true"></p>
     <label for="publisher">Publisher: </label>
-    <p><input id="publisher" type="text" name="publisher"></p>
+    <p><input id="publisher" type="text" name="publisher" required="true"></p>
     <label for="year">Year: </label>
-    <p><input id="year" type="text" name="year"></p>
+    <p><input id="year" type="text" name="year" required="true"></p>
     <label for="isbn10">ISBN10: </label>
-    <p><input id="isbn10" type="text" name="isbn10"></p>
+    <p><input id="isbn10" type="text" name="isbn10" required="true"></p>
     <label for="copynum"> Number of copies: </label>
 	<p><input id="copynum" type="text" name="copynum" required="true"></p>
-    <label for="Bid"> ISBN-13: </label>
-	<p><input id="Bid" type="text" name="Bid" required="true"></p>
-	<input type="submit" value="Save"  />
+
+	<input type="submit" value="Save" ></input> 
 
 	</form>
-    <button><a href="{% url 'storemanager' %}">Cancel</a></button>
-
-
-</body>
-</html>
+    <button><a href="{% url 'storemanager' %}">Go back</a></button>
+<script type="text/javascript">
+    
+</script>
+{% endblock %}

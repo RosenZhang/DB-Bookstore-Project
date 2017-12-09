@@ -73,7 +73,7 @@ bookorder page:
     <option value="7">7</option>
     <option value="8">8</option>
     <option value="9">9</option>
-    <option value="10">10</option>
+    <option value="10" selected>10</option>
   </select>
   <label for="comment">Your comment:</label>
   <textarea class="form-control" rows="5" id="comment" placeholder="Optional"></textarea>
@@ -132,6 +132,10 @@ $( document ).ready(function() {
 	    		alert('Enter a number.');
 	    		return;
 	    	}
+        if($('#num_of_books').val()<=0){
+          alert('Enter a number larger than 0.');
+          return;
+        }
 	    	//check if input is larger than available
 	    	var num_of_books=$('#num_of_books').val()
 	    	if(num_of_books>availablecopy){

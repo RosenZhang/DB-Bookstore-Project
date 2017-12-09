@@ -6,10 +6,20 @@
 </div>
 
 <h2>Welcome Store Manager</h2>
+<<<<<<< HEAD
 <br>
 <button class="Button search"><a href="{% url 'add_transaction_record' %}">Add Transaction Record</a></button>
 
 
+=======
+<button class="Button search" id="to-add-record">Add Transaction Record</button>
+<form id='check-book-exists' style="display: inline-block;">
+  <input id="userbid" name="userbid" style="padding: 7px; margin: 5px" placeholder="Book ISBN13" type="text" required="true">
+  <button type="submit" id="check-button" class="btn btn-default">Check whether the book exists</button>
+</form>
+<br>
+<br>
+>>>>>>> final
   <ul>
 
     <h3>Transaction Records:</h3>
@@ -36,14 +46,18 @@ tr:nth-child(even) {
 }
 </style>
 
+<<<<<<< HEAD
     <table id = "transaction_table">
+=======
+    <table>
+>>>>>>> final
 
   <tr>
-    <th onclick="'sortTable(0)">Transaction ID</th>
-    <th onclick="'sortTable(1)">Transaction Date</th>
-    <th onclick="'sortTable(2)">Number of Copies added</th>
-      <th onclick="'sortTable(3)">Title</th>
-    <th onclick="'sortTable(4)">Number of Copies in Bookstore</th>
+    <th >Transaction ID</th>
+    <th>Transaction Date</th>
+    <th >Number of Copies added</th>
+      <th >Title</th>
+    <th>Number of Copies in Bookstore</th>
   </tr>
         {% for records in record_transaction %}
   <tr>
@@ -125,7 +139,52 @@ tr:nth-child(even) {
 
 
   </ul>
+<script type="text/javascript">
+$(function(){
+  $("#check-book-exists").hide();
+  $("#to-add-record").click(function(){
+    $("#check-book-exists").show();
+  })
+    $("#check-button").click(function(){
+      if (!$('#userbid').val()){
+          alert('Enter an ISBN13.');
+          return;
+        }
+      var ISBN13=$('#userbid').val();
+      $.ajax({
+          type:'POST',
+          beforeSend: function(xhr) {
+        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+    },
 
+          data:{
+            bid:ISBN13
+          },
+             success: function(response) {
+              var book_exists=response.book_exists;
+              if(book_exists){
+                window.location.pathname='/storemanager/addrecord/';
+              }
+              else{
+                window.location.pathname='/storemanager/addbook/';
+              }
+
+   },
+   error: function(jqXHR, textStatus, errorThrown){
+     alert(textStatus, errorThrown);
+  }
+
+        })
+
+  })
+
+
+
+  
+
+});
+  
+</script>
 
 
 {% endblock %}

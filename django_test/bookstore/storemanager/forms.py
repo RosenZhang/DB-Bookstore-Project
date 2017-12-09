@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 
-class addrecord(forms.Form):
+class addbook(forms.Form):
 
     title =forms.CharField()
     piclink = forms.CharField()
@@ -13,6 +13,10 @@ class addrecord(forms.Form):
     publisher = forms.CharField()
     year = forms.CharField()
     isbn10 = forms.CharField()
+    copynum =forms.CharField(required=True)
+    Bid =forms.CharField(required=True)
+
+class addrecord(forms.Form):
     copynum =forms.CharField(required=True)
     Bid =forms.CharField(required=True)
 
