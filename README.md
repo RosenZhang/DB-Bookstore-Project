@@ -1,7 +1,16 @@
 # Bookstore
 ###### This is a web application that is implemented using Django 
+###### 50.008 Database Project
+# Features
+###### These are the followung features that are implemented in our bookstore
+###### * Registration
+###### * Ordering
+###### * User Records
+###### * Feedback Ratings
+###### * Usefulness Ratings
+###### * Browsing 
+###### * Recommendations
+###### * Stastics 
 
-## 50.008 Database Project
-###### A Bookstore is created with the following features: 
 
 
