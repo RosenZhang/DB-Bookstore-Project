@@ -1,8 +1,7 @@
 import json
 import datetime
 from django.db import connection
-
-from . import fetched_class
+from datetime import timedelta
 
 
 ######################## basic mysql command
@@ -68,7 +67,6 @@ def get_book_info(input_ISBN13):
     print("_____________________________{}______________________________\n".format(input_ISBN13))
     book_info =  my_custom_sql_dict("select * from books where ISBN13 = \'%s\'" %(input_ISBN13))[0]
     book_info_save_to_class = books(**book_info)
-    fetched_class.register_class(book_info_save_to_class)
     # print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
@@ -217,12 +215,77 @@ def check_user_has_posted_feedback(userid,bid):
 def get_record_transaction_info():
     record_transaction_info = my_custom_sql_dict("SELECT Tid, Tdate, copynum, title, bid, available_copy FROM record_transaction, books WHERE bid = books.ISBN13")
     record_transaction_result = []
-    #print (record_transaction_result)
+    print("yoooooooooo===================")
+    print (record_transaction_result)
     for each_record_transaction in record_transaction_info:
         record_transaction_save_to_class = record_transaction(**each_record_transaction)
         record_transaction_result.append(record_transaction_save_to_class._record_transaction_info())
     #print ("\n\n transaction============================",record_transaction_result)
     return record_transaction_result
+
+def get_order_author_info():
+    format = '%Y-%m-%d %H:%M:%S'
+    now = datetime.datetime.now().replace(microsecond=0).strftime(format)
+    previous =(datetime.datetime.now().replace(microsecond=0) + datetime.timedelta(-30)).strftime(format)
+
+
+    order_author_info = my_custom_sql_dict("select books.authors,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by authors order by copynum DESC Limit 1"%(previous,now))
+    order_author_result = []
+    # print(order_author)
+    # print(now)
+    # print(previous)
+    # print (type(now))
+    # print (type(previous))
+
+    #print (order_author_result)
+    for each_order_author in order_author_info:
+        order_author_save_to_class = order_author(**each_order_author)
+        order_author_result.append(order_author_save_to_class._order_author_info())
+    #print ("\n\n transaction============================",order_author_result)
+    return order_author_result
+
+def get_order_title_info():
+    format = '%Y-%m-%d %H:%M:%S'
+    now = datetime.datetime.now().replace(microsecond=0).strftime(format)
+    previous =(datetime.datetime.now().replace(microsecond=0) + datetime.timedelta(-30)).strftime(format)
+
+
+    order_title_info = my_custom_sql_dict("select books.title,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by title order by copynum DESC Limit 1"%(previous,now))
+    order_title_result = []
+    # print(order_title)
+    # print(now)
+    # print(previous)
+    # print (type(now))
+    # print (type(previous))
+
+    #print (order_title_result)
+    for each_order_title in order_title_info:
+        order_title_save_to_class = order_title(**each_order_title)
+        order_title_result.append(order_title_save_to_class._order_title_info())
+    #print ("\n\n transaction============================",order_title_result)
+    return order_title_result
+
+def get_order_publisher_info():
+    format = '%Y-%m-%d %H:%M:%S'
+    now = datetime.datetime.now().replace(microsecond=0).strftime(format)
+    previous =(datetime.datetime.now().replace(microsecond=0) + datetime.timedelta(-30)).strftime(format)
+
+
+    order_publisher_info = my_custom_sql_dict("select books.publisher,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by publisher order by copynum DESC Limit 1"%(previous,now))
+    order_publisher_result = []
+    print(order_publisher_info)
+    # print(now)
+    # print(previous)
+    # print (type(now))
+    # print (type(previous))
+
+    #print (order_publisher_result)
+    for each_order_publisher in order_publisher_info:
+        order_publisher_save_to_class = order_publisher(**each_order_publisher)
+        order_publisher_result.append(order_publisher_save_to_class._order_publisher_info())
+    #print ("\n\n transaction============================",order_title_result)
+    return order_publisher_result
+    #print (order_publisher_result)
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
@@ -370,3 +433,41 @@ class recommendations:
         self.result = {'ISBN13':self.ISBN13,'title':self.title,'sales':self.sales,'piclink':self.piclink}
         return self.result
 
+class order_author:
+    def __init__(self, authors, copynum):
+        #self.Odate = Odate
+        self.authors = authors
+        self.copynum = copynum
+
+    def _order_author_info(self):
+        self.result = {}
+        # format = '%Y-%m-%d %H:%M:%S'
+        # self.Odate = self.Odate.strftime(format)
+        self.result = {'authors':self.authors,'copynum':self.copynum }
+        return self.result
+
+class order_title:
+    def __init__(self, title, copynum):
+        #self.Odate = Odate
+        self.title = title
+        self.copynum = copynum
+
+    def _order_title_info(self):
+        self.result = {}
+        # format = '%Y-%m-%d %H:%M:%S'
+        # self.Odate = self.Odate.strftime(format)
+        self.result = {'title':self.title,'copynum':self.copynum }
+        return self.result
+
+class order_publisher:
+    def __init__(self, publisher, copynum):
+        #self.Odate = Odate
+        self.publisher = publisher
+        self.copynum = copynum
+
+    def _order_publisher_info(self):
+        self.result = {}
+        # format = '%Y-%m-%d %H:%M:%S'
+        # self.Odate = self.Odate.strftime(format)
+        self.result = {'publisher':self.publisher,'copynum':self.copynum }
+        return self.result

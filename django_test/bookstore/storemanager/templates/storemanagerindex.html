@@ -34,7 +34,7 @@ tr:nth-child(even) {
 }
 </style>
 
-    <table id = "mytable">
+    <table id = "transaction_table">
 
   <tr>
     <th onclick="'sortTable(0)">Transaction ID</th>
@@ -57,6 +57,70 @@ tr:nth-child(even) {
 
 
 </table>
+
+<p><strong>Most Popular Book of the Month</strong> </p>
+
+
+    <table id = "most_popular_books">
+
+  <tr>
+
+      <th>Title</th>
+
+  </tr>
+        {% for title in order_title %}
+  <tr>
+
+    <td>{{ title.title }}</td>
+
+  </tr>
+        {% endfor %}
+
+
+</table>
+
+      <p><strong>Most Popular Author of the Month</strong> </p>
+
+
+    <table id = "most_popular_author">
+
+  <tr>
+
+      <th>Author</th>
+
+  </tr>
+        {% for author in order_author %}
+  <tr>
+
+    <td>{{ author.authors }}</td>
+
+  </tr>
+        {% endfor %}
+
+
+</table>
+
+      <p><strong>Most Popular Publisher of the Month</strong> </p>
+
+
+    <table id = "most_popular_publisher">
+
+  <tr>
+
+      <th>Publisher</th>
+
+  </tr>
+        {% for publisher in order_publisher %}
+  <tr>
+
+    <td>{{ publisher.publisher }}</td>
+
+  </tr>
+        {% endfor %}
+
+
+</table>
+
 
   </ul>
 

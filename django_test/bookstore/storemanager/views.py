@@ -3,7 +3,7 @@
 from django.shortcuts import render
 
 from django.shortcuts import render, redirect
-from utils.util import get_record_transaction_info
+from utils.util import get_record_transaction_info, get_order_author_info, get_order_title_info, get_order_publisher_info
 from django.db import connection
 from django.http import HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -20,6 +20,9 @@ def storemanager_view(request):
     template='storemanagerindex.html'
     context = {}
     context['record_transaction'] = get_record_transaction_info()
+    context['order_author'] = get_order_author_info()
+    context['order_title'] = get_order_title_info()
+    context['order_publisher'] = get_order_publisher_info()
     return render(request,template,context)
 
 @login_required
@@ -68,5 +71,16 @@ def add_transaction_record(request):
         form = addrecord()
 
     return render(request, 'addnewbook.html',{'form':form})
+
+
+# @login_required
+# def order_popular(request):
+#     template='storemanagerindex.html'
+#     context = {}
+#     #context['order_author'] = get_order_author(Odate)
+#     now = datetime.datetime.now().month
+#     if now == Odate.month:
+#         context['order_author'] = get_order_author()
+#     return render(request,template,context)
 
 
