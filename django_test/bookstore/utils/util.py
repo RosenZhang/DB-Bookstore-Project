@@ -65,6 +65,7 @@ def get_book_list_v2_with_brief_record(keyword,sorted_by):
     titles = []
     details = []
     books_info = my_custom_sql_dict(query)
+
     for book_info in books_info:
         book_class = books(**book_info)
         titles.append(book_class.title)
@@ -72,7 +73,6 @@ def get_book_list_v2_with_brief_record(keyword,sorted_by):
     print('++++++++++++++++++++title+++++++++++++++++++++++++++++++{}++++++++++++\n'.format(titles))
     print('++++++++++++++++++++details+++++++++++++++++++++++++++++++{}++++++++++++\n'.format(details))
     return titles, details
-
 
 def get_book_info(input_ISBN13):
     print("_____________________________{}______________________________\n".format(input_ISBN13))
@@ -212,7 +212,6 @@ def save_user_order(userid, copynum, ISBN13):
 def save_user_feedback(userid,ISBN13,rank,Fcomment):
     cursor=connection.cursor()
     query='insert into feedback values (null, %s, current_timestamp(), %s, %s, %s);'
-    print ('^^^^^^^^^^^^^^^^^^^^^^^^^query')
     print(query)
     cursor.execute(query, (rank, Fcomment, userid, ISBN13))
 
