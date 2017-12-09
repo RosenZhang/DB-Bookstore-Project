@@ -38,7 +38,7 @@ bookorder page:
 
 	<input type="number" id="num_of_books">
 	<small id='books_left'> {{ book.available_copy }} copies left</small>
-		<button type="button" class="Button" id="order_book" >Order</button>
+	<button type="button" class="Button" id="order_book" >Order</button>
 	</form>				
 	
 </div>
@@ -122,17 +122,7 @@ Rate this comment:
 </form>
 {% endif %}
 <hr>
-<!--   <select class='rating' id="{{feedback.Fid}}"> 
-    <option value="1">1</option>
-    <option value="2">2</option>
-  </select> -->
 
-<!-- <h5>{{feedback.Fid}}</h5> -->
-<!--     <div class="lead">
-        <div  class="hearts starrr"></div>
-	</div> 
-<div class="container">
-</div> -->
 {% endfor %}
 </div>
 
@@ -193,44 +183,14 @@ $( document ).ready(function() {
     }); 
 
 
-	// $(".feedbacknum_option").click(function() {
-	// 	selected_num=parseInt($(this).text());
-
-	// 	$.ajax({
- //        	type:'POST',
- //        	headers: { 'TOP-FEEDBACK': 'UPDATE_DATA' },
- //        	beforeSend: function(xhr) {
- //        xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
- //    },
-        	
- //        	data:{
- //        		top_num: selected_num,
- //        	},
- //        	   success: function(response, textStatus, jqXHR) {
-        	   	
- //     $("#book_feedback").load(location.href + " #book_feedback");
- //   },
- //   error: function(jqXHR, textStatus, errorThrown){
- //     alert(textStatus, errorThrown);
- //  }
- //        })
-		
- //  });
 
 
 
 	$(".feedbackratingForm").change(function(event) {
-	    	//TODO:disable change if it is selected
     var Fid=$(this).attr("id");//string
     var value=event.target.value;//string
     
-//     if(value==""){
-//     	if (confirm("Are you sure you want to rate this as 0?")) {
-//     value="0";
-// } else {
-//     return;
-// }	
-//     }
+
 
 
 
@@ -267,12 +227,6 @@ $( document ).ready(function() {
   });
 
 
-//       $('.rating').barrating('show', {
-//   theme: 'fontawesome-stars',
-//     initialRating:2,
-//   allowEmpty:true,
-
-// });
 
       $('#book-rating').barrating('show', {
   theme: 'fontawesome-stars',
@@ -322,35 +276,6 @@ $( document ).ready(function() {
 
   });
 
-
-  //  	$("#book-rating").change(function(event) {
-	 //    	//disable change if it is selected
-  //   var bookrating=event.target.value;//string
-  //   if (typeof(bookrating)=='string'){
-  //   	var bookratingnum=parseInt(bookrating);
-  //   }
-
-  //   $.ajax({
-  //       	type:'POST',
-  //       	headers: { 'BOOK-RATING': 'UPDATE_DATA' },
-  //       	beforeSend: function(xhr) {
-  //       xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
-  //   },
-        	
-  //       	data:{
-  //       		rank: bookratingnum,
-        		
-  //       	},
-  //       	   success: function(response, textStatus, jqXHR) {
-  //    alert("You have give a rating of"+value);
-  //  },
-  //  error: function(jqXHR, textStatus, errorThrown){
-  //    alert(textStatus, errorThrown);
-  // }
-  //       })
-
-
-  // });
 
 
 
