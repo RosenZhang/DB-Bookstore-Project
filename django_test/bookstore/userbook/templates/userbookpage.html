@@ -22,23 +22,11 @@
 
   <script>
 
-var searchItems ={{book_list |safe }};
+
 
 
 $( document ).ready( function( )
 {
-    // function ToggleSearch( event )
-    // {
-    //     event.preventDefault( ); //prevent submission of form
-
-
-    //     $( "#SearchItemsContainer" ).toggle( ); //want our search result to appear
-    // }
-
-    // $( "#SearchButton" ).click( function( event )
-    // {
-    //     ToggleSearch( event );
-    // } );
 
 
     $( "#SearchButton" ).click( function( event ) // detect search function is clicked
@@ -82,20 +70,6 @@ $( document ).ready( function( )
 
 
 
-    // $( "#SearchBar" ).keyup( function( ) {  //when the key is release
-
-    //   $( "#SearchItems" ).empty( );
-
-    //   for ( var i = 0; i < searchItems.length; i++ )
-    //   {
-    //     var searchInput = $( "#SearchBar" ).val( ).toLowerCase( ).trim( )
-    //     if ( searchItems[i].toLowerCase( ).includes( searchInput )
-    //      && searchInput.length > 0 )
-    //     {
-    //       $( "#SearchItems" ).append( "<p>" + searchItems[i] + "</p>" );
-    //     }
-    //   }
-    // } );
   } );
 </script>
 
