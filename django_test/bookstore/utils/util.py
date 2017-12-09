@@ -123,7 +123,7 @@ def get_feedback_history(input_userid):
 def get_rating_history(input_userid):
     rating_info = my_custom_sql_dict("select score, Fcomment, username from usefulness_rating, feedback, auth_user where feedback.Fid = usefulness_rating.Fid and feedback.Feedback_giver = auth_user.id and userid = '%s'" %(input_userid))
     rating_history_result = []
-    print rating_info
+    print(rating_info)
     for rating in rating_info:
         rating_save_to_class = usefulness_rating_history(**rating)
         rating_history_result.append(rating_save_to_class._rating_history_info())
@@ -133,7 +133,7 @@ def get_rating_history(input_userid):
 #########################for book recommendation page#########################
 def get_book_recommendation(input_bid):
     recom_info = my_custom_sql_dict("select ISBN13, title, sum(orders.copynum) AS sales, piclink from orders,books where orders.bid = books.ISBN13 and books.ISBN13 <> '%s' and userid in ( select userid from orders,books where orders.bid = books.ISBN13 and books.ISBN13 = '%s') group by bid order by sales desc"%(input_bid,input_bid))
-    print recom_info
+    print(recom_info)
     recom_result = []
     print("book rcom************************")
     for book in recom_info:

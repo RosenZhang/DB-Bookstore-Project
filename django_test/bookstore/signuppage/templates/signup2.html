@@ -19,6 +19,7 @@
 <div class="pen-title">
   <h1>Book Store</h1>
 </div>
+
 <div class="container">
   <div class="card"></div>
   <div class="card">
@@ -34,9 +35,18 @@
         <label for="password_login">Password</label>
         <div class="bar"></div>
       </div>
+      {% if messages %}
+      <div id="messages">
+          {% for message in messages %}
+          <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+          {% endfor %}
+      </div>
+      {% endif %}
+      <br>
       <div class="button-container">
         <button name="student_login" value="student_login"><span>Student</span></button>
       </div>
+      <br>
       <div class="button-container">
         <button name="manager_login" value="manager_login"><span>Manager</span></button>
       </div>
@@ -68,6 +78,7 @@
       </div>
     </form>
   </div>
+
 </div>
 <!-- Portfolio--><a id="portfolio" href="https://github.com/RosenZhang/DB-Bookstore-Project" title="View our github!"><i class="fa fa-link"></i></a>
 

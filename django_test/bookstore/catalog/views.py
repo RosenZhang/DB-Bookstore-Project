@@ -12,6 +12,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 import signuppage.views
 import storemanager.views
+from django.contrib import messages
+from django.contrib.auth.models import User
 
 def signup_user(request):
     if request.method == 'POST':
@@ -24,8 +26,7 @@ def signup_user(request):
             login(request, user)
             return redirect(catalog_view)
         else:
-            pass
-            # TODO: prompt a window
+            messages.info(request, 'two passwords are unmatched or username already taken')
     return redirect(signuppage.views.signup)
 
 
@@ -40,12 +41,15 @@ def login_user(request):
         if 'manager_login' in request.POST:
             if user is not None and user.is_superuser:
                 return redirect(storemanager.views.storemanager_view)
+            else:
+                messages.info(request, 'current user is not superuser')
         else:
             if user is not None:
                 login(request, user)
                 return redirect(catalog_view)
             else:
-                return  redirect(signuppage.views.signup)
+                messages.info(request, 'invalid username and password')
+                return redirect(signuppage.views.signup)
     return redirect(signuppage.views.signup)
     # TODO: prompt a "invalid username and  password combination"
 
