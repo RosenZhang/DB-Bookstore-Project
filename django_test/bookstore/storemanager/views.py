@@ -21,110 +21,83 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def storemanager_view(request):
-    template='storemanagerindex.html'
-    context = {}
-    if request.method == 'POST':
-        bid=request.POST['bid']
-        print(bid)
-        book_exists=check_book_exists(bid)
-        print(book_exists)
-        if book_exists:
-            return HttpResponse(json.dumps({'book_exists': True}), content_type="application/json")
-        else:
-            return HttpResponse(json.dumps({'book_exists': False}), content_type="application/json")
+    if request.user.is_superuser:
+        template='storemanagerindex.html'
+        context = {}
+        if request.method == 'POST':
+            bid=request.POST['bid']
 
-    context['record_transaction'] = get_record_transaction_info()
-    context['order_author'] = get_order_author_info()
-    context['order_title'] = get_order_title_info()
-    context['order_publisher'] = get_order_publisher_info()
-    return render(request,template,context)
+            book_exists=check_book_exists(bid)
+
+            if book_exists:
+                return HttpResponse(json.dumps({'book_exists': True}), content_type="application/json")
+            else:
+                return HttpResponse(json.dumps({'book_exists': False}), content_type="application/json")
+
+        context['record_transaction'] = get_record_transaction_info()
+        context['order_author'] = get_order_author_info()
+        context['order_title'] = get_order_title_info()
+        context['order_publisher'] = get_order_publisher_info()
+        return render(request,template,context)
+    else:
+        return redirect(signuppage.views.signup)
 
 @login_required
 def add_record_view(request):
-    template='addnewrecord.html'
-    if request.method == 'POST':
-        form = addrecord(request.POST)
-        if form.is_valid():
-            copynum = form.cleaned_data['copynum']
-            bid =form.cleaned_data['Bid']
-            save_transaction(copynum,bid)
-            return HttpResponseRedirect(reverse('storemanager'))
-            form.save()
+    if request.user.is_superuser:
+        template='addnewrecord.html'
+        if request.method == 'POST':
+            form = addrecord(request.POST)
+            if form.is_valid():
+                copynum = form.cleaned_data['copynum']
+                bid =form.cleaned_data['Bid']
+                save_transaction(copynum,bid)
+                return HttpResponseRedirect(reverse('storemanager'))
+                form.save()
 
+        else:
+            form = addrecord()
+
+        return render(request, template,{'form':form})
+
+        return render(request,template,context)
+
+        context['record_transaction'] = get_record_transaction_info()
+        return render(request,template,context)
     else:
-        form = addrecord()
+        return redirect(signuppage.views.signup)
 
-    return render(request, template,{'form':form})   
-
-    return render(request,template,context)
-    # if request.method == 'POST':
-    #     bid=request.POST['bid']
-    #     book_exists=check_book_exists(bid)
-    #     if book_exists:
-    #         redirect('add_')
-
-
-    context['record_transaction'] = get_record_transaction_info()
-    return render(request,template,context)
 @login_required
 def add_book_view(request):
-    # Tid = 'null'
-    #print(get_record_transaction_info(Tid))
-    available_copy = 0
+    if request.user.is_superuser:
+        available_copy = 0
 
-    if request.method == 'POST':
-        form = addbook(request.POST)
-        if form.is_valid():
-            title = form.cleaned_data['title']
-            piclink = form.cleaned_data['piclink']
-            format = form.cleaned_data['format']
-            pages = form.cleaned_data['pages']
-            subject = form.cleaned_data['subject']
-            language = form.cleaned_data['language']
-            authors = form.cleaned_data['authors']
-            publisher = form.cleaned_data['publisher']
-            year = form.cleaned_data['year']
-            isbn10 = form.cleaned_data['isbn10']
-            copynum = form.cleaned_data['copynum']
-            bid =form.cleaned_data['Bid']
-            now = 'now()'
-            # cursor = connection.cursor()
-            #cursor.execute("SET FOREIGN_KEY_CHECKS=1")
-            # bidlist=list(d['bid'] for d in get_record_transaction_info())
-            # print(bidlist)
-            # if bid in bidlist:
+        if request.method == 'POST':
+            form = addbook(request.POST)
+            if form.is_valid():
+                title = form.cleaned_data['title']
+                piclink = form.cleaned_data['piclink']
+                format = form.cleaned_data['format']
+                pages = form.cleaned_data['pages']
+                subject = form.cleaned_data['subject']
+                language = form.cleaned_data['language']
+                authors = form.cleaned_data['authors']
+                publisher = form.cleaned_data['publisher']
+                year = form.cleaned_data['year']
+                isbn10 = form.cleaned_data['isbn10']
+                copynum = form.cleaned_data['copynum']
+                bid =form.cleaned_data['Bid']
+                now = 'now()'
+                add_new_book_and_transaction(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,bid,available_copy,copynum)
 
+                return HttpResponseRedirect(reverse('storemanager'))
+                form.save()
 
-            #     # if ISBN13 is found in book records
-            #     cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
-            #         Tid, now, copynum, Bid)))
-            #     #cursor.execute(("select * from record_transaction order by Tid ASC"))
-            #     return HttpResponseRedirect(reverse('storemanager'))
-            # else:
-                #when ISBN13 is not found in book record this will be run
-            add_new_book_and_transaction(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,bid,available_copy,copynum)
-                # cursor.execute(("insert into books(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,isbn13,available_copy) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"
-                #     %(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,Bid,available_copy)))
-                # cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
-                #    Tid, now, copynum, Bid)))
-            return HttpResponseRedirect(reverse('storemanager'))
-            form.save()
+        else:
 
+            form = addbook()
+
+        return render(request, 'addnewbook.html',{'form':form})
     else:
-
-        form = addbook()
-
-    return render(request, 'addnewbook.html',{'form':form})
-
-
-# @login_required
-# def order_popular(request):
-#     template='storemanagerindex.html'
-#     context = {}
-#     #context['order_author'] = get_order_author(Odate)
-#     now = datetime.datetime.now().month
-#     if now == Odate.month:
-#         context['order_author'] = get_order_author()
-#     return render(request,template,context)
-
+        return redirect(signuppage.views.signup)
 

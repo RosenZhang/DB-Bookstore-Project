@@ -40,6 +40,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if 'manager_login' in request.POST:
             if user is not None and user.is_superuser:
+                login(request, user)
                 return redirect(storemanager.views.storemanager_view)
             else:
                 messages.info(request, 'current user is not superuser')

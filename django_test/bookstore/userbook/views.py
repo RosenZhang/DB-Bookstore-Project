@@ -30,12 +30,12 @@ def usermainpage_view(request):
     if 'HTTP_SEARCH_BOOK' in request.META:
         search_key_word = request.POST['search_keyword']
         sorted_by=request.POST['sorted_by']
-        print ("0000000000000000input {} {} \n\n".format(search_key_word,sorted_by))  # watch your command line
+        # watch your command line
         book_list, books = get_book_list_v2_with_brief_record(search_key_word,sorted_by)
         return HttpResponse(json.dumps({'books': books}), content_type="application/json")
 
     else:
-        print(" no post detection+_+_+_+_+_+_+_+_ POST,,,,,,,,,,\n")
+        pass
     book_list = get_book_list()
     context = {'book_list': book_list}
     return render(request, template, context)
@@ -53,7 +53,7 @@ def book_view(request, ISBN13=None, topnum=None):
         context['feedbacks'] = get_feedback_info(ISBN13, userid)
     else:
         context['feedbacks'] = get_feedback_info_with_limit(ISBN13, userid, topnum)
-    # print("feedback information ===========================--------------", context['feedbacks'])
+
     if 'HTTP_FEEDBACK_RATING' in request.META:
         Fid = request.POST['Fid']
         score = request.POST['score']
@@ -64,7 +64,6 @@ def book_view(request, ISBN13=None, topnum=None):
         save_user_feedback(userid, ISBN13, rank, Fcomment)
     elif 'HTTP_ORDER_BOOK' in request.META:
         copynum = request.POST['copynum']
-        print(userid, copynum, ISBN13)
         save_user_order(userid, copynum, ISBN13)
     return render(request, template, context)
 
