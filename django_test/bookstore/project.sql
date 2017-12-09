@@ -1,4 +1,3 @@
-
 use dbproject;
 
 -- drop table if exists record_transaction;
@@ -96,6 +95,7 @@ create trigger after_orders
 	update books
 	set books.available_copy = books.available_copy - new.copynum
 	where new.bid = books.ISBN13;
+
 
 
 

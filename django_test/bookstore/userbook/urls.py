@@ -6,5 +6,5 @@ urlpatterns = [
 	url(r'^$', usermainpage_view,name='main'),
 	url(r'^(?P<ISBN13>\d*-\d*)/recommendations$',recommendation_view),
 	url(r'^(?P<ISBN13>\d*-\d*)/$',book_view),
-
+	url(r'^(?P<ISBN13>\d*-\d*)/(?P<topnum>\d*)$',book_view),
 ]

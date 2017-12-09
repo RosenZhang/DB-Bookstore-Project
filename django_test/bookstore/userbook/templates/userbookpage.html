@@ -11,7 +11,7 @@
 
 <!--a placeholder image or popular books-->
 <!--when something is searched, show booktitle, author, copies etc in a list-->
-<div class="list-group">
+<div class="list-group" id="search_result">
 {% for book in books %}
   <a href="{{book.ISBN13}}" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">

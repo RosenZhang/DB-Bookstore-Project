@@ -50,7 +50,7 @@ def get_book_list():
     return titles
 
 def get_book_list_v2_with_brief_record(keyword):
-    query = 'select * from books where title like \'%{}%\';'.format(keyword)
+    query = 'select * from books where title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\';'.format(keyword,keyword,keyword)
     print('+++++++++++++++++++++++++++++++++++++++++++++++++++{}++++++++++++'.format(query))
     titles = []
     details = []
@@ -59,8 +59,8 @@ def get_book_list_v2_with_brief_record(keyword):
         book_class = books(**book_info)
         titles.append(book_class.title)
         details.append(book_class._overview_info())
-    print('++++++++++++++++++++title+++++++++++++++++++++++++++++++{}++++++++++++'.format(titles))
-    print('++++++++++++++++++++details+++++++++++++++++++++++++++++++{}++++++++++++'.format(details))
+    print('++++++++++++++++++++title+++++++++++++++++++++++++++++++{}++++++++++++\n'.format(titles))
+    print('++++++++++++++++++++details+++++++++++++++++++++++++++++++{}++++++++++++\n'.format(details))
     return titles, details
 
 
@@ -71,10 +71,11 @@ def get_book_info(input_ISBN13):
     # print ("\n\n =============dictionary info================", book_info_save_to_class._book_info())
     return book_info_save_to_class._book_info()
 
-
 def get_feedback_info(bid, userid):
-    query = 'select distinct f.*, u.score from feedback f left join (select * from usefulness_rating where userid = {}) ' \
-            'u on feedback_giver != u.userid and f.fid = u.fid where f.bid = \'{}\';'.format(userid, bid)
+    query = 'select f.Fid, rank, Fdate, Fcomment, usr.username, Feedback_giver,  avg(IFNULL(u.score, 0)) as avgscore'\
+' from (feedback f left join usefulness_rating u on f.Fid = u.Fid) join auth_user usr'\
+' on f.Feedback_giver = usr.id where f.bid = \'{}\' group by f.Fid order by avgscore desc;'.format( bid)
+
 
     # print("query===========================--------{}------\n\n".format(query))
     feedbacks_info = my_custom_sql_dict(query)
@@ -82,7 +83,8 @@ def get_feedback_info(bid, userid):
     feedback_result = []
     for each_feedback in feedbacks_info:
         feedback_save_to_class = feedback(**each_feedback)
-        feedback_result.append(feedback_save_to_class._feedback_info())
+        feedback_dict=add_able_to_rate_set(feedback_save_to_class._feedback_info(),userid)  
+        feedback_result.append(feedback_dict)
 
     # print("feedback result===========================--------------", feedback_result)
     return feedback_result
@@ -136,6 +138,44 @@ def get_book_recommendation(input_bid = '978-0321474049'):
         recom_result.append(recom_save_to_class.recom_info())
     return recom_result
 #########################for book recommendation page#########################
+
+def get_feedback_info_with_limit(bid, userid,limit):
+    query = 'select f.Fid, rank, Fdate, Fcomment, usr.username, Feedback_giver,  avg(IFNULL(u.score, 0)) as avgscore'\
+' from (feedback f left join usefulness_rating u on f.Fid = u.Fid) join auth_user usr'\
+' on f.Feedback_giver = usr.id where f.bid = \'{}\' group by f.Fid order by avgscore desc limit {};'.format(bid,limit)
+
+
+    # print("query===========================--------{}------\n\n".format(query))
+    feedbacks_info = my_custom_sql_dict(query)
+    print("query=====================feedback_info======--------{}------\n\n".format(feedbacks_info))
+    feedback_result = []
+    for each_feedback in feedbacks_info:
+        feedback_save_to_class = feedback(**each_feedback)
+        feedback_dict=add_able_to_rate_set(feedback_save_to_class._feedback_info(),userid)  
+        feedback_result.append(feedback_dict)
+
+    # print("feedback result===========================--------------", feedback_result)
+    return feedback_result
+
+def add_able_to_rate_set(feedbackdict,userid):
+#user cannot rate their own comment
+    if userid==feedbackdict['Feedback_giver']:
+        ableToRate=False
+#user cannot rate comment that has been rated by them
+    else: 
+        fid=feedbackdict['Fid']
+        ableToRate= not check_user_rated_feedback(userid,fid)
+    feedbackdict['ableToRate']=ableToRate
+    return feedbackdict
+
+def check_user_rated_feedback(userid,fid):
+    query='select * from usefulness_rating where fid={} and userid={}'.format(fid,userid)
+    result=my_custom_sql_tuple(query)
+    if len(result)==0:
+        return False#user has not rated
+    else:
+        return True#user has rated
+
 def return_user_usefulness_rate(fid, userid):
     #feedbacks_info = my_custom_sql_dict()
     # TODO: return all the usefulness rate user has done about the book. If there's no record it returns null
@@ -153,10 +193,23 @@ def save_user_usefulness_rating(fid, score, userid ):
 
 def save_user_order(userid, copynum, ISBN13):
     cursor = connection.cursor()
-    query = 'insert into orders values (current_timestamp(), {}, {}, {});'.format(userid, copynum, ISBN13)
+    query = 'insert into orders values (current_timestamp(), {}, {}, \'{}\');'.format(copynum, userid, ISBN13)
     print('========================================== query: ', query)
     cursor.execute(query)
 
+
+def save_user_feedback(userid,ISBN13,rank,Fcomment):
+    cursor=connection.cursor()
+    query='insert into feedback values (null,{},current_timestamp(), \'{}\', {}, \'{}\');'.format(rank, Fcomment, userid, ISBN13)
+    print(query)
+    cursor.execute(query)
+
+def check_user_has_posted_feedback(userid,bid):
+    cursor=connection.cursor()
+    query='select distinct Feedback_giver from feedback where bid=\'{}\';'.format(bid)
+    cursor.execute(query)
+    users = [row[0] for row in cursor.fetchall()]
+    return (userid in users)
 
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
@@ -190,7 +243,7 @@ class books:
         if not self.info:
             self.info = {'piclink': self.piclink, 'title':self.title, 'format':self.format,
                                  'ISBN13':self.ISBN13,"authors":self.authors,'pages':self.pages,
-                                 'language':self.language,'publisher':self.publisher, 'year':self.year}
+                                 'language':self.language,'publisher':self.publisher, 'year':self.year, 'available_copy':self.available_copy}
         return self.info
 
     def _recommendation_info(self):
@@ -212,17 +265,17 @@ class books:
         return "ISBN13"+self.ISBN13
 
 class feedback:
-    def __init__(self, Fid, rank, Fdate, Fcomment, Feedback_giver, bid, score=0):
-        self.Fid = Fid
-        self.rank = rank
-        self.Fdate = Fdate
-        self.Fcomment = Fcomment
-        self.Feedback_giver = Feedback_giver
-        self.bid = bid
-        self.score = score
+    def __init__(self, Fid, rank, Fdate, Fcomment, username, Feedback_giver, avgscore=0):
+        self.Fid = Fid#
+        self.rank = rank#
+        self.username = username
+        self.Fdate=Fdate
+        self.Fcomment = Fcomment#
+        self.Feedback_giver = Feedback_giver#
+        self.avgscore = avgscore#
     def _feedback_info(self):
         self.result = {}
-        self.result = {'Fid':self.Fid, 'Feedback_giver': self.Feedback_giver, "Fcomment":self.Fcomment, "Score":self.score}
+        self.result = {'Fid':self.Fid, 'rank':self.rank, 'Fdate':self.Fdate, 'username':self.username, 'Feedback_giver': self.Feedback_giver, "Fcomment":self.Fcomment, "avgscore":self.avgscore}
         return self.result
 
     def get_key(self):
