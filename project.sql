@@ -6,6 +6,7 @@ use dbproject;
 -- drop table if exists feedback;
 -- drop table if exists books;
 -- 
+#basic informat
 create table books (
 title VARCHAR(256) NOT NULL,
 piclink VARCHAR(2083),
@@ -22,7 +23,6 @@ CHECK (format = 'paperback' OR format='hardcover'),
 available_copy Int
 );
 
-
 create table feedback(
 Fid INT AUTO_INCREMENT NOT NULL,#auto generated
 rank int not null,
@@ -35,7 +35,6 @@ foreign key (Feedback_giver) references auth_user(id) ON DELETE CASCADE ON UPDAT
 foreign key (bid) references books(ISBN13) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-#Problem: userid needed as primary key
 CREATE TABLE usefulness_rating(
 Fid INT,
 score int,
@@ -45,6 +44,7 @@ foreign key (Fid) references feedback(Fid) ON DELETE CASCADE ON UPDATE CASCADE,
 foreign key (userid) references auth_user(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+#user can order one or more books; for each order, only one book can be ordered, with multiple copies???
 create table orders (
 Odate DATETIME(2) not null,
 copynum INT not null,
@@ -57,6 +57,7 @@ foreign key (bid) references books (ISBN13)
 
 
 #when new record is added to “record transaction”, books table should also be updated
+#keep arrivals of new books on record for managers to check the history of transactions
 create table record_transaction(
 Tid int NOT NULL AUTO_INCREMENT,
 Tdate DATETIME(2),
@@ -75,7 +76,7 @@ create trigger after_transac_update
 	set available_copy = available_copy + new.copynum
 	where books.ISBN13 = new.bid;
 
-#update the number of copies in table book when there is new orders from customers
+#update the number of copies in table book when there are new orders from customers
 drop trigger if exists not_enought_copy;
 DELIMITER //
 create trigger not_enought_copy
@@ -87,7 +88,8 @@ create trigger not_enought_copy
 				set message_text = 'Not Available';
 		END if;
 		END // DELIMITER ;
-
+		
+#update the number of copies in table book after receveing an order from customers
 drop trigger if exists after_orders;	
 create trigger after_orders
 	after insert on orders
