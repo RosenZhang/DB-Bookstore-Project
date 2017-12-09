@@ -12,7 +12,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login, authenticate, logout
 import signuppage.views
 
-
 # def index(request):
 #     """
 #     View function for home page of site.
