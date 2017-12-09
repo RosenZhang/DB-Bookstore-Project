@@ -12,13 +12,36 @@
   <ul>
 
     <p><strong>Transaction Records:</strong> </p>
-    <table style="width:100%">
+
+    <style>
+table {
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th {
+    cursor: pointer;
+}
+
+th, td {
+    text-align: left;
+    padding: 16px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+</style>
+
+    <table id = "mytable">
+
   <tr>
-    <th>Transaction ID</th>
-    <th>Transaction Date</th>
-    <th>Number of Copies added</th>
-      <th>Title</th>
-    <th>Number of Copies in Bookstore</th>
+    <th onclick="'sortTable(0)">Transaction ID</th>
+    <th onclick="'sortTable(1)">Transaction Date</th>
+    <th onclick="'sortTable(2)">Number of Copies added</th>
+      <th onclick="'sortTable(3)">Title</th>
+    <th onclick="'sortTable(4)">Number of Copies in Bookstore</th>
   </tr>
         {% for records in record_transaction %}
   <tr>
@@ -34,6 +57,7 @@
 
 
 </table>
+
   </ul>
 
 

@@ -49,41 +49,31 @@ def add_transaction_record(request):
             # else:
             cursor = connection.cursor()
             #cursor.execute("SET FOREIGN_KEY_CHECKS=1")
-            for d in get_record_transaction_info():
-                print(d['bid'])
-                if d['bid']==Bid:
-                    print('hi')
-
-                    #if ISBN13 is found in book records
-                    cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
+            bidlist=list(d['bid'] for d in get_record_transaction_info())
+            print(bidlist)
+            if Bid in bidlist:
+                print('hi')
+                # if ISBN13 is found in book records
+                cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
                     Tid, now, copynum, Bid)))
-                    return HttpResponseRedirect(reverse('storemanager'))
-                else:
-                    print ("hello")
-                    #when ISBN13 is not found in book record this will be run
-                    cursor.execute(("insert into books(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,isbn13,available_copy) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"
+                #cursor.execute(("select * from record_transaction order by Tid ASC"))
+                return HttpResponseRedirect(reverse('storemanager'))
+            else:
+                print ("hello")
+                #when ISBN13 is not found in book record this will be run
+                cursor.execute(("insert into books(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,isbn13,available_copy) values('%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s','%s')"
                     %(title,piclink,format,pages,subject,language,authors,publisher,year,isbn10,Bid,available_copy)))
-                    cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
+                cursor.execute(("insert into record_transaction(Tid, Tdate, copynum, Bid) values (%s,%s,%s,'%s')" % (
                    Tid, now, copynum, Bid)))
-                    return HttpResponseRedirect(reverse('storemanager'))
-                    #form = addrecord()
+                return HttpResponseRedirect(reverse('storemanager'))
+                #form = addrecord()
 
             form.save()
-            
+
     else:
 
         form = addrecord()
 
     return render(request, 'addnewbook.html',{'form':form})
 
-#
-# def validate_Tid(request):
-# 	Tid = request.GET.get('Tid', None)
-# 	data = {
-# 		'is_taken': get_record_transaction_info.objects.filter(Tid__iexact=Tid).exists()
-# 	}
-# 	if data['is_taken']:
-# 		data['error_message'] = 'A user with this username already exists.'
-#
-# 	return JsonResponse(data)
 
