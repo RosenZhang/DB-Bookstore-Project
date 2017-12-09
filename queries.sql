@@ -46,14 +46,17 @@ select books.*, avg(rank) as avgscore from books left join feedback on
 feedback.bid=books.ISBN13 where 
 title like <input> or authors like  <input> or publisher like  <input> or subject like <input>
 group by books.ISBN13
+order by avgscore desc;
+
+
 
 #9 For a given book, a user could ask for the top n most useful feedbacks. 
 #The usefulness of a feedback is its average usefulness score.
-select auth_user.username, Feedback_giver, feedback.Fid, rank, Fcomment, avg(IFNULL(usefulness_rating.score, 0)) as avgscore
-from (feedback left join usefulness_rating on feedback.Fid = usefulness_rating.Fid) join auth_user
-on feedback.Feedback_giver = auth_user.id
-where feedback.bid = '978-0684801520'
-group by feedback.Fid
+select f.Fid, rank, Fcomment, usr.username, Feedback_giver,  avg(IFNULL(u.score, 0)) as avgscore
+from (feedback f left join usefulness_rating u on f.Fid = u.Fid) join auth_user usr
+on f.Feedback_giver = usr.id
+where f.bid = '978-0684801520'
+group by f.Fid
 order by avgscore desc
 limit 2;
 
