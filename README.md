@@ -26,7 +26,7 @@ Packages requirements for the project
   * Python: 3.5
   * [MySQL: 5.5,5.6,5.7](https://dev.mysql.com/downloads/installer/)
   * [Django: 1.8,1.9,1.10,1.11](https://docs.djangoproject.com/en/2.0/intro/install/)
-  * mysqlclient by following command
+  * mysqlclient by following command
 ```shell
 (virtualenv)$ pip install django-mysql
 ```
