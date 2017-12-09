@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e537c4bc-2d7d-42ae-b968-b0aab07af656" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/urls.py" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/urls.py" />
-    </list>
+    <list default="true" id="e537c4bc-2d7d-42ae-b968-b0aab07af656" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -137,8 +135,8 @@
       <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="90">
+              <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
                 <marker date="1512794730517" expanded="true" signature="118:161" ph="..." />
@@ -1118,8 +1116,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/django_test/bookstore/userbook/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        <state relative-caret-position="90">
+          <caret line="6" column="25" lean-forward="false" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
             <marker date="1512794730517" expanded="true" signature="118:161" ph="..." />
