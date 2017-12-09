@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e537c4bc-2d7d-42ae-b968-b0aab07af656" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/static/css/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/static/js/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/static/scss/style.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/templates/index.pug" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/templates/signup2.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/registration/signup2.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/.idea/django_test.iml" afterPath="$PROJECT_DIR$/django_test/.idea/django_test.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/.idea/misc.xml" afterPath="$PROJECT_DIR$/django_test/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/.idea/workspace.xml" afterPath="$PROJECT_DIR$/django_test/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/.idea/workspace.xml" afterPath="$PROJECT_DIR$/django_test/bookstore/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/signuppage/views.py" afterPath="$PROJECT_DIR$/django_test/bookstore/signuppage/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/templates/base.html" afterPath="$PROJECT_DIR$/django_test/bookstore/templates/base.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/book.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/templates/userbookpage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/urls.py" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/userbook/views.py" afterPath="$PROJECT_DIR$/django_test/bookstore/userbook/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/django_test/bookstore/utils/util.py" afterPath="$PROJECT_DIR$/django_test/bookstore/utils/util.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project.sql" afterPath="$PROJECT_DIR$/project.sql" />
-    </list>
+    <list default="true" id="e537c4bc-2d7d-42ae-b968-b0aab07af656" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -75,8 +55,8 @@
       <file leaf-file-name="project.sql" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/project.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="96" column="36" lean-forward="true" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
+            <state relative-caret-position="140">
+              <caret line="81" column="31" lean-forward="true" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -1085,8 +1065,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/project.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="96" column="36" lean-forward="true" selection-start-line="96" selection-start-column="36" selection-end-line="96" selection-end-column="36" />
+        <state relative-caret-position="140">
+          <caret line="81" column="31" lean-forward="true" selection-start-line="81" selection-start-column="31" selection-end-line="81" selection-end-column="31" />
           <folding />
         </state>
       </provider>
