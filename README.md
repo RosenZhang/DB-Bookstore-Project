@@ -1,3 +1,6 @@
 # DB-Bookstore-Project
 
-## Testing HEllo
+## 50.008 Database Project
+## A Bookstore is created with the following features: 
+
+
