@@ -77,14 +77,22 @@ $ source [project location]/sample.sql
 1. Input you superuser account then click manager button to login
 ![alt text](https://github.com/RosenZhang/DB-Bookstore-Project/blob/master/Storemanager.png)
 2. After login successfully, you'll be directed to home page where transaction history and other statistics will be displayed.
-3. By clicking the add new record order, you can input book details to increase the inventory.
+3. By clicking the add new record order, you will first be asked to key in ISBN13 to check whether the book already exists in the database. If the book exists, you will be asked to input the ISBN13 and number of copies to add. If the book does not exist, you will be asked to add the all the information about the book.
+
 
 # Features
+### Frontend: Bootstrap, jQuery
+### Backend: Django
+### Databse: MySQL
 #### Double checking of commenting data
-When we are adding data via website, our front end will have check of all the conditions (number of available copies, data format etc), and in Database, schema and trigger design also makes sure no bad datas are inserted, like any order of unexisting books. Our double protection makes sure the correctness and safety of the whole bookstore system.
+When we are adding data via website, our front end will have check of all the conditions (number of available copies, whether the user can comment on book or rate feedback, data format etc), and in Database, schema and trigger design also makes sure no bad datas are inserted, like any order of unexisting books. Our double protection makes sure the correctness and safety of the whole bookstore system.
 
 #### MySQL collection utils
 All MySQL handling are put under project/utils/util file, for clear management of the code in Django.
+
+#### Prevention against SQL Injection
+When the title, comment, or publisher name has a quotation mark inside, it will normally cause issues while executing the query.
+We implemented SQL queries in such a way that the effect of quotation is reduced. 
 
 #### RESTFUL call
 For passing of information within the program, like the passing ISBN13 of book between genearl book page and book details page, we basically use RESTful call. We will pass parameters via URL conf and use Restful API, by simply registering viewsets with a router class. The RESTful call make whole structure more seralized and easier for debugging.
@@ -94,7 +102,7 @@ Ajax request is used in web application as it makes whole application faster and
 Examples of Ajax could be seen at almost all our html pages that POST data to corresponding views.py.
 
 #### Code recycling
-To make the whole project more efficient, we implement idea of code recycling. The template folder only contains base.html that from which all other websites inherit from. Base html has HOME, SEARCH BOOK, LOGOUT that leads to corresponding website, so user can direct use any of these function on every website (home page/book page/ order confirmation page/ store manager page).
+To make the whole project more efficient, we implement idea of code recycling. The template folder only contains base.html that from which all other websites inherit from. It has the necessary js and css files for many other pages. Base html has HOME, SEARCH BOOK, LOGOUT that leads to corresponding website, so user can direct use any of these function on every website (home page/book page/ order confirmation page/ store manager page).
 
 #### Recommendation
 Book recommendation:when a user orders book A, system will recommend books based on ordering records including the user his own ordering history. Suggested books are arranged in S-type((2n+1)th row, from left to right; (2n)th row, from right to left) on decreasing sales count.
