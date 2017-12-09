@@ -89,9 +89,10 @@ Ajax request is used in web application as it makes whole application faster and
 Examples of Ajax could be seen at almost all our html pages that POST data to corresponding views.py.
 
 ## Code recycling
-To make the whole project more efficient, we implement idea of code recycling. The template folder only contains base.html that from which all other websites inherit from. Base html has HOME, SEARCH BOOK, LOGOUT that leads to corresponding website, so user can direct use any of these function on every website (home page/book page/ order confirmation page/ store manager page)
+To make the whole project more efficient, we implement idea of code recycling. The template folder only contains base.html that from which all other websites inherit from. Base html has HOME, SEARCH BOOK, LOGOUT that leads to corresponding website, so user can direct use any of these function on every website (home page/book page/ order confirmation page/ store manager page).
 
 ## Recommendation
+Book recommendation:when a user orders book A, system will recommend books based on ordering records including the user his own ordering history. Suggested books are arranged in S-type((2n+1)th row, from left to right; (2n)th row, from right to left) on decreasing sales count.
 
 ## Usage of git
 Our team use git as our main platform so even every team member works on different features, code is still regulated under one big project. Everyone has a branch and we can view eacn one's update and commitment clearly.
