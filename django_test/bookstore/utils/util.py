@@ -211,9 +211,10 @@ def save_user_order(userid, copynum, ISBN13):
 
 def save_user_feedback(userid,ISBN13,rank,Fcomment):
     cursor=connection.cursor()
-    query='insert into feedback values (null,{},current_timestamp(), \'{}\', {}, \'{}\');'.format(rank, Fcomment, userid, ISBN13)
+    query='insert into feedback values (null, %s, current_timestamp(), %s, %s, %s);'
+    print ('^^^^^^^^^^^^^^^^^^^^^^^^^query')
     print(query)
-    cursor.execute(query)
+    cursor.execute(query, (rank, Fcomment, userid, ISBN13))
 
 def check_user_has_posted_feedback(userid,bid):
     cursor=connection.cursor()
