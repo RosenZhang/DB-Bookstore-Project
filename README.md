@@ -38,7 +38,7 @@ $ source [project location]\bookstoremysqlsetup.sql
 ```
 2. Create schema and corresponding triggers
 ```MySQL
-$ source [project location]\project.sql
+$ source [project location]/project.sql
 ```
 3. Django load project and create superuser
 ```shell
@@ -57,7 +57,7 @@ $ source [project location]\project.sql
 5. Remember to use our website to **at least register 5 users** so we can insert more data in next section.
 6. Insert data to database!
 ```MySQL
-$ source [project location]\sample.sql
+$ source [project location]/sample.sql
 ```
 7. Now start exploration at our django website 127.0.0.1:8000
 # Website Walkthrough
