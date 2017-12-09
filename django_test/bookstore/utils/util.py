@@ -52,7 +52,7 @@ def get_book_list():
 
 def get_book_list_v2_with_brief_record(keyword,sorted_by):
     query='select books.*, avg(rank) as avgscore from books left join feedback on  '\
-' feedback.bid=books.ISBN13 and '\
+' feedback.bid=books.ISBN13 where '\
 '(title like \'%{}%\' or authors like  \'%{}%\' or publisher like  \'%{}%\' or subject like \'%{}%\') '\
 'group by books.ISBN13'.format(keyword,keyword,keyword,keyword)
     if sorted_by=='-':
