@@ -99,7 +99,7 @@ def get_book_list():
 
 #########################for user catalog page #########################
 # todo: need to change input_userid dynamically for all methods in the section
-def get_order_history(input_userid = 1):
+def get_order_history(input_userid):
     order_info =my_custom_sql_dict("select title, copynum, Odate from books, orders where orders.bid = books.ISBN13 and userid = '%s'" %(input_userid))
     order_result = []
     for each_order in order_info:
@@ -107,12 +107,12 @@ def get_order_history(input_userid = 1):
         order_result.append(order_save_to_class._order_info())
     return order_result
 
-def get_user_information(input_userid = 1):
+def get_user_information(input_userid):
     user_information_data = my_custom_sql_dict("select username, email, date_joined, last_login from auth_user where id = '%s'" %(input_userid))[0]
     info_save_to_class = user_information(**user_information_data)
     return info_save_to_class
 
-def get_feedback_history(input_userid = 1):
+def get_feedback_history(input_userid):
     feedback_info = my_custom_sql_dict("select rank, Fdate, Fcomment, title from books,feedback where books.ISBN13 = feedback.bid and Feedback_giver = '%s'" %(input_userid))
     feedback_history_result = []
     for each_feedback in feedback_info:
@@ -120,7 +120,7 @@ def get_feedback_history(input_userid = 1):
         feedback_history_result.append(feedback_save_to_class._fhistory_info())
     return feedback_history_result
 
-def get_rating_history(input_userid = 1):
+def get_rating_history(input_userid):
     rating_info = my_custom_sql_dict("select score, Fcomment, username from usefulness_rating, feedback, auth_user where feedback.Fid = usefulness_rating.Fid and feedback.Feedback_giver = auth_user.id and userid = '%s'" %(input_userid))
     rating_history_result = []
     print rating_info
@@ -131,11 +131,13 @@ def get_rating_history(input_userid = 1):
 #########################for user catalog page #########################
 
 #########################for book recommendation page#########################
-def get_book_recommendation(input_bid = '978-0321474049'):
-    recom_info = my_custom_sql_dict("select ISBN13, title, sum(orders.copynum), piclink AS sales from orders,books where orders.bid = books.ISBN13 and books.ISBN13 <> %s and userid in ( select userid from orders,books where orders.bid = books.ISBN13 and books.ISBN13 = %s) group by bid order by sales desc"%(input_bid,input_bid))
+def get_book_recommendation(input_bid):
+    recom_info = my_custom_sql_dict("select ISBN13, title, sum(orders.copynum) AS sales, piclink from orders,books where orders.bid = books.ISBN13 and books.ISBN13 <> '%s' and userid in ( select userid from orders,books where orders.bid = books.ISBN13 and books.ISBN13 = '%s') group by bid order by sales desc"%(input_bid,input_bid))
+    print recom_info
     recom_result = []
+    print("book rcom************************")
     for book in recom_info:
-        recom_save_to_class = books(**book)
+        recom_save_to_class = recommendations(**book)
         recom_result.append(recom_save_to_class.recom_info())
     return recom_result
 #########################for book recommendation page#########################
@@ -144,7 +146,6 @@ def get_feedback_info_with_limit(bid, userid,limit):
     query = 'select f.Fid, rank, Fdate, Fcomment, usr.username, Feedback_giver,  avg(IFNULL(u.score, 0)) as avgscore'\
 ' from (feedback f left join usefulness_rating u on f.Fid = u.Fid) join auth_user usr'\
 ' on f.Feedback_giver = usr.id where f.bid = \'{}\' group by f.Fid order by avgscore desc limit {};'.format(bid,limit)
-
 
     # print("query===========================--------{}------\n\n".format(query))
     feedbacks_info = my_custom_sql_dict(query)
@@ -212,8 +213,6 @@ def check_user_has_posted_feedback(userid,bid):
     users = [row[0] for row in cursor.fetchall()]
     return (userid in users)
 
-<<<<<<< HEAD
-=======
 
 def get_record_transaction_info():
     record_transaction_info = my_custom_sql_dict("SELECT Tid, Tdate, copynum, title, bid, available_copy FROM record_transaction, books WHERE bid = books.ISBN13")
@@ -226,7 +225,6 @@ def get_record_transaction_info():
     #print ("\n\n transaction============================",record_transaction_result)
     return record_transaction_result
 
->>>>>>> webdesign
 class books:
     def __init__(self, title="NA", piclink="NA", format="NA",
                  pages="NA", subject="NA", language="NA", authors="NA", publisher="NA",
@@ -261,11 +259,6 @@ class books:
                                  'ISBN13':self.ISBN13,"authors":self.authors,'pages':self.pages,
                                  'language':self.language,'publisher':self.publisher, 'year':self.year, 'available_copy':self.available_copy}
         return self.info
-
-    def _recommendation_info(self):
-        if not self.recom_info:
-            self.recom_info["recommendations"]={'title','piclink'}
-        return self.recom_info
 
     def book_info_json(self):
         if not self.info:
@@ -315,9 +308,16 @@ class record_transaction:
         self.Tid = Tid
         self.Tdate = Tdate
         self.copynum = copynum
-<<<<<<< HEAD
+        self.title = title
         self.bid = bid
+        self.available_copy = available_copy
+        self.info = {}
 
+    def _record_transaction_info(self):
+        if not self.info:
+            self.info = {'Tid': self.Tid, 'Tdate': self.Tdate, 'copynum': self.copynum,
+                         'title': self.title, 'bid': self.bid, 'available_copy': self.available_copy}
+        return self.info
 
 class user_information:
     def __init__(self, username, email, date_joined, last_login):
@@ -358,16 +358,16 @@ class usefulness_rating_history:
         self.result = {}
         self.result = {'feedback_giver':self.username,'Fcomment':self.Fcomment,'score':self.score}
         return self.result
-=======
-        self.title = title
-        self.bid = bid
-        self.available_copy = available_copy
-        self.info = {}
 
-    def _record_transaction_info(self):
-        if not self.info:
-            self.info = {'Tid': self.Tid, 'Tdate':self.Tdate, 'copynum':self.copynum,
-                                 'title':self.title, 'bid':self.bid,  'available_copy':self.available_copy }
-        return self.info
-        print (self.info)
->>>>>>> webdesign
+class recommendations:
+    def __init__(self, ISBN13, title,sales, piclink):
+        self.ISBN13 = ISBN13
+        self.sales = sales
+        self.title = title
+        self.piclink = piclink
+
+    def recom_info(self):
+        self.result={}
+        self.result = {'ISBN13':self.ISBN13,'title':self.title,'sales':self.sales,'piclink':self.piclink}
+        return self.result
+

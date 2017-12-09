@@ -46,13 +46,14 @@ def login_user(request):
 
 
 @login_required
-def catalog_view(request, userid = None):
+def catalog_view(request):
     template = "index.html"
     context = {}
-    context['order_history'] = get_order_history()
-    context['user_info'] = get_user_information()
-    context['feedback_history'] = get_feedback_history()
-    context['rating_history'] = get_rating_history()
+    userid = request.user.id
+    context['order_history'] = get_order_history(userid)
+    context['user_info'] = get_user_information(userid)
+    context['feedback_history'] = get_feedback_history(userid)
+    context['rating_history'] = get_rating_history(userid)
 
 
     return render(request,template,context)

@@ -136,33 +136,6 @@ Rate this comment:
 </div>
 
 
-
-
-
-<<<<<<< HEAD
-<!-- recommendation, highest buy based on the -->
-<!--<hr>-->
-<!--<h2>Recommendations</h2>-->
-<!--<div class="card-group">-->
-	<!--{% for recommendation in recommendations %}-->
-	<!---->
-  <!--<div class="col-sm-4 col-md-3">-->
-    <!--<div class="thumbnail">-->
-      <!--<img src="{{ recommendation.piclink }}" >-->
-      <!--<div class="caption">-->
-        <!--<p><a href="{% url 'main'%}{{recommendation.ISBN13}}/">{{recommendation.title}}</a></p>-->
-        <!---->
-  <!---->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-
-
-  <!--{% endfor %}-->
-<!--</div>-->
-=======
-
->>>>>>> JL_dvp
 {% load static %}
 <script src="{% static 'jquery.barrating.js' %}"></script>
 <script type="text/javascript">
@@ -310,7 +283,7 @@ $( document ).ready(function() {
         	},
         	   success: function(response, textStatus, jqXHR) {
      alert("You have ordered "+num_of_books+" of "+book_title+"!");
-     location.reload();
+     window.location.href = window.location.href+'orderconfirmed';
      // $("#books_left").load(location.href + " #books_left");
    },
    error: function(jqXHR, textStatus, errorThrown){
