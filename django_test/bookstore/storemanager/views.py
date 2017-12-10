@@ -5,7 +5,7 @@ from django.shortcuts import render
 from django.shortcuts import render, redirect
 
 from utils.util import get_record_transaction_info, get_order_author_info, get_order_title_info,\
-    get_order_publisher_info,check_book_exists,add_new_book_and_transaction,save_transaction
+    get_order_publisher_info,check_book_exists,add_new_book_and_transaction,save_transaction, DecimalEncoder
 from django.db import connection
 from django.http import HttpResponseRedirect,HttpResponse
 from django.core.urlresolvers import reverse
@@ -17,6 +17,7 @@ import signuppage.views
 import json
 
 
+
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -24,15 +25,22 @@ def storemanager_view(request):
     if request.user.is_superuser:
         template='storemanagerindex.html'
         context = {}
-        if request.method == 'POST':
-            bid=request.POST['bid']
 
+        if 'HTTP_BOOK_EXISTS' in request.META:
+            bid=request.POST['bid']
             book_exists=check_book_exists(bid)
 
             if book_exists:
                 return HttpResponse(json.dumps({'book_exists': True}), content_type="application/json")
             else:
                 return HttpResponse(json.dumps({'book_exists': False}), content_type="application/json")
+        elif 'HTTP_MOST_POPULAR' in request.META:
+            topnum=request.POST['topnum']
+            data={}
+            data['order_author'] = get_order_author_info(topnum)
+            data['order_title'] = get_order_title_info(topnum)
+            data['order_publisher'] = get_order_publisher_info(topnum)
+            return HttpResponse(json.dumps(data, cls=DecimalEncoder), content_type="application/json")
 
         context['record_transaction'] = get_record_transaction_info()
         context['order_author'] = get_order_author_info()

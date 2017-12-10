@@ -2,7 +2,8 @@ import json
 import datetime
 from django.db import connection
 from datetime import timedelta
-
+from json import JSONEncoder
+import decimal
 
 def remove_quote(inp):
     if(type(inp) == 'str'):
@@ -270,13 +271,16 @@ def get_record_transaction_info():
 
     return record_transaction_result
 
-def get_order_author_info():
+def get_order_author_info(limit=None):
     format = '%Y-%m-%d %H:%M:%S'
     now = datetime.datetime.now().replace(microsecond=0).strftime(format)
     previous =(datetime.datetime.now().replace(microsecond=0) + datetime.timedelta(-30)).strftime(format)
+    if limit is not None and limit !='':
+        limit=int(limit)
+        order_author_info = my_custom_sql_dict("select books.authors,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by authors order by copynum DESC Limit %d"%(previous,now,limit))
+    else:
+        order_author_info = my_custom_sql_dict("select books.authors,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by authors order by copynum DESC"%(previous,now))
 
-
-    order_author_info = my_custom_sql_dict("select books.authors,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by authors order by copynum DESC Limit 1"%(previous,now))
     order_author_result = []
 
     for each_order_author in order_author_info:
@@ -285,13 +289,17 @@ def get_order_author_info():
 
     return order_author_result
 
-def get_order_title_info():
+def get_order_title_info(limit=None):
     format = '%Y-%m-%d %H:%M:%S'
     now = datetime.datetime.now().replace(microsecond=0).strftime(format)
     previous =(datetime.datetime.now().replace(microsecond=0) + datetime.timedelta(-30)).strftime(format)
 
+    if limit is not None and limit !='':
+        limit=int(limit)
+        order_title_info = my_custom_sql_dict("select books.title,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by title order by copynum DESC Limit %d"%(previous,now,limit))
 
-    order_title_info = my_custom_sql_dict("select books.title,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by title order by copynum DESC Limit 1"%(previous,now))
+    else:
+        order_title_info = my_custom_sql_dict("select books.title,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by title order by copynum DESC"%(previous,now))
     order_title_result = []
 
     for each_order_title in order_title_info:
@@ -300,13 +308,17 @@ def get_order_title_info():
 
     return order_title_result
 
-def get_order_publisher_info():
+def get_order_publisher_info(limit=None):
     format = '%Y-%m-%d %H:%M:%S'
     now = datetime.datetime.now().replace(microsecond=0).strftime(format)
     previous =(datetime.datetime.now().replace(microsecond=0) + datetime.timedelta(-30)).strftime(format)
 
+    if limit is not None and limit !='':
+        limit=int(limit)
+        order_publisher_info = my_custom_sql_dict("select books.publisher,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by publisher order by copynum DESC Limit %d"%(previous,now,limit))
 
-    order_publisher_info = my_custom_sql_dict("select books.publisher,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by publisher order by copynum DESC Limit 1"%(previous,now))
+    else:
+        order_publisher_info = my_custom_sql_dict("select books.publisher,sum(orders.copynum) AS copynum from books, orders where books.ISBN13 = orders.bid and orders.Odate BETWEEN '%s' AND '%s' group by publisher order by copynum DESC"%(previous,now))
     order_publisher_result = []
 
 
@@ -503,3 +515,10 @@ class order_publisher:
         # self.Odate = self.Odate.strftime(format)
         self.result = {'publisher':self.publisher,'copynum':self.copynum }
         return self.result
+
+
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, decimal.Decimal):
+            return float(o)
+        return super(DecimalEncoder, self).default(o)

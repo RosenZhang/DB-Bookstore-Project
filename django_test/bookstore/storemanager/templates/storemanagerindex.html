@@ -10,36 +10,16 @@
 <button class="Button search" id="to-add-record">Add Transaction Record</button>
 <form id='check-book-exists' style="display: inline-block;">
   <input id="userbid" name="userbid" style="padding: 7px; margin: 5px" placeholder="Book ISBN13" type="text" required="true">
-  <button type="submit" id="check-button" class="btn btn-default">Check whether the book exists</button>
+  <button type="button" id="check-button" class="btn btn-default">Check whether the book exists</button>
 </form>
 <br>
 <br>
 
-  <ul>
+
 
     <h3>Transaction Records:</h3>
       <br>
 
-    <style>
-table {
-    border-spacing: 0;
-    width: 100%;
-    border: 1px solid #ddd;
-}
-
-th {
-    cursor: pointer;
-}
-
-th, td {
-    text-align: left;
-    padding: 16px;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2
-}
-</style>
 
     <table>
 
@@ -65,6 +45,15 @@ tr:nth-child(even) {
 
 </table>
 <br>
+<form id='show-most-popular' style="display: inline-block;">
+  <input id="popular-num" name="popular-num" style="padding: 7px; margin: 5px" placeholder="Number of most popular books/authors/publishers to show" type="number" required="true">
+  <button type="button" id="popular-button" class="btn btn-default">Check</button>
+</form>
+
+<div id="popular-result"></div>
+
+
+<div id="default-result">
 <h3>Most Popular Book of the Month</h3>
 <br>
 
@@ -128,14 +117,14 @@ tr:nth-child(even) {
 
 </table>
 
-
-  </ul>
+</div>
+  
 <script type="text/javascript">
 $(function(){
   $("#check-book-exists").hide();
   $("#to-add-record").click(function(){
     $("#check-book-exists").show();
-  })
+  });
     $("#check-button").click(function(){
       if (!$('#userbid').val()){
           alert('Enter an ISBN13.');
@@ -144,6 +133,7 @@ $(function(){
       var ISBN13=$('#userbid').val();
       $.ajax({
           type:'POST',
+          headers: { 'BOOK-EXISTS': 'UPDATE_DATA' },
           beforeSend: function(xhr) {
         xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
     },
@@ -167,7 +157,59 @@ $(function(){
 
         })
 
-  })
+  });
+      $("#popular-button").click(function(){
+        
+          if (!$('#popular-num').val()){
+          alert('Enter a number.');
+          return;
+        }
+        if($('#popular-num').val()<=0){
+          alert('Enter a number larger than 0.');
+          return;
+        }
+        var popularnum=$('#popular-num').val()
+              $.ajax({
+        type : "POST",
+        url:"/storemanager/",
+        headers: { 'MOST-POPULAR': 'UPDATE_DATA' },
+        beforeSend: function(xhr) {
+          xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
+        },
+          data: {
+            topnum: popularnum
+              },
+          success: function(resp){ // if request works, function will response
+            $("#default-result").hide();
+              order_author=resp.order_author;
+              order_title=resp.order_title;
+              order_publisher=resp.order_publisher;
+              var htmlText = '';
+              htmlText +='<h3>Most Popular Book of the Month</h3><br><table id = "most_popular_books"><tr><th>Title</th></tr>';
+            for ( var title in order_title ) {
+              htmlText +=' <tr><td>'+order_title[title].title+'</td></tr>';}
+            htmlText +='</table><br>';
+            htmlText +='<h3>Most Popular Author of the Month</h3><br><table id = "most_popular_author"><tr><th>Author</th></tr>';
+            for ( var author in order_author ) {
+              htmlText +=' <tr><td>'+order_author[author].authors+'</td></tr>';}
+            htmlText +='</table><br>';
+                        htmlText +='<h3>Most Popular Publisher of the Month</h3><br><table id = "most_popular_publisher"><tr><th>Publisher</th></tr>';
+            for ( var publisher in order_publisher) {
+              htmlText +=' <tr><td>'+order_publisher[publisher].publisher+'</td></tr>';}
+            htmlText +='</table><br>';
+
+            $("#popular-result").html(htmlText);
+              },
+
+          });
+
+
+  });
+
+
+
+
+
 
 
 
