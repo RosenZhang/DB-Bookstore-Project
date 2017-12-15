@@ -20,8 +20,8 @@ These are the following features that are implemented in our bookstore
 SQL DDL code can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/project.sql).
 Sample data can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/sample.sql).
 
-*Schema Justification
-
+**Justification of Fid**
+In our case, we consider usefulness_rating as a weak entity, and it references auth_user and feedback. Therefore we give feedback a Fid to make it a strong entity.
 
 # Getting started
 ## Prerequisites
@@ -128,4 +128,4 @@ Our team use git as our main platform so even every team member works on differe
   * [He Jiabei 1001435](https://github.com/HeJiabei616)
 
 # Acknowledgments
-We appreciate Professor Dorien Herremans for teaching us database knowledge and Jon Wong for introducing Django and agile in SUTD 50.008 couse from September to December 2017.
+We appreciate Professor Dorien Herremans for teaching us database knowledge and Jon Wong for introducing Django and agile in SUTD 50.008 course from September to December 2017.
