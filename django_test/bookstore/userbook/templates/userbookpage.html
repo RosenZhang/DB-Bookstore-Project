@@ -15,7 +15,25 @@
             
 
   <!-- </div> -->
-            <input  type="text" id="SearchBar" class="search" placeholder="Search for authors or publisher or title or subject" aria-label="Search" >
+      <input  type="text" id="SearchTitle" class="search" placeholder="Title" aria-label="Search" >
+      <select class="styled-select yellow semi-square" id='search-op1' >
+    <option>AND</option>
+    <option>OR</option>
+  </select>
+      <input  type="text" id="SearchAuthor" class="search" placeholder="Author" aria-label="Search" >
+            <select class="styled-select yellow semi-square" id='search-op2' >
+    <option>AND</option>
+    <option>OR</option>
+  </select>
+      <input  type="text" id="SearchPublisher" class="search" placeholder="Publisher" aria-label="Search" >
+    <select class="styled-select yellow semi-square" id='search-op3' >
+    <option>AND</option>
+    <option>OR</option>
+  </select> 
+
+      <input  type="text" id="SearchSubject" class="search" placeholder="Subject" aria-label="Search" >
+      <br>
+
             <label>Sorted by</label>
               <select class="styled-select yellow semi-square" id='search-sorting' >
     <option>-</option>
@@ -51,7 +69,13 @@ $( document ).ready( function( )
           xhr.setRequestHeader("X-CSRFToken", '{{ csrf_token }}');
         },
           data: {
-            search_keyword: $('#SearchBar').val(),
+            search_title: $('#SearchTitle').val(),
+            op1:$('#search-op1').val(),
+            search_author: $('#SearchAuthor').val(),
+            op2:$('#search-op2').val(),
+            search_publisher: $('#SearchPublisher').val(),
+            op3:$('#search-op3').val(),
+            search_subject: $('#SearchSubject').val(),
             sorted_by: sorted_option,
               },
           success: function(resp){ // if request works, function will response

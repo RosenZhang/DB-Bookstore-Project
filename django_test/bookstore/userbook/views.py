@@ -11,16 +11,6 @@ from utils.util import get_book_list, get_book_list_v2_with_brief_record, get_bo
     check_user_has_posted_feedback, save_user_feedback, get_feedback_info_with_limit,get_book_recommendation
 
 
-# Create your views here.
-# @login_required
-# def usermainpage_view(request):
-#     # book_list=get_book_list()
-#     template='userbookpage.html'
-#     book_list, books = get_book_list_v2_with_brief_record('a')
-#     # books = [{'title':'book1','ISBN13':'1028374','authors':"author1", 'publisher':"publisher1"},
-# 		# {'title':'book2','ISBN13':'1028375','authors':"author2", 'publisher':"publisher1"}]
-#     context={'book_list':book_list,'books':books}
-#     return render(request,template,context)
 
 @login_required
 def usermainpage_view(request):
@@ -28,10 +18,15 @@ def usermainpage_view(request):
     template = 'userbookpage.html'
 
     if 'HTTP_SEARCH_BOOK' in request.META:
-        search_key_word = request.POST['search_keyword']
+        search_title = request.POST['search_title']
+        op1=request.POST['op1']
+        search_author = request.POST['search_author']
+        op2=request.POST['op2']
+        search_publisher = request.POST['search_publisher']
+        op3=request.POST['op3']
+        search_subject = request.POST['search_subject']
         sorted_by=request.POST['sorted_by']
-        # watch your command line
-        book_list, books = get_book_list_v2_with_brief_record(search_key_word,sorted_by)
+        book_list, books = get_book_list_v2_with_brief_record(search_title,op1,search_author,op2,search_publisher,op3,search_subject,sorted_by)
         return HttpResponse(json.dumps({'books': books}), content_type="application/json")
 
     else:
