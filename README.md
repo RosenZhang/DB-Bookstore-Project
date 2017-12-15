@@ -84,6 +84,13 @@ $ source [project location]/sample.sql
 ### Frontend: Bootstrap, jQuery
 ### Backend: Django
 ### Databse: MySQL
+#### Transaction table as extra to keep track of every book store manager added
+After every time store manager import books, or buy books, he can use add transaction function in store manager's front end by submitted the ISBN book and number of copies inserted or deleted. After store manager add transaction, a record will be kept in record_transaction table in database. For every record inserted to record transaction, corresponding book's copy number will also have corresponding increasement and decreasement.
+
+If the transactioin is for a new book that never existed in books table before, then store manager need to insert every fields like title, piclink, number of pages. Then back-end will automatically create a new record in books and add the transaction history.
+
+With transaction table, store manager can view all the past transaction history for better book store management.
+
 #### Double checking of commenting data
 When we are adding data via website, our front end will have check of all the conditions (number of available copies, whether the user can comment on book or rate feedback, data format etc), and in Database, schema and trigger design also makes sure no bad datas are inserted, like any order of unexisting books. Our double protection makes sure the correctness and safety of the whole bookstore system.
 
