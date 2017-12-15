@@ -62,12 +62,12 @@ def get_book_list():
     titles = [row[0] for row in cursor.fetchall()]
     return titles
 
-def get_book_list_v2_with_brief_record(keyword,sorted_by):
+def get_book_list_v2_with_brief_record(title,op1,author,op2,publisher,op3,subject,sorted_by):
 
     query='select books.*, avg(rank) as avgscore from books left join feedback '\
 'on feedback.bid=books.ISBN13 where '\
-'(title like %s  or authors like  %s  or publisher like  %s or subject like %s) '\
-'group by books.ISBN13'
+'(title like %s  {} authors like  %s  {} publisher like  %s {} subject like %s) '\
+'group by books.ISBN13'.format(op1,op2,op3)
     if sorted_by=='-':
         query+=';'
     elif sorted_by=='year':
@@ -76,7 +76,9 @@ def get_book_list_v2_with_brief_record(keyword,sorted_by):
         query+=' order by avgscore desc;'
     titles = []
     details = []
-    books_info = my_custom_sql_dict(query,('%'+keyword+'%','%'+keyword+'%','%'+keyword+'%','%'+keyword+'%'))
+    # books_info = my_custom_sql_dict(query,('%'+title+'%',op1,'%'+author+'%',op2,'%'+publisher+'%',op3,'%'+subject+'%'))
+    books_info = my_custom_sql_dict(query,('%'+title+'%','%'+author+'%','%'+publisher+'%','%'+subject+'%'))
+
     for book_info in books_info:
         book_class = books(**book_info)
         titles.append(book_class.title)
