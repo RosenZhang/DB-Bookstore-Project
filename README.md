@@ -18,7 +18,10 @@ These are the following features that are implemented in our bookstore
 
 # Relational Schema and Sample Data
 SQL DDL code can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/project.sql).
-Sample data can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/sample.sql)
+Sample data can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/sample.sql).
+
+*Schema Justification
+
 
 # Getting started
 ## Prerequisites
