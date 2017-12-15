@@ -20,10 +20,10 @@ These are the following features that are implemented in our bookstore
 SQL DDL code can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/project.sql).
 Sample data can be found [here](https://github.com/RosenZhang/DB-Bookstore-Project/blob/schemedesign/sample.sql).
 
-**Justification of Fid: **
+**Justification of Fid:**
 In our case, we consider usefulness_rating as a weak entity, and it references auth_user and feedback. Therefore we give feedback a Fid to make it a strong entity. 
 
-**Weak Entities: ** 
+**Weak Entities:** 
 Order and userfulness_rating
 
 # Getting started
